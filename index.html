@@ -632,16 +632,15 @@
            ------------------------------------------------ */
         let savedScrollPosition = 0;
 
-        // Buscamos el botón que abre el modal de regalos para guardar la posición
-        // Usamos un selector genérico por si es <a> o <button>
-        const btnOpenRegalos = document.querySelector('[href="#modalRegalos"]');
-
-        if (btnOpenRegalos) {
-            btnOpenRegalos.addEventListener('click', function () {
+        // CORRECCIÓN APLICADA AQUÍ: 
+        // Antes solo buscaba el botón de Regalos. Ahora busca Regalos Y RSVP.
+        // Usamos querySelectorAll para obtener ambos botones y agregarles el evento.
+        document.querySelectorAll('[href="#modalRegalos"], [href="#modalRSVP"]').forEach(function(btn) {
+            btn.addEventListener('click', function () {
                 // Guardamos exactamente en qué pixel estamos
                 savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
             });
-        }
+        });
 
         /* ------------------------------------------------
            LÓGICA DEL SOBRE Y MÚSICA
