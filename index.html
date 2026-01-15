@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mili & Juli - Boda</title>
+    
+    <meta property="og:title" content="Mili & Juli - Boda">
+    <meta property="og:description" content="¡Nos Casamos! y queremos compartirlo con vos">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-reboot.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito+Sans:wght@200..900&family=Parisienne&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css"/>
+	<link rel="stylesheet" href="assets/js/wow/animate.css"/>
+
+    <style>
+        /* Pequeño parche para asegurar que el sobre se vea bien sin el JS original de ellos */
+        .intro { cursor: pointer; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; transition: all 1s ease; }
+        .hidden { display: none !important; }
+        /* Ajuste para el modal de error/éxito */
+        .msj.error { color: red; display: none; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="intro" id="intro" onclick="abrirSobre()">
+        <div class="top" id="top">
+            <div class="badge animate__animated animate__zoomIn" data-wow-delay="0.3s">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/022/024/715/small/golden-wax-seal-isolated-on-a-transparent-background-png.png" style="width: 150px;"/>
+            </div>
+            <img src="https://evnt.ar/assets/images/envelopet.png" class="top hiddenM animate__animated animate__slideInDown"/>
+            <img src="https://evnt.ar/assets/images/envelopetm.png" class="top hiddenL animate__animated animate__slideInDown"/>
+        </div>
+        <div class="bottom" id="bottom"></div>
+    </div>
+
+    <span class="player" id="musicButton">
+        <div class="icon"><img src="https://evnt.ar/assets/images/pause.png"/></div>
+    </span>
+    <audio id="player" loop>
+        <source src="https://evnt.ar/storage/254/música/song/ahvtQ3seJztbFaA33Rrb5E2fVDWnK9TlnSWOni4a.mp3" type="audio/mp3"/>
+    </audio>
+
+    <a href="https://api.whatsapp.com/send?phone=5491100000000&text=%C2%A1Hola%21+Confirmo+mi+asistencia" class="linkcontacto" style="background-color:#e2bf83; z-index:1000;" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size:24px;"></i>
+    </a>
+
+    <section class="cover full">
+        <div class="text">
+            <h1>Milagros & Julio</h1>
+            <h2>¡Nos Casamos!</h2>
+            <p>y queremos compartirlo con vos</p>
+            <i class="fas fa-angle-down wow animate__animated animate__fadeInDown" data-wow-iteration="infinite" data-wow-duration="1.5s" data-wow-offset="0"></i>
+        </div>
+        <div class="slider" id="slider">
+            <div class='image'><img src="assets/img/DSC_0292.JPG"></div>
+        </div>
+    </section>
+
+    <section class="content wow animate__animated animate__fadeInUp">
+        <div class="info">
+            <div class="text">
+                <lord-icon src="https://cdn.lordicon.com/aydxrkfl.json" trigger="loop" state="hover-heartbeat-alt" stroke="light" delay="500" colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
+                <p>Estamos felices de celebrar nuestro amor con las personas que más queremos. Gracias por ser parte de este día.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="countdown wow animate__animated animate__fadeInUp" data-wow-duration="1.5s">
+        <lord-icon class="icon" src="https://cdn.lordicon.com/mzfjzfjs.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
+        <br/>
+        <p>Agendá la fecha</p>
+        <h2>25 de abril 2026</h2>
+        
+        <div id="countdown" class="timer" data-init-value="04/25/2026 14:00:00">
+            <div><div id="days"></div><span>Días</span></div>
+            <div class="point">:</div>
+            <div><div id="hs"></div><span>Hs</span></div>
+            <div class="point">:</div>
+            <div><div id="min"></div><span>Min</span></div>
+            <div class="point">:</div>
+            <div><div id="seg"></div><span>Seg</span></div>
+        </div>
+        
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+M%26J&dates=20260425T140000Z/20260426T020000Z" target="_blank"><i class="far fa-calendar-check"></i> Agendar fecha</a>
+    </section>
+
+    <section class="events">
+        <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
+            <lord-icon src="https://cdn.lordicon.com/czmrowis.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
+            <h2>Civil</h2>
+            <div>
+                <div class="txt" style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
+                    <div class="date"><p>XX</p><span>Abril</span></div>
+                    <div class="line"></div>
+                    <div class="date"><p>09:30</p><span>Horas</span></div>
+                </div>
+                <div class="place">
+                    <p><b>Registro Civíl Independencia</b></p>
+                    <p>Av. Independencia 2846</p>
+                </div>
+            </div>
+            <a href="#" target="_blank">Cómo llegar</a>
+        </article>
+
+        <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
+            <lord-icon src="https://cdn.lordicon.com/yvgmrqny.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
+            <h2>Ceremonia & Fiesta</h2>
+            <div>
+                <div class="txt" style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
+                    <div class="date"><p>25</p><span>Abril</span></div>
+                    <div class="line"></div>
+                    <div class="date"><p>14:00</p><span>Horas</span></div>
+                </div>
+                <div class="place">
+                    <p><b>Finca 'El Secreto'</b></p>
+                    <p>DireccionDeRobert 123</p>
+                </div>
+            </div>
+            <a href="#" target="_blank">Cómo llegar</a> <!--Link a Maps-->
+        </article>
+        
+        <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
+            <lord-icon src="https://cdn.lordicon.com/dkyhucjt.json" trigger="loop" state="" stroke="light" delay="300" colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
+            <h2>DressCode</h2>
+            <div>
+                <div class="place">
+                    <p><b>Formal-Elegante</b></p>
+                    <p>Usá blanco y te mato</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="story" style="background-color: #e2bf83;">
+        
+        <div class="image wow animate__animated animate__fadeInLeft">
+            <img src="assets/img/DSC_0270.JPG" alt="Nuestra Historia"/>
+        </div>
+        
+        <div class="text wow animate__animated animate__fadeInUp" data-wow-delay="0.2s" style="color: #fff;">
+            
+            <lord-icon src="https://cdn.lordicon.com/aydxrkfl.json" trigger="loop" state="hover-heartbeat-alt" stroke="light" delay="300" colors="primary:#fff,secondary:#fff" style="width:70px;height:70px"></lord-icon>
+            
+            <h2 style="color: #fff;"> <b>Nuestra Historia</b></h2>
+            
+            <p>Todo comenzó de la manera menos pensada, pero en el momento justo. Lo que empezó con una charla casual y algunas risas tímidas, poco a poco se transformó en nuestra aventura favorita.</p>
+            
+            <p>Hoy, después de tantas historias escritas de a dos, elegimos seguir construyendo este camino. ¡Gracias por ser testigos del "Sí" más importante!</p>
+        </div>
+        
+    </section>
+
+    <section class="gallery">
+        <lord-icon class="wow animate__animated animate__fadeInUp icon" data-wow-duration="1s" src="https://cdn.lordicon.com/wsaaegar.json" trigger="loop" state="hover-flash" stroke="light" delay="300" colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
+        <br/>
+        <span class="wow animate__animated animate__fadeInUp">Momentos únicos</span>
+        <h2 class="wow animate__animated animate__fadeInUp">Álbum de Fotos</h2>
+        
+        <div class="wall">
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(1)" src="assets/img/DSC_0292.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(2)" src="assets/img/DSC_0321.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(3)" src="assets/img/DSC_0332.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(4)" src="assets/img/DSC_0339.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(5)" src="assets/img/DSC_0341.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)" src="assets/img/DSC_0349.JPG" /></div>
+        </div>
+
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()"><i class="fas fa-times"></i></span>
+            <div class="modal-content">
+                
+                <div class="mySlides"><img src="assets/img/DSC_0292.JPG"/></div>
+                <div class="mySlides"><img src="assets/img/DSC_0321.JPG"/></div>
+                <div class="mySlides"><img src="assets/img/DSC_0332.JPG"/></div>
+                <div class="mySlides"><img src="assets/img/DSC_0339.JPG"/></div>
+                <div class="mySlides"><img src="assets/img/DSC_0341.JPG"/></div>
+                <div class="mySlides"><img src="assets/img/DSC_0349.JPG"/></div>
+                
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-angle-left"></i></a>
+            <a class="next" onclick="plusSlides(1)"><i class="fas fa-angle-right"></i></a>
+            <div class="layer" onclick="closeModal()"></div>
+        </div>
+    </section>
+
+    <section class="gifts" style="background-image: url('https://evnt.ar/storage/254/regalos/background_image/GYOJMsHu3otfFq2eZ4tzaOlvAN3ilOd68eKCn9XH.jpg');">
+        <div class="card wow animate__animated animate__fadeInUp">
+            <lord-icon src="https://cdn.lordicon.com/kezeezyg.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
+            <h2>Regalos</h2>
+            <p>El mejor regalo es que vengan, pero si quieren ayudarnos con la Luna de Miel...</p>
+            <button class="modal-button" href="#modalRegalos">Ver Datos Bancarios</button>
+        </div>
+
+        <div class="modalGift" id="modalRegalos">
+            <div class="contenido-modal">
+                <span class="closeModal"><i class="fas fa-times"></i></span>
+                <div class="item">
+                    <div class="left"><h3>Cuenta Bancaria</h3></div>
+                    <div class="right">
+                        <p><b>Banco:</b> Santander<br><b>CBU:</b> 000000000000000000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="confirmation">
+        <div class="wow animate__animated animate__fadeInUp">
+            <lord-icon src="https://cdn.lordicon.com/heqlbljj.json" trigger="loop" stroke="light" delay="300" colors="primary:#fff,secondary:#fff" style="width:70px;height:70px"></lord-icon>
+            <br/>
+            <span>RSVP</span>
+            <h2>Confirmación de Asistencia</h2>
+            <p>Por favor confirmar antes del 15 de Enero</p>
+            <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;"><i class="far fa-check-circle" style="margin-right:10px"></i>Confirmar Asistencia</button>
+        </div>
+
+        <div class="modalGift" id="modalRSVP">
+            <div class="contenido-modal">
+                <span class="closeModal"><i class="fas fa-times"></i></span>
+                <div class="cont">
+                    <h2>Confirmación</h2>
+                    <div class="form">
+                        <div class="msj error">Por favor completa todos los campos</div>
+                        
+                        <form id="rsvpForm">
+                            <label>Nombre y Apellido</label>
+                            <input type="text" name="nombre" required />
+                            
+                            <label>¿Asistís?</label>
+                            <div class="radio">
+                                <label>Sí <input type="radio" name="asiste" value="si" checked></label>
+                                <label>No <input type="radio" name="asiste" value="no"></label>
+                            </div>
+
+                            <label>Comentarios / Dieta especial</label>
+                            <input type="text" name="comentarios"/>
+
+                            <button class="submit" type="submit"><i class="far fa-check-circle"></i> Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="thanks" style="display:none;">
+                    <h2>¡Gracias por confirmar!</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Hecho con <i class="far fa-heart"></i> por M&J</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+    <script src="assets/js/wow/wow.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/countdown.js"></script>
+
+    <script>
+        // Iniciar animaciones WOW
+        new WOW().init();
+
+        // Lógica para Abrir el Sobre y Reproducir Música
+        function abrirSobre() {
+            var audio = document.getElementById("player");
+            var intro = document.getElementById("intro");
+            var body = document.body;
+
+            // Reproducir audio
+            audio.play().catch(function(error) {
+                console.log("Autoplay bloqueado, el usuario debe interactuar primero.");
+            });
+
+            // Animar salida del sobre (CSS transition)
+            intro.style.opacity = "0";
+            intro.style.transform = "translateY(-100%)";
+            
+            // Eliminar el sobre del DOM después de la animación
+            setTimeout(function(){
+                intro.style.display = "none";
+            }, 1000);
+        }
+
+        // Lógica del Botón de Música (Play/Pause)
+        var musicBtn = document.getElementById("musicButton");
+        var audio = document.getElementById("player");
+        
+        musicBtn.addEventListener("click", function () {
+            if (audio.paused) {
+                audio.play();
+                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
+            } else {
+                audio.pause();
+                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
+            }
+        });
+
+        // Configuración básica del Countdown (si el JS lo requiere así)
+        // Nota: El archivo countdown.js que bajaste seguramente busca el ID "countdown" automáticamente.
+    </script>
+
+</body>
+</html>
