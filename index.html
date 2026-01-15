@@ -1,77 +1,302 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mili & Juli - Boda</title>
-    
+
     <meta property="og:title" content="Mili & Juli - Boda">
     <meta property="og:description" content="¡Nos Casamos! y queremos compartirlo con vos">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-reboot.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
-    
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito+Sans:wght@200..900&family=Parisienne&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Great+Vibes&family=Nunito+Sans:wght@200..900&family=Parisienne&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/style.css"/>
-	<link rel="stylesheet" href="assets/js/wow/animate.css"/>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/js/wow/animate.css" />
 
     <style>
-        /* Pequeño parche para asegurar que el sobre se vea bien sin el JS original de ellos */
-        .intro { cursor: pointer; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; transition: all 1s ease; }
-        .hidden { display: none !important; }
-        /* Ajuste para el modal de error/éxito */
-        .msj.error { color: red; display: none; margin-bottom: 10px; }
-         body, header{
-                background-color: #f3f1ed;
+        :root {
+            /* Colores */
+            --color-primary: #9A9B6A;
+            /* Verde oliva */
+            --color-secondary: #D4B996;
+            /* Dorado/Beige */
+            --color-bg: #f3f1ed;
+            /* Fondo Crema */
+            --color-text: #666666;
+            /* Texto Gris */
+            --color-white: #ffffff;
+
+            /* Tipografías */
+            /*--font-nombres: 'Parisienne', cursive; /* Para "Mili & Juli" */
+            --font-titulos: 'Playfair Display', serif;
+            /* Para "Ceremonia", "Historia" */
+            --font-cuerpo: 'Montserrat', sans-serif;
+            /* Para textos largos */
+        }
+
+        /* --- 2. APLICACIÓN DE VARIABLES --- */
+        body,
+        header {
+            background-color: var(--color-bg);
+            font-family: var(--font-cuerpo);
+            color: var(--color-text);
+        }
+
+        /* Títulos especiales */
+        h1.nombres-portada {
+            font-family: "Nunito Sans", sans-serif !important;
+            /*var(--font-nombres);*/
+            color: var(--color-secondary) !important;
+            font-size: 2.5rem !important;
+            /* Ajustá el tamaño aquí */
+            font-weight: bold !important;
+        }
+
+        h2 {
+            font-family: var(--font-titulos);
+            color: var(--color-primary);
+        }
+
+        /* Colorear íconos y textos específicos */
+        header h1,
+        .cover .text i,
+        .timer div,
+        .countdown p,
+        .countdown a i,
+        .events .item i,
+        .social .item i,
+        .video span,
+        .gallery span,
+        .hotels span,
+        .hotels i,
+        .hotels .list a i,
+        .gallery i,
+        .gifts i,
+        .modalGift h3,
+        .modalGift .item .right p b,
+        .modalGift .item .right .list a h4,
+        .modalGift .closeModal i,
+        .invites i,
+        .invites span,
+        .confirmation .link i,
+        .confirmation .modalGift .contenido-modal .form label,
+        .confirmation .modalGift .contenido-modal span,
+        .confirmation .modalGift .contenido-modal .thanks i,
+        footer p i,
+        .content .info .text i,
+        .cover .text h1 {
+            color: var(--color-primary);
+        }
+
+        /* Fondos con color primario */
+        .story,
+        .gifts a,
+        .gifts button,
+        .gifts,
+        .confirmation,
+        .confirmation .modalGift .contenido-modal .form .container .checkmark:after,
+        .confirmation .modalGift .contenido-modal .form button,
+        .salon .item .right a,
+        .player .icon,
+        .linkcontacto {
+            background-color: var(--color-primary) !important;
+        }
+
+        /* --- 3. ANIMACIÓN FLECHA (Bounce) --- */
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
             }
-            /*h2,h3, .countdown .timer div, header h1{
-                font-family: "Parisienne", cursive;
-            }*/
-            header h1, .cover .text i, .timer div, .countdown p, .countdown a i, .events .item i, .social .item i, .video span, .gallery span, .hotels span,.hotels i, .hotels .list a i, .gallery i, .gifts i, .modalGift h3, .modalGift .item .right p b, .modalGift .item .right .list a h4, .modalGift .closeModal i, .invites i, .invites span, .confirmation .link i, .confirmation .modalGift .contenido-modal .form label, .confirmation .modalGift .contenido-modal span, .confirmation .modalGift .contenido-modal .thanks i, footer p i, .content .info .text i, .cover .text h1, .cover.full.design .text h2, .cover.design .text h2{
-                color: #154734;
+
+            40% {
+                transform: translateY(-10px);
             }
-            .story, .gifts a, .gifts button, .gifts, .confirmation, .confirmation .modalGift .contenido-modal .form .container .checkmark:after, .confirmation .modalGift .contenido-modal .form button, .salon .item .right a, .player .icon{
-                background-color: #154734;
+
+            60% {
+                transform: translateY(-5px);
             }
-            .modalGift .contenido-modal .item .right .list a{
-                background-color: transparent;
-            }
+        }
+
+        .scroll-arrow {
+            animation: bounce 2s infinite;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* --- 4. AJUSTES VARIOS --- */
+        .intro {
+            cursor: pointer;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            transition: all 1s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .msj.error {
+            color: red;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .modalGift .contenido-modal .item .right .list a {
+            background-color: transparent;
+        }
+
+        /* Corrección para íconos en selects (Truco visual) */
+        .selectField {
+            position: relative;
+        }
+
+        .selectField i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            /* Centrado vertical */
+            transform: translateY(-50%);
+            pointer-events: none;
+            /* Para que el click pase al select */
+            color: var(--color-primary);
+            z-index: 1;
+        }
+
+        /* Limpiamos la flecha por defecto del navegador para poner la nuestra */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #btnCopiar {
+            border-radius: 50px;
+            /* Bordes bien redondeados como el resto */
+            padding: 12px 25px;
+            /* Más gordito */
+            font-size: 1rem;
+            /* Letra un poco más grande */
+            width: 100%;
+            margin-top: 15px;
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            /* Aseguramos que use el color primario */
+            background-color: var(--color-primary);
+        }
+
+        #btnCopiar:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .btn-action {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            /* Un poco más de aire */
+            margin-bottom: 10px;
+            border-radius: 50px;
+            font-family: var(--font-cuerpo);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+            /* Evita que el texto se separe mucho si ocupa dos líneas */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Sombrita sutil */
+        }
+
+        /* Botón Principal (Verde) */
+        .btn-primary-modal {
+            background-color: var(--color-primary);
+            color: white;
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-primary-modal:hover {
+            background-color: #0f3526;
+            /* Un verde un pelín más oscuro */
+            transform: translateY(-2px);
+        }
+
+        /* Botón Secundario (Blanco) */
+        .btn-secondary-modal {
+            background-color: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary-modal:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
+
 <body>
 
     <div class="intro" id="intro" onclick="abrirSobre()">
         <div class="top" id="top">
             <div class="badge animate__animated animate__zoomIn" data-wow-delay="0.3s">
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/022/024/715/small/golden-wax-seal-isolated-on-a-transparent-background-png.png" style="width: 150px;"/>
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/022/024/715/small/golden-wax-seal-isolated-on-a-transparent-background-png.png"
+                    style="width: 150px;" />
             </div>
-            <img src="https://evnt.ar/assets/images/envelopet.png" class="top hiddenM animate__animated animate__slideInDown"/>
-            <img src="https://evnt.ar/assets/images/envelopetm.png" class="top hiddenL animate__animated animate__slideInDown"/>
+            <img src="https://evnt.ar/assets/images/envelopet.png"
+                class="top hiddenM animate__animated animate__slideInDown" />
+            <img src="https://evnt.ar/assets/images/envelopetm.png"
+                class="top hiddenL animate__animated animate__slideInDown" />
         </div>
         <div class="bottom" id="bottom"></div>
     </div>
 
     <span class="player" id="musicButton">
-        <div class="icon"><img src="https://evnt.ar/assets/images/pause.png"/></div>
+        <div class="icon"><img src="https://evnt.ar/assets/images/pause.png" /></div>
     </span>
     <audio id="player" loop>
-        <source src="https://evnt.ar/storage/254/música/song/ahvtQ3seJztbFaA33Rrb5E2fVDWnK9TlnSWOni4a.mp3" type="audio/mp3"/>
+        <source src="https://evnt.ar/storage/254/música/song/ahvtQ3seJztbFaA33Rrb5E2fVDWnK9TlnSWOni4a.mp3"
+            type="audio/mp3" />
     </audio>
 
-    <a href="https://api.whatsapp.com/send?phone=5491100000000&text=%C2%A1Hola%21+Confirmo+mi+asistencia" class="linkcontacto" style="background-color:#154734; z-index:1000;" target="_blank">
-        <i class="fab fa-whatsapp" style="font-size:24px;"></i>
+    <a href="https://api.whatsapp.com/send?phone=5491100000000&text=%C2%A1Hola%21+Confirmo+mi+asistencia"
+        class="linkcontacto" style="z-index:1000;" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size:24px; color: white;"></i>
     </a>
 
     <section class="cover full">
         <div class="text">
-            <h1 style="color: #D4B996;"><b>Mili & Juli</b></h1>
+            <h1 class="nombres-portada">Mili & Juli</h1>
             <h2>¡Nos Casamos!</h2>
             <p>y queremos compartirlo con vos</p>
-            <i class="fas fa-angle-down wow animate__animated animate__fadeInDown" data-wow-iteration="infinite" data-wow-duration="1.5s" data-wow-offset="0"></i>
+            <i class="fas fa-angle-down scroll-arrow wow animate__animated animate__fadeInDown" data-wow-delay="1s"></i>
         </div>
         <div class="slider" id="slider">
             <div class='image'><img src="assets/img/DSC_0292.JPG"></div>
@@ -81,68 +306,94 @@
     <section class="content wow animate__animated animate__fadeInUp">
         <div class="info">
             <div class="text">
-                <lord-icon src="https://cdn.lordicon.com/aydxrkfl.json" trigger="loop" state="hover-heartbeat-alt" stroke="light" delay="500" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
-                <p>Estamos felices de celebrar nuestro amor con las personas que más queremos. Gracias por ser parte de este día.</p>
+                <lord-icon src="https://cdn.lordicon.com/aydxrkfl.json" trigger="loop" state="hover-heartbeat-alt"
+                    stroke="light" delay="500" colors="primary:#666,secondary:"
+                    style="width:70px;height:70px"></lord-icon>
+                <p>Estamos felices de celebrar nuestro amor con las personas que más queremos. Gracias por ser parte de
+                    este día.</p>
             </div>
         </div>
     </section>
 
     <section class="countdown wow animate__animated animate__fadeInUp" data-wow-duration="1.5s">
-        <lord-icon class="icon" src="https://cdn.lordicon.com/mzfjzfjs.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
-        <br/>
+        <lord-icon class="icon" src="https://cdn.lordicon.com/mzfjzfjs.json" trigger="loop" stroke="light" delay="300"
+            colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
+        <br />
         <p>Agendá la fecha</p>
         <h2>25 Abril 2026</h2>
 
         <div id="countdown" class="timer" data-init-value="04/25/2026 14:00:00">
-            <div><div id="days"></div><span>Días</span></div>
+            <div>
+                <div id="days"></div><span>Días</span>
+            </div>
             <div class="point">:</div>
-            <div><div id="hs"></div><span>Hs</span></div>
+            <div>
+                <div id="hs"></div><span>Hs</span>
+            </div>
             <div class="point">:</div>
-            <div><div id="min"></div><span>Min</span></div>
+            <div>
+                <div id="min"></div><span>Min</span>
+            </div>
             <div class="point">:</div>
-            <div><div id="seg"></div><span>Seg</span></div>
+            <div>
+                <div id="seg"></div><span>Seg</span>
+            </div>
         </div>
-        
-        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+M%26J&dates=20260425T170000Z/20260426T050000Z" target="_blank"><i class="far fa-calendar-check"></i> Agendar fecha</a>
+
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+M%26J&dates=20260425T170000Z/20260426T050000Z"
+            target="_blank"><i class="far fa-calendar-check"></i> Agendar fecha</a>
     </section>
 
     <section class="events">
         <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
-            <lord-icon src="https://cdn.lordicon.com/czmrowis.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/czmrowis.json" trigger="loop" stroke="light" delay="300"
+                colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <h2>Civil</h2>
             <div>
-                <div class="txt" style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
-                    <div class="date"><p>XX</p><span>Abril</span></div>
+                <div class="txt"
+                    style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
+                    <div class="date">
+                        <p>XX</p><span>Abril</span>
+                    </div>
                     <div class="line"></div>
-                    <div class="date"><p>09:30</p><span>Horas</span></div>
+                    <div class="date">
+                        <p>09:30</p><span>Horas</span>
+                    </div>
                 </div>
                 <div class="place">
                     <p><b>Registro Civíl Independencia</b></p>
                     <p>Av. Independencia 2846</p>
                 </div>
             </div>
-            <a href="#" target="_blank">Cómo llegar</a>
+            <a href="https://maps.app.goo.gl/kGeTGGoZfamRx4iH8" target="_blank">Cómo llegar</a>
         </article>
 
         <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
-            <lord-icon src="https://cdn.lordicon.com/yvgmrqny.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/yvgmrqny.json" trigger="loop" stroke="light" delay="300"
+                colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <h2>Ceremonia & Fiesta</h2>
             <div>
-                <div class="txt" style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
-                    <div class="date"><p>25</p><span>Abril</span></div>
+                <div class="txt"
+                    style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
+                    <div class="date">
+                        <p>25</p><span>Abril</span>
+                    </div>
                     <div class="line"></div>
-                    <div class="date"><p>14:00</p><span>Horas</span></div>
+                    <div class="date">
+                        <p>14:00</p><span>Horas</span>
+                    </div>
                 </div>
                 <div class="place">
                     <p><b>Finca 'El Secreto'</b></p>
                     <p>DireccionDeRobert 123</p>
                 </div>
             </div>
-            <a href="#" target="_blank">Cómo llegar</a> <!--Link a Maps-->
+            <a href="https://maps.app.goo.gl/zRNjh8cNGmpnBA9p9" target="_blank">Cómo llegar</a>
         </article>
-        
+
         <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
-            <lord-icon src="https://cdn.lordicon.com/dkyhucjt.json" trigger="loop" state="" stroke="light" delay="300" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/dkyhucjt.json" trigger="loop" state="" stroke="light" delay="300"
+                colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <h2>DressCode</h2>
             <div>
                 <div class="place">
@@ -153,89 +404,100 @@
         </article>
     </section>
 
-    <section class="story" style="background-color: #154734;">
-        
+    <section class="story">
         <div class="image wow animate__animated animate__fadeInLeft">
-            <img src="assets/img/DSC_0270.JPG" alt="Nuestra Historia"/>
+            <img src="assets/img/DSC_0270.JPG" alt="Nuestra Historia" />
         </div>
-        
-        <div class="text wow animate__animated animate__fadeInUp" data-wow-delay="0.2s" style="color: #fff;">
-            
-            <lord-icon src="https://cdn.lordicon.com/aydxrkfl.json" trigger="loop" state="hover-heartbeat-alt" stroke="light" delay="300" colors="primary:#fff,secondary:#fff" style="width:70px;height:70px"></lord-icon>
-            
-            <h2 style="color: #fff;"> <b>Nuestra Historia</b></h2>
-            
-            <p>Todo comenzó de la manera menos pensada, pero en el momento justo. Lo que empezó con una charla casual y algunas risas tímidas, poco a poco se transformó en nuestra aventura favorita.</p>
-            
-            <p>Hoy, después de tantas historias escritas de a dos, elegimos seguir construyendo este camino. ¡Gracias por ser testigos del "Sí" más importante!</p>
+
+        <div class="text wow animate__animated animate__fadeInUp" data-wow-delay="0.2s"
+            style="color: var(--color-white);">
+            <lord-icon src="https://cdn.lordicon.com/aydxrkfl.json" trigger="loop" state="hover-heartbeat-alt"
+                stroke="light" delay="300" colors="primary:#fff,secondary:#fff"
+                style="width:70px;height:70px"></lord-icon>
+            <h2 style="color: var(--color-white); font-weight: bold !important;"> Nuestra Historia</h2>
+            <p>Muchos de ustedes nos vieron crecer juntos. <b>Mili y Juli</b>, dos conocidos totalmente desconocidos
+                entre ellos. Ninguno de los dos <em>(ni ustedes)</em> pensábamos que <b>la mejor historia que podiamos
+                    contar... era estar a la par del otro.</b></p>
+            <p>Hoy, después de un comienzo de charla casual, un café con nervios, el constante pensamiento de "Nos
+                conocemos desde niños pero jamás nos habíamos conocido realmente", comentarios de nuestros amigos y
+                descubrir que <b>Dios siempre tuvo un plan...</b></p>
+            <p><b>Damos el gran paso.</b></p>
         </div>
-        
     </section>
 
     <section class="gallery">
-        <lord-icon class="wow animate__animated animate__fadeInUp icon" data-wow-duration="1s" src="https://cdn.lordicon.com/wsaaegar.json" trigger="loop" state="hover-flash" stroke="light" delay="300" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
-        <br/>
+        <lord-icon class="wow animate__animated animate__fadeInUp icon" data-wow-duration="1s"
+            src="https://cdn.lordicon.com/wsaaegar.json" trigger="loop" state="hover-flash" stroke="light" delay="300"
+            colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
+        <br />
         <span class="wow animate__animated animate__fadeInUp">Momentos únicos</span>
         <h2 class="wow animate__animated animate__fadeInUp">Álbum de Fotos</h2>
-        
+
         <div class="wall">
-            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(1)" src="assets/img/DSC_0292.JPG" /></div>
-            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(2)" src="assets/img/DSC_0321.JPG" /></div>
-            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(3)" src="assets/img/DSC_0332.JPG" /></div>
-            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(4)" src="assets/img/DSC_0339.JPG" /></div>
-            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(5)" src="assets/img/DSC_0341.JPG" /></div>
-            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)" src="assets/img/DSC_0349.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(1)"
+                    src="assets/img/DSC_0292.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(2)"
+                    src="assets/img/DSC_0321.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(3)"
+                    src="assets/img/DSC_0332.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(4)"
+                    src="assets/img/DSC_0339.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(5)"
+                    src="assets/img/DSC_0341.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)"
+                    src="assets/img/DSC_0349.JPG" /></div>
         </div>
 
         <div id="myModal" class="modal">
             <span class="close" onclick="closeModal()"><i class="fas fa-times"></i></span>
             <div class="modal-content">
-                
-                <div class="mySlides"><img src="assets/img/DSC_0292.JPG"/></div>
-                <div class="mySlides"><img src="assets/img/DSC_0321.JPG"/></div>
-                <div class="mySlides"><img src="assets/img/DSC_0332.JPG"/></div>
-                <div class="mySlides"><img src="assets/img/DSC_0339.JPG"/></div>
-                <div class="mySlides"><img src="assets/img/DSC_0341.JPG"/></div>
-                <div class="mySlides"><img src="assets/img/DSC_0349.JPG"/></div>
-                
+                <div class="mySlides"><img src="assets/img/DSC_0292.JPG" /></div>
+                <div class="mySlides"><img src="assets/img/DSC_0321.JPG" /></div>
+                <div class="mySlides"><img src="assets/img/DSC_0332.JPG" /></div>
+                <div class="mySlides"><img src="assets/img/DSC_0339.JPG" /></div>
+                <div class="mySlides"><img src="assets/img/DSC_0341.JPG" /></div>
+                <div class="mySlides"><img src="assets/img/DSC_0349.JPG" /></div>
             </div>
-            
             <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-angle-left"></i></a>
             <a class="next" onclick="plusSlides(1)"><i class="fas fa-angle-right"></i></a>
             <div class="layer" onclick="closeModal()"></div>
         </div>
     </section>
 
-    </section>
-
-<section class="social" style=" background-image: url(''); background-repeat:repeat-x;">
-    <article class="item wow animate__animated animate__fadeInUp">
-        <lord-icon src="https://cdn.lordicon.com/xsiktwiz.json" trigger="loop" state="s" stroke="light" delay="300"
-            colors="primary:#666,secondary:#e2bf83" style="width:70px;height:70px"></lord-icon>
-
-        <h2>M&J - Playlist</h2>
-        <div>
-            <p>¿Qué tema no puede faltar? Sumalo a nuestra playlist para hacerlo sonar en la fiesta.</p>
-        </div>
-        <a href="" target="_blank">Ir a Spotify</a>
-    </article>
-</section>
-
-    <section class="gifts" style="background-image: url('https://evnt.ar/storage/254/regalos/background_image/GYOJMsHu3otfFq2eZ4tzaOlvAN3ilOd68eKCn9XH.jpg');">
+    <section class="gifts"
+        style="background-image: url('https://evnt.ar/storage/254/regalos/background_image/GYOJMsHu3otfFq2eZ4tzaOlvAN3ilOd68eKCn9XH.jpg');">
         <div class="card wow animate__animated animate__fadeInUp">
-            <lord-icon src="https://cdn.lordicon.com/kezeezyg.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
+            <lord-icon src="https://cdn.lordicon.com/kezeezyg.json" trigger="loop" stroke="light" delay="300"
+                colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <h2>Regalos</h2>
-            <p>El mejor regalo es que vengan, pero si quieren ayudarnos con la Luna de Miel...</p>
+            <p>Nuestro mayor regalo es verte ese día celebrando con nosotros. Si deseas ayudarnos a poder llevar
+                adelante la fiesta, te dejamos los datos bancarios:</p>
             <button class="modal-button" href="#modalRegalos">Ver Datos Bancarios</button>
         </div>
 
         <div class="modalGift" id="modalRegalos">
-            <div class="contenido-modal">
-                <span class="closeModal"><i class="fas fa-times"></i></span>
+            <div class="contenido-modal animate__animated" id="modalContentRegalos">
+                <span class="closeModal" onclick="closeModalRegalos()"><i class="fas fa-times"></i></span>
                 <div class="item">
-                    <div class="left"><h3>Cuenta Bancaria</h3></div>
+                    <div class="left">
+                        <h3>Cuenta Bancaria</h3>
+                    </div>
                     <div class="right">
-                        <p><b>Banco:</b> Santander<br><b>CBU:</b> 000000000000000000</p>
+                        <p>
+                            <b>Titular:</b> Julio Espinal<br>
+                            <b>Banco:</b> Banco Galicia<br>
+                            <b>CBU:</b> 000000000000000000<br>
+                            <b>Alias:</b> JULIO.ESPINAL.BG
+                        </p>
+
+                        <button id="btnCopiar">
+                            <i class="fas fa-copy"></i> Copiar Alias
+                        </button>
+
+                        <p id="mensajeExito"
+                            style="display: none; color: var(--color-primary); margin-top: 10px; font-weight: bold;">
+                            <i class="fas fa-check-circle"></i> Se copió el alias correctamente
+                        </p>
                     </div>
                 </div>
             </div>
@@ -244,12 +506,16 @@
 
     <section class="confirmation">
         <div class="wow animate__animated animate__fadeInUp">
-            <lord-icon src="https://cdn.lordicon.com/heqlbljj.json" trigger="loop" stroke="light" delay="300" colors="primary:#666,secondary:#154734" style="width:70px;height:70px"></lord-icon>
-            <br/>
+            <lord-icon src="https://cdn.lordicon.com/heqlbljj.json" trigger="loop" stroke="regular" delay="300"
+                colors="primary:#ffffff,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
+            <br />
             <span>RSVP</span>
             <h2>Confirmación de Asistencia</h2>
-            <p>Por favor confirmar antes del 15 de Enero</p>
-            <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;"><i class="far fa-check-circle" style="margin-right:10px"></i>Confirmar Asistencia</button>
+            <p><b> Por favor confirmar antes del 28 de Febrero</b></p>
+            <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;"><i
+                    class="fas fa-check-circle" style="margin-right:10px"></i>Confirmar Asistencia</button>
+            <p><small style="font-size: 0.9rem;"> <b><em>Debe completarse una vez por cada integrante de
+                            familia.</b></em></small></p>
         </div>
 
         <div class="modalGift" id="modalRSVP">
@@ -259,69 +525,99 @@
                     <h2>Confirmación</h2>
                     <div class="form">
                         <div class="msj error">Por favor completa todos los campos</div>
-                            
-                        <div class="radio">
-                            <label class="container">Asistiré
-                                <input type="radio" checked="checked" value="si" name="asistencia">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="container">No asistiré
-                                <input type="radio" value="no" name="asistencia">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                            <input type="hidden" name="asiste" id="asiste" value="si"/>
-                        <form id="rsvpForm">
+
+                        <form id="rsvpForm" name="rsvpForm">
+
+                            <div class="radio">
+                                <label class="container">Asistiré
+                                    <input type="radio" checked="checked" value="Asiste" name="asistencia">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">No asistiré
+                                    <input type="radio" value="No asiste" name="asistencia">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <input type="hidden" name="asiste" id="asiste" value="si" />
+
                             <label>Nombre y Apellido</label>
-                            <input type="text" name="nombre" required />
+                            <input type="text" name="nombre" required placeholder="Ingresá tu nombre completo" />
 
                             <label>¿Necesitas un menú especial?</label>
                             <div class="selectField">
-                                <i class="fa-regular fa-angle-down"></i>
-                                <select name="alimento" id="alimentos"
-                                    onchange="javacript: var typename = this.options[selectedIndex].text; document.getElementById('alimento').value = typename;">
-                                    <option value="Ninguno">Ninguno</option>
-                                    <option value="Celiaco">Celiaco</option>
-                                    <option value="Vegetariano">Vegetariano</option>
-                                    <option value="Vegano">Vegano</option>
-                                    <option value="Diabético">Diabético</option>
+                                <i class="fas fa-angle-down"></i>
+                                <select name="alimento" id="alimentos" required>
+                                    <option value="" disabled selected>Seleccioná una opción</option>
+                                    <option value="Ninguna">Ninguno</option>
+                                    <option value="Celiaca">Celiaco</option>
+                                    <option value="Vegetariana">Vegetariano</option>
+                                    <option value="Vegana">Vegano</option>
+                                    <option value="Diabética">Diabético</option>
                                 </select>
                             </div>
 
-                            <label>¿Necesitas traslado?</label>
+                            <label>¿Necesitas traslado?*</label>
                             <div class="selectField">
-                                <i class="fa-regular fa-angle-down"></i>
-                                <select name="traslado" id="traslados" placeholder="Selecciona una opción"
-                                    onchange="javacript: var typename = this.options[selectedIndex].text; document.getElementById('traslado').value = typename;">
-                                    <option value="No, voy por mis propios medios">No, voy por mis propios medios</option>
-                                    <option value="Si, necesito traslado">Si, necesito traslado</option>
+                                <i class="fas fa-angle-down"></i>
+                                <select name="traslado" id="traslados" required>
+                                    <option value="" disabled selected>Seleccioná una opción</option>
+                                    <option value="No">No, voy por mis propios medios</option>
+                                    <option value="Si">Si, necesito traslado</option>
                                 </select>
                             </div>
 
                             <label>Comentarios</label>
-                            <input name="comentarios" id="comentarios" />
-                                  
-                            <button class="submit" type="submit" name="save" style=""><i class="fa-regular fa-check-circle"></i>Confirmar
-                                Asistencia</button>
-                            <div id="data"></div>
+                            <input name="comentarios" id="comentarios" placeholder="Algo que debamos saber..." />
+
+                            <button class="submit" type="submit" name="save"><i class="fas fa-check-circle"></i>
+                                Confirmar Asistencia</button>
+                            <small style="font-size: 0.7rem;">*Traslado: Se informará luego el valor que podría
+                                tener.</small>
                         </form>
                     </div>
                 </div>
-                <div class="thanks" style="display:none;">
-                    <h2>¡Gracias por confirmar!</h2>
+                <div class="thanks" style="display:none; text-align: center; padding: 20px 10px;">
+                    <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" state="hover-pinch"
+                        colors="primary:#154734,secondary:#d4b996" style="width:80px;height:80px"></lord-icon>
+
+                    <h2 style="margin-top: 15px; color: var(--color-primary);">¡Gracias por confirmar!</h2>
+                    <p style="margin-bottom: 25px;">¿Querés confirmar a alguien más?</p>
+
+                    <button id="btnOtra" class="btn-action btn-primary-modal">
+                        Confirmar otro familiar
+                    </button>
+
+                    <button id="btnCerrarRSVP" class="btn-action btn-secondary-modal">
+                        Volver a la web
+                    </button>
+                    <p style="font-size: 0.8rem; margin-top: 20px; color: #999;">
+                        Cerrando en <span id="segundosRestantes">5</span> segundos...
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="content full" style="background-image: url('assets/img/DSC_0339.JPG');">
+        <div class="info">
+            <div class="text wow animate__animated animate__fadeInUp">
+
+                <p><em>Si no tengo amor, de nada me sirve hablar de parte de Dios y conocer sus planes secretos.
+                        De nada me sirve que mi confianza en Dios me haga mover montañas.
+                        De nada me sirve darles a los pobres todo lo que tengo.
+                        De nada me sirve dedicarme en cuerpo y alma a ayudar a los demás.</em></p>
+                <p>1 Corintios 13:2-3 (TLA)</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>Hecho con <i class="far fa-heart"></i> por M&J</p>
+        <p style="font-size: 0.7rem;">Mili y Juli - <b>Nuestra boda</b> | ABRIL 2026</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-    
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="assets/js/wow/wow.js"></script>
     <script src="assets/js/modal.js"></script>
     <script src="assets/js/lightbox.js"></script>
@@ -331,31 +627,55 @@
         // Iniciar animaciones WOW
         new WOW().init();
 
-        // Lógica para Abrir el Sobre y Reproducir Música
+        /* ------------------------------------------------
+           LÓGICA ANTI-SALTO DE SCROLL
+           ------------------------------------------------ */
+        let savedScrollPosition = 0;
+
+        // Buscamos el botón que abre el modal de regalos para guardar la posición
+        // Usamos un selector genérico por si es <a> o <button>
+        const btnOpenRegalos = document.querySelector('[href="#modalRegalos"]');
+
+        if (btnOpenRegalos) {
+            btnOpenRegalos.addEventListener('click', function () {
+                // Guardamos exactamente en qué pixel estamos
+                savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
+            });
+        }
+
+        /* ------------------------------------------------
+           LÓGICA DEL SOBRE Y MÚSICA
+           ------------------------------------------------ */
         function abrirSobre() {
             var audio = document.getElementById("player");
             var intro = document.getElementById("intro");
-            var body = document.body;
+            var musicBtn = document.getElementById("musicButton");
 
-            // Reproducir audio
-            audio.play().catch(function(error) {
-                console.log("Autoplay bloqueado, el usuario debe interactuar primero.");
+            // Intentar reproducir audio
+            audio.play().then(() => {
+                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
+            }).catch(function (error) {
+                console.log("Autoplay bloqueado.", error);
+                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
             });
 
-            // Animar salida del sobre (CSS transition)
+            // Animación CSS salida sobre
             intro.style.opacity = "0";
             intro.style.transform = "translateY(-100%)";
-            
-            // Eliminar el sobre del DOM después de la animación
-            setTimeout(function(){
+
+            setTimeout(function () {
                 intro.style.display = "none";
+                // Aseguramos scroll habilitado al inicio
+                document.body.style.overflow = "auto";
             }, 1000);
         }
 
-        // Lógica del Botón de Música (Play/Pause)
+        /* ------------------------------------------------
+           CONTROL REPRODUCTOR (Toggle)
+           ------------------------------------------------ */
         var musicBtn = document.getElementById("musicButton");
         var audio = document.getElementById("player");
-        
+
         musicBtn.addEventListener("click", function () {
             if (audio.paused) {
                 audio.play();
@@ -366,9 +686,180 @@
             }
         });
 
-        // Configuración básica del Countdown (si el JS lo requiere así)
-        // Nota: El archivo countdown.js que bajaste seguramente busca el ID "countdown" automáticamente.
-    </script>
+        /* ------------------------------------------------
+           COPIAR ALIAS + CIERRE SUAVE + RESTAURAR SCROLL
+           ------------------------------------------------ */
+        const btnCopiar = document.getElementById('btnCopiar');
+        const mensajeExito = document.getElementById('mensajeExito');
+        const modalRegalos = document.getElementById('modalRegalos');
+        const modalContentRegalos = document.getElementById('modalContentRegalos');
+        const aliasTexto = "JULIO.ESPINAL.BG";
 
+        function cerrarModalSuave() {
+            // 1. Animación de salida (fade out)
+            modalContentRegalos.classList.remove('animate__zoomIn');
+            modalContentRegalos.classList.add('animate__fadeOut');
+
+            // 2. Esperar a que termine la animación (800ms)
+            setTimeout(() => {
+                modalRegalos.style.display = 'none';
+
+                // 3. RESTAURAR SCROLL Y POSICIÓN (La magia)
+                document.body.style.overflow = 'auto';
+                window.scrollTo(0, savedScrollPosition); // <--- Te devuelve a donde estabas
+
+                // 4. Limpieza para la próxima vez
+                modalContentRegalos.classList.remove('animate__fadeOut');
+                mensajeExito.style.display = 'none';
+                btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
+                btnCopiar.style.opacity = "1";
+            }, 800);
+        }
+
+        // Evento Click en Copiar
+        if (btnCopiar) {
+            btnCopiar.addEventListener('click', function () {
+                navigator.clipboard.writeText(aliasTexto).then(function () {
+                    // Feedback visual
+                    btnCopiar.innerHTML = '<i class="fas fa-check"></i> ¡Listo!';
+                    btnCopiar.style.opacity = "0.7";
+                    mensajeExito.style.display = 'block';
+
+                    // Esperar 2 seg y cerrar
+                    setTimeout(cerrarModalSuave, 2000);
+
+                }, function (err) {
+                    alert("No se pudo copiar. El alias es: " + aliasTexto);
+                });
+            });
+        }
+
+        // Evento Click en la X (Cerrar)
+        function closeModalRegalos() {
+            cerrarModalSuave();
+        }
+    </script>
+    <script>
+        /* ------------------------------------------------
+               LÓGICA ENVÍO FORMULARIO A GOOGLE SHEETS
+               ------------------------------------------------ */
+
+        // PEGAR ACÁ TU URL DE APPS SCRIPT (La que copiaste en el Paso 4)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzj6BT-2ZR4Srix5k3q8EbO2wXdTtbARFoI9oWT1Kl4tbtaDuY4k_H3QsZQiz719dr_/exec';
+        const form = document.forms['rsvpForm'];
+        const btnEnviar = document.querySelector('.submit');
+
+        // Referencias a los bloques
+        const divForm = document.querySelector('#modalRSVP .cont');
+        const divThanks = document.querySelector('#modalRSVP .thanks');
+
+        // Referencias a los botones nuevos
+        const btnOtra = document.getElementById('btnOtra');
+        const btnCerrarRSVP = document.getElementById('btnCerrarRSVP');
+        const spanSegundos = document.getElementById('segundosRestantes');
+
+        let autoCloseTimer;
+        let conteoInterval;
+
+        // Función: Volver a mostrar el formulario limpio
+        function resetearFormulario() {
+            form.reset();
+            btnEnviar.disabled = false;
+            btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
+
+            // Switch de pantallas
+            divThanks.style.display = 'none';
+            divForm.style.display = 'block';
+
+            // Limpiar timers
+            clearTimeout(autoCloseTimer);
+            clearInterval(conteoInterval);
+        }
+
+        // Función: Cerrar el modal por completo
+        function cerrarModalRSVP() {
+            clearTimeout(autoCloseTimer);
+            clearInterval(conteoInterval);
+
+            // Animación de cierre del modal (usando la función suave que ya tenías o ocultando directo)
+            document.getElementById('modalRSVP').style.display = 'none';
+
+            // Restaurar scroll (IMPORTANTE)
+            document.body.style.overflow = 'auto';
+            if (window.scrollTo && typeof savedScrollPosition !== 'undefined') {
+                window.scrollTo(0, savedScrollPosition);
+            }
+
+            // Dejamos listo el form por si vuelven a abrir
+            setTimeout(resetearFormulario, 500);
+        }
+
+        // Manejo del ENVÍO
+        if (form) {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                // 1. Feedback visual (Cargando...)
+                const textoOriginal = btnEnviar.innerHTML;
+                btnEnviar.disabled = true;
+                btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+                // 2. Disparar el envío
+                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                    .then(response => {
+                        // AQUÍ ESTABA EL BUG ANTES: Chequeamos si Google respondió OK (Código 200)
+                        if (response.ok) {
+                            return response; // Todo bien, seguimos
+                        } else {
+                            throw new Error("Error en la respuesta del servidor"); // Forzamos el error
+                        }
+                    })
+                    .then(() => {
+                        // 3. ÉXITO REAL: Mostrar pantalla de gracias
+                        divForm.style.display = 'none';
+                        divThanks.style.display = 'block';
+
+                        // 4. Iniciar cuenta regresiva visual (5, 4, 3...)
+                        let segundos = 5;
+                        if (spanSegundos) spanSegundos.innerText = segundos;
+
+                        conteoInterval = setInterval(() => {
+                            segundos--;
+                            if (spanSegundos) spanSegundos.innerText = segundos;
+                            if (segundos <= 0) clearInterval(conteoInterval);
+                        }, 1000);
+
+                        // 5. Cerrar automáticamente a los 5 seg
+                        autoCloseTimer = setTimeout(() => {
+                            cerrarModalRSVP();
+                        }, 5000);
+                    })
+                    .catch(error => {
+                        // 6. ERROR: Si algo falló, avisamos y no mostramos el gracias
+                        console.error('Error!', error.message);
+                        btnEnviar.disabled = false;
+                        btnEnviar.innerHTML = textoOriginal;
+                        alert("Hubo un error al conectar con la lista. Por favor revisá tu conexión o avisanos.");
+                    });
+            });
+        }
+
+        /* --- BOTONES DE LA PANTALLA GRACIAS --- */
+
+        // Botón 1: Confirmar otro (Cancela el cierre y resetea)
+        if (btnOtra) {
+            btnOtra.addEventListener('click', function () {
+                resetearFormulario();
+            });
+        }
+
+        // Botón 2: Volver a la web (Cierra inmediatamente)
+        if (btnCerrarRSVP) {
+            btnCerrarRSVP.addEventListener('click', function () {
+                cerrarModalRSVP();
+            });
+        }
+    </script>
 </body>
+
 </html>
