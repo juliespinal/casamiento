@@ -259,6 +259,40 @@
             background-color: #f0f0f0;
             transform: translateY(-2px);
         }
+/* --- ESTILO BASE (Desktop) --- */
+        #btnWspSubmit.btn-whatsapp-secondary {
+            background-color: transparent !important;
+            border: 2px solid #25D366 !important;
+            color: #25D366 !important;
+            
+            /* Tamaño Desktop */
+            width: fit-content !important;
+            display: block !important;
+            margin: 15px auto 0 auto !important;
+            padding: 8px 25px !important;
+            
+            border-radius: 50px !important;
+            font-size: 0.85rem !important; 
+            font-weight: 600 !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+        }
+
+        #btnWspSubmit.btn-whatsapp-secondary:hover {
+            background-color: #25D366 !important;
+            color: white !important;
+        }
+
+        /* --- AJUSTE MÓVIL (Acá achicamos solo para teléfonos) --- */
+        @media (max-width: 768px) {
+            #btnWspSubmit.btn-whatsapp-secondary {
+                font-size: 0.75rem !important;  /* Letra más chiquita (aprox 12px) */
+                padding: 6px 15px !important;   /* Botón más flaquito */
+                margin-top: 12px !important;    /* Un poquito menos de aire arriba */
+                border-width: 1px !important;   /* Borde más fino para que se vea delicado */
+            }
+        }
     </style>
 </head>
 
@@ -286,8 +320,7 @@
             type="audio/mp3" />
     </audio>
 
-    <a href="https://api.whatsapp.com/send?phone=5491100000000&text=%C2%A1Hola%21+Confirmo+mi+asistencia"
-        class="linkcontacto" style="z-index:1000;" target="_blank">
+    <a href="javascript:void(0);" onclick="abrirModalRSVP()" class="linkcontacto" style="z-index:1000; cursor: pointer;">
         <i class="fab fa-whatsapp" style="font-size:24px; color: white;"></i>
     </a>
 
@@ -353,11 +386,11 @@
                 <div class="txt"
                     style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
                     <div class="date">
-                        <p>XX</p><span>Abril</span>
+                        <p><em>-fecha a confirmar-</em></p><span></span>
                     </div>
                     <div class="line"></div>
                     <div class="date">
-                        <p>09:30</p><span>Horas</span>
+                        <p><em>-hora a confirmar-</em></p><span></span>
                     </div>
                 </div>
                 <div class="place">
@@ -385,7 +418,7 @@
                 </div>
                 <div class="place">
                     <p><b>Finca 'El Secreto'</b></p>
-                    <p>DireccionDeRobert 123</p>
+                    <p>Ruta 226 Km 21.5, <br>Mar del Plata</p>
                 </div>
             </div>
             <a href="https://maps.app.goo.gl/zRNjh8cNGmpnBA9p9" target="_blank">Cómo llegar</a>
@@ -568,13 +601,18 @@
 
                             <label>Comentarios</label>
                             <input name="comentarios" id="comentarios" placeholder="Algo que debamos saber..." />
-
-                            <button class="submit" type="submit" name="save"><i class="fas fa-check-circle"></i>
-                                Confirmar Asistencia</button>
+                            
+                            <button class="submit" type="submit" name="save">
+                                <i class="fas fa-check-circle"></i> Confirmar Asistencia
+                            </button>
+                            
+                            <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
+                                <i class="fab fa-whatsapp"></i> o confirmar por WhatsApp
+                            </button>
                             <small style="font-size: 0.7rem;">*Traslado: Se informará luego el valor que podría
                                 tener.</small>
-                        </form>
-                    </div>
+                            </form>
+                            </div>
                 </div>
                 <div class="thanks" style="display:none; text-align: center; padding: 20px 10px;">
                     <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" state="hover-pinch"
@@ -601,12 +639,12 @@
     <section class="content full" style="background-image: url('assets/img/DSC_0339.JPG');">
         <div class="info">
             <div class="text wow animate__animated animate__fadeInUp">
-
-                <p><em>Si no tengo amor, de nada me sirve hablar de parte de Dios y conocer sus planes secretos.
-                        De nada me sirve que mi confianza en Dios me haga mover montañas.
-                        De nada me sirve darles a los pobres todo lo que tengo.
-                        De nada me sirve dedicarme en cuerpo y alma a ayudar a los demás.</em></p>
-                <p>1 Corintios 13:2-3 (TLA)</p>
+    
+                <p><em>"Es mejor ser dos que uno, porque ambos pueden ayudarse mutuamente(...).
+                        Si uno cae, el otro puede darle la mano y ayudarle(...)"
+                    </em>
+                </p>
+                <p>Eclestiastés 4:9-10 (TLA)</p>
             </div>
         </div>
     </section>
@@ -858,6 +896,19 @@
                 cerrarModalRSVP();
             });
         }
+        /* ------------------------------------------------
+               FUNCIÓN PARA ABRIR EL MODAL DESDE EL BOTÓN FLOTANTE
+               ------------------------------------------------ */
+    // Función específica para abrir el modal desde el botón flotante
+    function abrirModalRSVP() {
+        const modal = document.getElementById('modalRSVP');
+        if(modal) {
+            modal.style.display = 'block'; // O 'flex', según tu CSS original
+            // Guardamos posición de scroll para evitar saltos
+            savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
+            document.body.style.overflow = 'hidden'; // Bloqueamos scroll del fondo
+        }
+    }
     </script>
 </body>
 
