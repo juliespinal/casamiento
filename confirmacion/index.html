@@ -342,8 +342,8 @@
                 <lord-icon src="https://cdn.lordicon.com/aydxrkfl.json" trigger="loop" state="hover-heartbeat-alt"
                     stroke="light" delay="500" colors="primary:#666,secondary:"
                     style="width:70px;height:70px"></lord-icon>
-                <p>Estamos felices de celebrar nuestro amor con las personas que más queremos. Gracias por ser parte de
-                    este día.</p>
+                <p>Estamos felices de celebrar este amor rodeados de quienes forman parte de nuestra historia. <br><br>
+                    <b>Gracias por acompañarnos en un día tan importante para nosotros.</b></p>
             </div>
         </div>
     </section>
@@ -479,6 +479,10 @@
                     src="assets/img/DSC_0341.JPG" /></div>
             <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)"
                     src="assets/img/DSC_0349.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)"
+                    src="assets/img/DSC_0344.JPG" /></div>
+            <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)"
+                    src="assets/img/DSC_0300.JPG" /></div>                                    
         </div>
 
         <div id="myModal" class="modal">
@@ -490,6 +494,8 @@
                 <div class="mySlides"><img src="assets/img/DSC_0339.JPG" /></div>
                 <div class="mySlides"><img src="assets/img/DSC_0341.JPG" /></div>
                 <div class="mySlides"><img src="assets/img/DSC_0349.JPG" /></div>
+                <div class="mySlides"><img src="assets/img/DSC_0344.JPG" /></div>
+                <div class="mySlides"><img src="assets/img/DSC_0300.JPG" /></div>
             </div>
             <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-angle-left"></i></a>
             <a class="next" onclick="plusSlides(1)"><i class="fas fa-angle-right"></i></a>
@@ -603,7 +609,7 @@
                             <input name="comentarios" id="comentarios" placeholder="Algo que debamos saber..." />
                             
                             <button class="submit" type="submit" name="save">
-                                <i class="fas fa-check-circle"></i> Confirmar Asistencia
+                                <i class="fas fa-check-circle"></i> Enviar confirmación
                             </button>
                             
                             <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
@@ -653,8 +659,7 @@
         <p style="font-size: 0.7rem;">Mili y Juli - <b>Nuestra boda</b> | ABRIL 2026</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="assets/js/wow/wow.js"></script>
     <script src="assets/js/modal.js"></script>
@@ -665,30 +670,47 @@
         // Iniciar animaciones WOW
         new WOW().init();
 
-        /* ------------------------------------------------
-           LÓGICA ANTI-SALTO DE SCROLL
-           ------------------------------------------------ */
+        /* =========================================
+           1. CONFIGURACIÓN (EDITAR ESTO)
+           ========================================= */
+        // Pegá acá tu URL de Google Apps Script (la que termina en /exec)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzj6BT-2ZR4Srix5k3q8EbO2wXdTtbARFoI9oWT1Kl4tbtaDuY4k_H3QsZQiz719dr_/exec'; 
+        
+        // Tu número de WhatsApp (con código de país, sin +)
+        const telefonoNovios = "5492234257146"; 
+
+
+        /* =========================================
+           2. LÓGICA DE SCROLL (Anti-saltos)
+           ========================================= */
         let savedScrollPosition = 0;
 
-        // CORRECCIÓN APLICADA AQUÍ: 
-        // Antes solo buscaba el botón de Regalos. Ahora busca Regalos Y RSVP.
-        // Usamos querySelectorAll para obtener ambos botones y agregarles el evento.
+        // Detectar clicks en botones que abren modales
         document.querySelectorAll('[href="#modalRegalos"], [href="#modalRSVP"]').forEach(function(btn) {
             btn.addEventListener('click', function () {
-                // Guardamos exactamente en qué pixel estamos
                 savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
             });
         });
 
-        /* ------------------------------------------------
-           LÓGICA DEL SOBRE Y MÚSICA
-           ------------------------------------------------ */
+        // Corrección para el botón flotante (onclick explícito)
+        function abrirModalRSVP() {
+            const modal = document.getElementById('modalRSVP');
+            if(modal) {
+                modal.style.display = 'block'; 
+                savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+
+
+        /* =========================================
+           3. LÓGICA GENERAL (Música, Sobre, etc)
+           ========================================= */
         function abrirSobre() {
             var audio = document.getElementById("player");
             var intro = document.getElementById("intro");
             var musicBtn = document.getElementById("musicButton");
 
-            // Intentar reproducir audio
             audio.play().then(() => {
                 musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
             }).catch(function (error) {
@@ -696,20 +718,15 @@
                 musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
             });
 
-            // Animación CSS salida sobre
             intro.style.opacity = "0";
             intro.style.transform = "translateY(-100%)";
 
             setTimeout(function () {
                 intro.style.display = "none";
-                // Aseguramos scroll habilitado al inicio
                 document.body.style.overflow = "auto";
             }, 1000);
         }
 
-        /* ------------------------------------------------
-           CONTROL REPRODUCTOR (Toggle)
-           ------------------------------------------------ */
         var musicBtn = document.getElementById("musicButton");
         var audio = document.getElementById("player");
 
@@ -723,9 +740,10 @@
             }
         });
 
-        /* ------------------------------------------------
-           COPIAR ALIAS + CIERRE SUAVE + RESTAURAR SCROLL
-           ------------------------------------------------ */
+
+        /* =========================================
+           4. MODAL REGALOS (Copiar Alias)
+           ========================================= */
         const btnCopiar = document.getElementById('btnCopiar');
         const mensajeExito = document.getElementById('mensajeExito');
         const modalRegalos = document.getElementById('modalRegalos');
@@ -733,182 +751,173 @@
         const aliasTexto = "JULIO.ESPINAL.BG";
 
         function cerrarModalSuave() {
-            // 1. Animación de salida (fade out)
-            modalContentRegalos.classList.remove('animate__zoomIn');
-            modalContentRegalos.classList.add('animate__fadeOut');
-
-            // 2. Esperar a que termine la animación (800ms)
+            if(modalContentRegalos) {
+                modalContentRegalos.classList.remove('animate__zoomIn');
+                modalContentRegalos.classList.add('animate__fadeOut');
+            }
             setTimeout(() => {
                 modalRegalos.style.display = 'none';
-
-                // 3. RESTAURAR SCROLL Y POSICIÓN (La magia)
                 document.body.style.overflow = 'auto';
-                window.scrollTo(0, savedScrollPosition); // <--- Te devuelve a donde estabas
+                window.scrollTo(0, savedScrollPosition);
 
-                // 4. Limpieza para la próxima vez
-                modalContentRegalos.classList.remove('animate__fadeOut');
-                mensajeExito.style.display = 'none';
-                btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
-                btnCopiar.style.opacity = "1";
+                if(modalContentRegalos) modalContentRegalos.classList.remove('animate__fadeOut');
+                if(mensajeExito) mensajeExito.style.display = 'none';
+                if(btnCopiar) {
+                    btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
+                    btnCopiar.style.opacity = "1";
+                }
             }, 800);
         }
 
-        // Evento Click en Copiar
         if (btnCopiar) {
             btnCopiar.addEventListener('click', function () {
                 navigator.clipboard.writeText(aliasTexto).then(function () {
-                    // Feedback visual
                     btnCopiar.innerHTML = '<i class="fas fa-check"></i> ¡Listo!';
                     btnCopiar.style.opacity = "0.7";
                     mensajeExito.style.display = 'block';
-
-                    // Esperar 2 seg y cerrar
                     setTimeout(cerrarModalSuave, 2000);
-
-                }, function (err) {
-                    alert("No se pudo copiar. El alias es: " + aliasTexto);
-                });
+                }, function (err) { alert("Alias: " + aliasTexto); });
             });
         }
+        function closeModalRegalos() { cerrarModalSuave(); }
 
-        // Evento Click en la X (Cerrar)
-        function closeModalRegalos() {
-            cerrarModalSuave();
-        }
-    </script>
-    <script>
-        /* ------------------------------------------------
-               LÓGICA ENVÍO FORMULARIO A GOOGLE SHEETS
-               ------------------------------------------------ */
 
-        // PEGAR ACÁ TU URL DE APPS SCRIPT (La que copiaste en el Paso 4)
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzj6BT-2ZR4Srix5k3q8EbO2wXdTtbARFoI9oWT1Kl4tbtaDuY4k_H3QsZQiz719dr_/exec';
+        /* =========================================
+           5. LÓGICA DE CONFIRMACIÓN (Sheets + WhatsApp)
+           ========================================= */
         const form = document.forms['rsvpForm'];
-        const btnEnviar = document.querySelector('.submit');
-
-        // Referencias a los bloques
+        const btnEnviar = document.querySelector('.submit');      // Botón Normal
+        const btnWspSubmit = document.getElementById('btnWspSubmit'); // Botón WhatsApp
+        
         const divForm = document.querySelector('#modalRSVP .cont');
         const divThanks = document.querySelector('#modalRSVP .thanks');
-
-        // Referencias a los botones nuevos
+        
         const btnOtra = document.getElementById('btnOtra');
         const btnCerrarRSVP = document.getElementById('btnCerrarRSVP');
         const spanSegundos = document.getElementById('segundosRestantes');
 
         let autoCloseTimer;
         let conteoInterval;
+        let esEnvioWhatsApp = false; // Bandera para saber cuál tocó
 
-        // Función: Volver a mostrar el formulario limpio
+        // Detectar clicks en los botones de envío
+        if(btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
+        if(btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
+
+        // Resetear Formulario
         function resetearFormulario() {
             form.reset();
             btnEnviar.disabled = false;
+            btnWspSubmit.disabled = false;
             btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
-
-            // Switch de pantallas
+            btnWspSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> o confirmar por WhatsApp';
+            
             divThanks.style.display = 'none';
             divForm.style.display = 'block';
-
-            // Limpiar timers
+            
             clearTimeout(autoCloseTimer);
             clearInterval(conteoInterval);
         }
 
-        // Función: Cerrar el modal por completo
+        // Cerrar Modal RSVP
         function cerrarModalRSVP() {
             clearTimeout(autoCloseTimer);
             clearInterval(conteoInterval);
-
-            // Animación de cierre del modal (usando la función suave que ya tenías o ocultando directo)
             document.getElementById('modalRSVP').style.display = 'none';
-
-            // Restaurar scroll (IMPORTANTE)
             document.body.style.overflow = 'auto';
             if (window.scrollTo && typeof savedScrollPosition !== 'undefined') {
                 window.scrollTo(0, savedScrollPosition);
             }
-
-            // Dejamos listo el form por si vuelven a abrir
             setTimeout(resetearFormulario, 500);
         }
 
-        // Manejo del ENVÍO
+        // SUBMIT (Envío)
         if (form) {
             form.addEventListener('submit', e => {
                 e.preventDefault();
 
-                // 1. Feedback visual (Cargando...)
+                // 1. Feedback Visual (Bloqueamos ambos botones)
                 const textoOriginal = btnEnviar.innerHTML;
+                const textoWspOriginal = btnWspSubmit.innerHTML;
                 btnEnviar.disabled = true;
-                btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                btnWspSubmit.disabled = true;
 
-                // 2. Disparar el envío
+                if(esEnvioWhatsApp) {
+                    btnWspSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+                } else {
+                    btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                }
+
+                // 2. Enviar a Google Sheets
                 fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                     .then(response => {
-                        // AQUÍ ESTABA EL BUG ANTES: Chequeamos si Google respondió OK (Código 200)
-                        if (response.ok) {
-                            return response; // Todo bien, seguimos
+                        const contentType = response.headers.get("content-type");
+                        if (contentType && contentType.indexOf("application/json") !== -1) {
+                            return response.json().then(data => {
+                                if (data.result === 'success') return true;
+                                else throw new Error(data.error);
+                            });
                         } else {
-                            throw new Error("Error en la respuesta del servidor"); // Forzamos el error
+                            throw new Error("Error de permisos (HTML devuelto).");
                         }
                     })
                     .then(() => {
-                        // 3. ÉXITO REAL: Mostrar pantalla de gracias
+                        // 3. ÉXITO
                         divForm.style.display = 'none';
                         divThanks.style.display = 'block';
 
-                        // 4. Iniciar cuenta regresiva visual (5, 4, 3...)
-                        let segundos = 5;
-                        if (spanSegundos) spanSegundos.innerText = segundos;
+                        // --- CAMINO A: WHATSAPP ---
+                        if(esEnvioWhatsApp) {
+                            // Capturamos datos para el mensaje
+                            const nombre = form.querySelector('input[name="nombre"]').value;
+                            // Ojo: Asegurate que tu input radio tenga name="asistencia"
+                            const asistenciaInput = form.querySelector('input[name="asistencia"]:checked');
+                            const asistencia = asistenciaInput ? asistenciaInput.value : "Asiste";
+                            
+                            // Mensaje
+                            const mensaje = `¡Hola Juli, Mili! Soy *${nombre}*. Te confirmo desde la web que: *${asistencia}* a la boda. ¡Muchas gracias por la invitación!`;
+                            const link = `https://api.whatsapp.com/send?phone=${telefonoNovios}&text=${encodeURIComponent(mensaje)}`;
 
-                        conteoInterval = setInterval(() => {
-                            segundos--;
+                            // Esperamos 1.5 seg y redirigimos
+                            setTimeout(() => {
+                                window.location.href = link;
+                                // Opcional: Cerrar modal después de irse
+                                setTimeout(cerrarModalRSVP, 1000); 
+                            }, 1500);
+                        
+                        // --- CAMINO B: NORMAL ---
+                        } else {
+                            // Timer visual
+                            let segundos = 5;
                             if (spanSegundos) spanSegundos.innerText = segundos;
-                            if (segundos <= 0) clearInterval(conteoInterval);
-                        }, 1000);
+                            conteoInterval = setInterval(() => {
+                                segundos--;
+                                if (spanSegundos) spanSegundos.innerText = segundos;
+                                if (segundos <= 0) clearInterval(conteoInterval);
+                            }, 1000);
 
-                        // 5. Cerrar automáticamente a los 5 seg
-                        autoCloseTimer = setTimeout(() => {
-                            cerrarModalRSVP();
-                        }, 5000);
+                            // Cierre automático
+                            autoCloseTimer = setTimeout(() => {
+                                cerrarModalRSVP();
+                            }, 5000);
+                        }
                     })
                     .catch(error => {
-                        // 6. ERROR: Si algo falló, avisamos y no mostramos el gracias
-                        console.error('Error!', error.message);
+                        console.error('Error:', error);
+                        // Restauramos botones
                         btnEnviar.disabled = false;
+                        btnWspSubmit.disabled = false;
                         btnEnviar.innerHTML = textoOriginal;
-                        alert("Hubo un error al conectar con la lista. Por favor revisá tu conexión o avisanos.");
+                        btnWspSubmit.innerHTML = textoWspOriginal;
+                        alert("Hubo un error al guardar. Por favor reintentá.");
                     });
             });
         }
 
-        /* --- BOTONES DE LA PANTALLA GRACIAS --- */
+        // Botones "Gracias"
+        if (btnOtra) btnOtra.addEventListener('click', resetearFormulario);
+        if (btnCerrarRSVP) btnCerrarRSVP.addEventListener('click', cerrarModalRSVP);
 
-        // Botón 1: Confirmar otro (Cancela el cierre y resetea)
-        if (btnOtra) {
-            btnOtra.addEventListener('click', function () {
-                resetearFormulario();
-            });
-        }
-
-        // Botón 2: Volver a la web (Cierra inmediatamente)
-        if (btnCerrarRSVP) {
-            btnCerrarRSVP.addEventListener('click', function () {
-                cerrarModalRSVP();
-            });
-        }
-        /* ------------------------------------------------
-               FUNCIÓN PARA ABRIR EL MODAL DESDE EL BOTÓN FLOTANTE
-               ------------------------------------------------ */
-    // Función específica para abrir el modal desde el botón flotante
-    function abrirModalRSVP() {
-        const modal = document.getElementById('modalRSVP');
-        if(modal) {
-            modal.style.display = 'block'; // O 'flex', según tu CSS original
-            // Guardamos posición de scroll para evitar saltos
-            savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
-            document.body.style.overflow = 'hidden'; // Bloqueamos scroll del fondo
-        }
-    }
     </script>
 </body>
 
