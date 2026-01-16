@@ -9,6 +9,6 @@ Falta:
 ✅ Dirección Robert.
 • Elegir canción y descargar en assets.
 • Poner CBU en datos bancarios.
-• Verificar si el color es correcto.
+✅ Verificar si el color es correcto.
 • Mensaje de dresscode e imagenes.
 • Ling en Google Calendar.

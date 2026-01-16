@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mili & Juli - Boda</title>
+    <title>Mili y Juli - Boda</title>
 
-    <meta property="og:title" content="Mili & Juli - Boda">
-    <meta property="og:description" content="¡Nos Casamos! y queremos compartirlo con vos">
+    <meta property="og:title" content="Mili y Juli - Boda">
+    <meta property="og:description" content="¡Nos Casamos! y queremos celebrar con vos.">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap-reboot.min.css" />
@@ -37,7 +37,8 @@
             --color-white: #ffffff;
 
             /* Tipografías */
-            /*--font-nombres: 'Parisienne', cursive; /* Para "Mili & Juli" */
+            --font-nombres: 'Great Vibes', cursive;
+            /*Parisienne', cursive; /* Para "Mili & Juli" */
             --font-titulos: 'Playfair Display', serif;
             /* Para "Ceremonia", "Historia" */
             --font-cuerpo: 'Montserrat', sans-serif;
@@ -54,18 +55,19 @@
 
         /* Títulos especiales */
         h1.nombres-portada {
-            font-family: "Nunito Sans", sans-serif !important;
-            /*var(--font-nombres);*/
+            /*font-family: "Nunito Sans", sans-serif !important;*/
+            font-family: var(--font-nombres);
             color: var(--color-secondary) !important;
             font-size: 2.5rem !important;
             /* Ajustá el tamaño aquí */
-            font-weight: bold !important;
+            font-weight: 600 !important;
         }
 
         h2 {
             font-family: var(--font-titulos);
             color: var(--color-primary);
         }
+
 
         /* Colorear íconos y textos específicos */
         header h1,
@@ -110,6 +112,35 @@
         .player .icon,
         .linkcontacto {
             background-color: var(--color-primary) !important;
+        }
+
+        /* Estilo para el botón de Agendar Fecha */
+        .countdown a {
+            background-color: var(--color-primary) !important;
+            /* Acá usás la variable */
+            color: var(--color-white) !important;
+            /* Texto blanco */
+
+            /* Estética de botón */
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-primary);
+            /* Borde sutil */
+        }
+
+        /* Efecto al pasar el mouse */
+        .countdown a:hover {
+            background-color: transparent !important;
+            /* Se vuelve transparente */
+            color: var(--color-white) !important;
+            border: 1px solid var(--color-white);
+            /* Borde blanco */
+            transform: scale(1.05);
         }
 
         /* --- 3. ANIMACIÓN FLECHA (Bounce) --- */
@@ -259,20 +290,21 @@
             background-color: #f0f0f0;
             transform: translateY(-2px);
         }
-/* --- ESTILO BASE (Desktop) --- */
+
+        /* --- ESTILO BASE (Desktop) --- */
         #btnWspSubmit.btn-whatsapp-secondary {
             background-color: transparent !important;
             border: 2px solid #25D366 !important;
             color: #25D366 !important;
-            
+
             /* Tamaño Desktop */
             width: fit-content !important;
             display: block !important;
             margin: 15px auto 0 auto !important;
             padding: 8px 25px !important;
-            
+
             border-radius: 50px !important;
-            font-size: 0.85rem !important; 
+            font-size: 0.85rem !important;
             font-weight: 600 !important;
             text-decoration: none !important;
             box-shadow: none !important;
@@ -287,10 +319,129 @@
         /* --- AJUSTE MÓVIL (Acá achicamos solo para teléfonos) --- */
         @media (max-width: 768px) {
             #btnWspSubmit.btn-whatsapp-secondary {
-                font-size: 0.75rem !important;  /* Letra más chiquita (aprox 12px) */
-                padding: 6px 15px !important;   /* Botón más flaquito */
-                margin-top: 12px !important;    /* Un poquito menos de aire arriba */
-                border-width: 1px !important;   /* Borde más fino para que se vea delicado */
+                font-size: 0.75rem !important;
+                /* Letra más chiquita (aprox 12px) */
+                padding: 6px 15px !important;
+                /* Botón más flaquito */
+                margin-top: 12px !important;
+                /* Un poquito menos de aire arriba */
+                border-width: 1px !important;
+                /* Borde más fino para que se vea delicado */
+            }
+        }
+
+        /* Contenedor principal */
+        .palette-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Por seguridad, si el celu es muy viejo baja, pero no debería */
+            gap: 8px;
+            /* Espacio ajustado para que entren los 6 */
+            margin-top: 25px;
+            padding-bottom: 20px;
+        }
+
+        /* Cada item (Círculo + Texto) */
+        .palette-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: auto;
+            /* Dejamos que el ancho lo defina el contenido */
+        }
+
+        /* EL CÍRCULO */
+        .color-circle {
+            width: 31px;
+            /* Tamaño ideal para móvil (ni muy chico ni muy grande) */
+            height: 31px;
+            /* Igual al ancho para que sea redondo */
+            border-radius: 50%;
+            /* Esto lo hace círculo perfecto */
+
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            /* Sombrita suave */
+            transition: transform 0.3s ease;
+        }
+
+        .color-circle:hover {
+            transform: scale(1.1);
+            /* Efecto de "agrandarse" un poquito al pasar el mouse */
+        }
+
+        /* El texto del código HEX */
+        .color-label {
+            font-size: 0.45rem;
+            /* Texto bien chiquito para que no moleste */
+            margin-top: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--color-text);
+            opacity: 0.8;
+            letter-spacing: -0.5px;
+            /* Juntamos un poquito las letras para que entren bien */
+        }
+
+
+        /* --- AJUSTES PARA PC / TABLET (Se agrandan un poco) --- */
+        @media (min-width: 768px) {
+            .palette-container {
+                gap: 20px;
+                /* Más aire en PC */
+            }
+
+            .color-circle {
+                width: 60px;
+                /* Círculos más grandes en pantalla grande */
+                height: 60px;
+            }
+
+            .color-label {
+                font-size: 0.75rem;
+                letter-spacing: normal;
+            }
+        }
+
+        /* --- CORRECCIÓN POSICIÓN DEL SELLO --- */
+
+        #top {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ESTILO BASE (CELULAR) */
+        .badge {
+            position: absolute;
+
+            /* TÉCNICA DE CENTRADO SIN TRANSFORM (Para no pelear con animate.css) */
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+
+            z-index: 10;
+
+            /* TAMAÑO Y POSICIÓN VERTICAL MÓVIL */
+            width: 120px;
+            /* Es importante definir el ancho para que el margin:auto funcione */
+            bottom: -15px !important;
+            /* Ajustá esto a ojo en tu celu */
+        }
+
+        .badge img {
+            width: 100% !important;
+            height: auto;
+            display: block;
+        }
+
+        /* ESTILO DESKTOP (PC) */
+        @media (min-width: 768px) {
+            .badge {
+                /* TAMAÑO Y POSICIÓN VERTICAL PC */
+                width: 150px;
+                bottom: -50px !important;
+                /* Ajustá esto a ojo en la PC */
             }
         }
     </style>
@@ -301,8 +452,8 @@
     <div class="intro" id="intro" onclick="abrirSobre()">
         <div class="top" id="top">
             <div class="badge animate__animated animate__zoomIn" data-wow-delay="0.3s">
-                <img src="https://static.vecteezy.com/system/resources/thumbnails/022/024/715/small/golden-wax-seal-isolated-on-a-transparent-background-png.png"
-                    style="width: 150px;" />
+                <img src="assets/img/selloa.png" style="width: 110px !important;" />
+                <small class="comentario" style="margin-top: 120px !important; margin-left: 5px !important; font-size: 0.7rem;"><b><em>Tocá para abrir</em></b></small>
             </div>
             <img src="https://evnt.ar/assets/images/envelopet.png"
                 class="top hiddenM animate__animated animate__slideInDown" />
@@ -316,23 +467,23 @@
         <div class="icon"><img src="https://evnt.ar/assets/images/pause.png" /></div>
     </span>
     <audio id="player" loop>
-        <source src="https://evnt.ar/storage/254/música/song/ahvtQ3seJztbFaA33Rrb5E2fVDWnK9TlnSWOni4a.mp3"
-            type="audio/mp3" />
+        <source src="assets/song/background_a-thousand-years.mp3" type="audio/mp3" />
     </audio>
 
-    <a href="javascript:void(0);" onclick="abrirModalRSVP()" class="linkcontacto" style="z-index:1000; cursor: pointer;">
+    <a href="javascript:void(0);" onclick="abrirModalRSVP()" class="linkcontacto"
+        style="z-index:1000; cursor: pointer;">
         <i class="fab fa-whatsapp" style="font-size:24px; color: white;"></i>
     </a>
 
     <section class="cover full">
         <div class="text">
             <h1 class="nombres-portada">Mili & Juli</h1>
-            <h2>¡Nos Casamos!</h2>
-            <p>y queremos compartirlo con vos</p>
+            <h2 class="">¡Nos Casamos!</h2>
+            <p>y queremos celebrarlo con vos</p>
             <i class="fas fa-angle-down scroll-arrow wow animate__animated animate__fadeInDown" data-wow-delay="1s"></i>
         </div>
         <div class="slider" id="slider">
-            <div class='image'><img src="assets/img/DSC_0292.JPG"></div>
+            <div class='image'><img src="assets/img/DSC_0292a.JPG"></div>
         </div>
     </section>
 
@@ -343,38 +494,45 @@
                     stroke="light" delay="500" colors="primary:#666,secondary:"
                     style="width:70px;height:70px"></lord-icon>
                 <p>Estamos felices de celebrar este amor rodeados de quienes forman parte de nuestra historia. <br><br>
-                    <b>Gracias por acompañarnos en un día tan importante para nosotros.</b></p>
+                    <b>Gracias por acompañarnos en un día tan importante para nosotros.</b>
+                </p>
             </div>
         </div>
     </section>
 
-    <section class="countdown wow animate__animated animate__fadeInUp" data-wow-duration="1.5s">
+    <section class="countdown wow animate__animated animate__fadeInUp" data-wow-duration="1.5s"
+        style="background-image: url('assets/img/fondo.jpg'); background-size:cover; background-position:center;">
         <lord-icon class="icon" src="https://cdn.lordicon.com/mzfjzfjs.json" trigger="loop" stroke="light" delay="300"
-            colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
+            colors="primary:#ffffff,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
         <br />
-        <p>Agendá la fecha</p>
-        <h2>25 Abril 2026</h2>
+        <p style="color: var(--color-bg) !important;">Agendá la fecha</p>
+        <h2 style="color: var(--color-bg) !important;">25 Abril 2026</h2>
 
         <div id="countdown" class="timer" data-init-value="04/25/2026 14:00:00">
             <div>
-                <div id="days"></div><span>Días</span>
+                <div id="days" style="color: var(--color-bg) !important;"></div><span
+                    style="color: var(--color-bg) !important;">Días</span>
             </div>
-            <div class="point">:</div>
+            <div class="point" style="color: var(--color-bg) !important;">:</div>
             <div>
-                <div id="hs"></div><span>Hs</span>
+                <div id="hs" style="color: var(--color-bg) !important;"></div><span
+                    style="color: var(--color-bg) !important;">Hs</span>
             </div>
-            <div class="point">:</div>
+            <div class="point" style="color: var(--color-bg) !important;">:</div>
             <div>
-                <div id="min"></div><span>Min</span>
+                <div id="min" style="color: var(--color-bg) !important;"></div><span
+                    style="color: var(--color-bg) !important;">Min</span>
             </div>
-            <div class="point">:</div>
+            <div class="point" style="color: var(--color-bg) !important;">:</div>
             <div>
-                <div id="seg"></div><span>Seg</span>
+                <div id="seg" style="color: var(--color-bg) !important;"></div><span
+                    style="color: var(--color-bg) !important;">Seg</span>
             </div>
         </div>
 
         <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+M%26J&dates=20260425T170000Z/20260426T050000Z"
-            target="_blank"><i class="far fa-calendar-check"></i> Agendar fecha</a>
+            target="_blank" style="color: white;"><i class="far fa-calendar-check" style="color:white"></i> Agendar
+            fecha</a>
     </section>
 
     <section class="events">
@@ -386,11 +544,12 @@
                 <div class="txt"
                     style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
                     <div class="date">
-                        <p><em>-fecha a confirmar-</em></p><span></span>
+                        <p style="font-size: small;"><em>-fecha a confirmar-</em></p><span></span>
                     </div>
                     <div class="line"></div>
                     <div class="date">
-                        <p><em>-hora a confirmar-</em></p><span></span>
+                        <p style="font-size: small;"><em>-hora a confirmar-</em></p><span></span>
+                        <!-- Una vez que los tenga quito el style y el em. el mes y "horas" va entre span -->
                     </div>
                 </div>
                 <div class="place">
@@ -404,7 +563,7 @@
         <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
             <lord-icon src="https://cdn.lordicon.com/yvgmrqny.json" trigger="loop" stroke="light" delay="300"
                 colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
-            <h2>Ceremonia & Fiesta</h2>
+            <h2 class="">Ceremonia & Fiesta</h2>
             <div>
                 <div class="txt"
                     style="border-bottom: 1px solid rgba(135, 135, 135, 0.2); margin-bottom:15px; padding-bottom:15px;">
@@ -425,14 +584,47 @@
         </article>
 
         <article class="item wow animate__animated animate__fadeInUp" data-wow-duration="1s">
-            <lord-icon src="https://cdn.lordicon.com/dkyhucjt.json" trigger="loop" state="" stroke="light" delay="300"
+            <lord-icon src="https://cdn.lordicon.com/bencqunn.json" trigger="loop" state="" stroke="light" delay="300"
                 colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <h2>DressCode</h2>
             <div>
                 <div class="place">
                     <p><b>Formal-Elegante</b></p>
-                    <p>Usá blanco y te mato</p>
+                    <p>Celebremos con todos los colores del aroíris. <br><b> El blanco estará reservado para iluminar a
+                            la
+                            novia.</b></p>
+                    <small><em class="comentario">(Opcional) Si querés estar a tono con nuestra decoración, <b>esta será
+                                la
+                                paleta:</b></em></small>
+
+                    <div class="palette-container">
+                        <div class="palette-item">
+                            <div class="color-circle" style="background-color: #154734;"></div>
+                            <span class="color-label">Inglés</span>
+                        </div>
+                        <div class="palette-item">
+                            <div class="color-circle" style="background-color: #9A9B6A;"></div>
+                            <span class="color-label">Oliva</span>
+                        </div>
+                        <div class="palette-item">
+                            <div class="color-circle" style="background-color: #1E2D3D;"></div>
+                            <span class="color-label">Marino</span>
+                        </div>
+                        <div class="palette-item">
+                            <div class="color-circle" style="background-color: #D4B996;"></div>
+                            <span class="color-label">Beige</span>
+                        </div>
+                        <div class="palette-item">
+                            <div class="color-circle" style="background-color: #B55328;"></div>
+                            <span class="color-label">Terracota</span>
+                        </div>
+                        <div class="palette-item">
+                            <div class="color-circle" style="background-color: #6C1B1F;"></div>
+                            <span class="color-label">Vino</span>
+                        </div>
+                    </div>
                 </div>
+            </div>
             </div>
         </article>
     </section>
@@ -482,7 +674,7 @@
             <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)"
                     src="assets/img/DSC_0344.JPG" /></div>
             <div class="image wow animate__animated animate__fadeInUp"><img onclick="openModal(); currentSlide(6)"
-                    src="assets/img/DSC_0300.JPG" /></div>                                    
+                    src="assets/img/DSC_0300.JPG" /></div>
         </div>
 
         <div id="myModal" class="modal">
@@ -607,18 +799,18 @@
 
                             <label>Comentarios</label>
                             <input name="comentarios" id="comentarios" placeholder="Algo que debamos saber..." />
-                            
+
                             <button class="submit" type="submit" name="save">
                                 <i class="fas fa-check-circle"></i> Enviar confirmación
                             </button>
-                            
+
                             <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
                                 <i class="fab fa-whatsapp"></i> o confirmar por WhatsApp
                             </button>
                             <small style="font-size: 0.7rem;">*Traslado: Se informará luego el valor que podría
                                 tener.</small>
-                            </form>
-                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="thanks" style="display:none; text-align: center; padding: 20px 10px;">
                     <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" state="hover-pinch"
@@ -645,7 +837,7 @@
     <section class="content full" style="background-image: url('assets/img/DSC_0339.JPG');">
         <div class="info">
             <div class="text wow animate__animated animate__fadeInUp">
-    
+
                 <p><em>"Es mejor ser dos que uno, porque ambos pueden ayudarse mutuamente(...).
                         Si uno cae, el otro puede darle la mano y ayudarle(...)"
                     </em>
@@ -659,7 +851,7 @@
         <p style="font-size: 0.7rem;">Mili y Juli - <b>Nuestra boda</b> | ABRIL 2026</p>
     </footer>
 
-<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="assets/js/wow/wow.js"></script>
     <script src="assets/js/modal.js"></script>
@@ -674,10 +866,10 @@
            1. CONFIGURACIÓN (EDITAR ESTO)
            ========================================= */
         // Pegá acá tu URL de Google Apps Script (la que termina en /exec)
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzj6BT-2ZR4Srix5k3q8EbO2wXdTtbARFoI9oWT1Kl4tbtaDuY4k_H3QsZQiz719dr_/exec'; 
-        
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzj6BT-2ZR4Srix5k3q8EbO2wXdTtbARFoI9oWT1Kl4tbtaDuY4k_H3QsZQiz719dr_/exec';
+
         // Tu número de WhatsApp (con código de país, sin +)
-        const telefonoNovios = "5492234257146"; 
+        const telefonoNovios = "5492234257146";
 
 
         /* =========================================
@@ -686,7 +878,7 @@
         let savedScrollPosition = 0;
 
         // Detectar clicks en botones que abren modales
-        document.querySelectorAll('[href="#modalRegalos"], [href="#modalRSVP"]').forEach(function(btn) {
+        document.querySelectorAll('[href="#modalRegalos"], [href="#modalRSVP"]').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
             });
@@ -695,10 +887,10 @@
         // Corrección para el botón flotante (onclick explícito)
         function abrirModalRSVP() {
             const modal = document.getElementById('modalRSVP');
-            if(modal) {
-                modal.style.display = 'block'; 
+            if (modal) {
+                modal.style.display = 'block';
                 savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
-                document.body.style.overflow = 'hidden'; 
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -751,7 +943,7 @@
         const aliasTexto = "JULIO.ESPINAL.BG";
 
         function cerrarModalSuave() {
-            if(modalContentRegalos) {
+            if (modalContentRegalos) {
                 modalContentRegalos.classList.remove('animate__zoomIn');
                 modalContentRegalos.classList.add('animate__fadeOut');
             }
@@ -760,9 +952,9 @@
                 document.body.style.overflow = 'auto';
                 window.scrollTo(0, savedScrollPosition);
 
-                if(modalContentRegalos) modalContentRegalos.classList.remove('animate__fadeOut');
-                if(mensajeExito) mensajeExito.style.display = 'none';
-                if(btnCopiar) {
+                if (modalContentRegalos) modalContentRegalos.classList.remove('animate__fadeOut');
+                if (mensajeExito) mensajeExito.style.display = 'none';
+                if (btnCopiar) {
                     btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
                     btnCopiar.style.opacity = "1";
                 }
@@ -788,10 +980,10 @@
         const form = document.forms['rsvpForm'];
         const btnEnviar = document.querySelector('.submit');      // Botón Normal
         const btnWspSubmit = document.getElementById('btnWspSubmit'); // Botón WhatsApp
-        
+
         const divForm = document.querySelector('#modalRSVP .cont');
         const divThanks = document.querySelector('#modalRSVP .thanks');
-        
+
         const btnOtra = document.getElementById('btnOtra');
         const btnCerrarRSVP = document.getElementById('btnCerrarRSVP');
         const spanSegundos = document.getElementById('segundosRestantes');
@@ -801,8 +993,8 @@
         let esEnvioWhatsApp = false; // Bandera para saber cuál tocó
 
         // Detectar clicks en los botones de envío
-        if(btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
-        if(btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
+        if (btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
+        if (btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
 
         // Resetear Formulario
         function resetearFormulario() {
@@ -811,10 +1003,10 @@
             btnWspSubmit.disabled = false;
             btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
             btnWspSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> o confirmar por WhatsApp';
-            
+
             divThanks.style.display = 'none';
             divForm.style.display = 'block';
-            
+
             clearTimeout(autoCloseTimer);
             clearInterval(conteoInterval);
         }
@@ -842,7 +1034,7 @@
                 btnEnviar.disabled = true;
                 btnWspSubmit.disabled = true;
 
-                if(esEnvioWhatsApp) {
+                if (esEnvioWhatsApp) {
                     btnWspSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
                 } else {
                     btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
@@ -867,13 +1059,13 @@
                         divThanks.style.display = 'block';
 
                         // --- CAMINO A: WHATSAPP ---
-                        if(esEnvioWhatsApp) {
+                        if (esEnvioWhatsApp) {
                             // Capturamos datos para el mensaje
                             const nombre = form.querySelector('input[name="nombre"]').value;
                             // Ojo: Asegurate que tu input radio tenga name="asistencia"
                             const asistenciaInput = form.querySelector('input[name="asistencia"]:checked');
                             const asistencia = asistenciaInput ? asistenciaInput.value : "Asiste";
-                            
+
                             // Mensaje
                             const mensaje = `¡Hola Juli, Mili! Soy *${nombre}*. Te confirmo desde la web que: *${asistencia}* a la boda. ¡Muchas gracias por la invitación!`;
                             const link = `https://api.whatsapp.com/send?phone=${telefonoNovios}&text=${encodeURIComponent(mensaje)}`;
@@ -882,10 +1074,10 @@
                             setTimeout(() => {
                                 window.location.href = link;
                                 // Opcional: Cerrar modal después de irse
-                                setTimeout(cerrarModalRSVP, 1000); 
+                                setTimeout(cerrarModalRSVP, 1000);
                             }, 1500);
-                        
-                        // --- CAMINO B: NORMAL ---
+
+                            // --- CAMINO B: NORMAL ---
                         } else {
                             // Timer visual
                             let segundos = 5;
