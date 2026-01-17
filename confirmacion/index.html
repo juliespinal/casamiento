@@ -19,7 +19,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Great+Vibes&family=Nunito+Sans:wght@200..900&family=Parisienne&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/js/wow/animate.css" />
 
@@ -453,7 +453,9 @@
         <div class="top" id="top">
             <div class="badge animate__animated animate__zoomIn" data-wow-delay="0.3s">
                 <img src="assets/img/selloa.png" style="width: 110px !important;" />
-                <small class="comentario" style="margin-top: 120px !important; margin-left: 5px !important; font-size: 0.7rem;"><b><em>Tocá para abrir</em></b></small>
+                <small class="comentario"
+                    style="margin-top: 120px !important; margin-left: 5px !important; font-size: 0.7rem;"><b><em>Tocá
+                            para abrir</em></b></small>
             </div>
             <img src="https://evnt.ar/assets/images/envelopet.png"
                 class="top hiddenM animate__animated animate__slideInDown" />
@@ -747,91 +749,121 @@
                     class="fas fa-check-circle" style="margin-right:10px"></i>Confirmar Asistencia</button>
             <p><small style="font-size: 0.9rem;"> <b><em>Debe completarse una vez por cada integrante de
                             familia.</b></em></small></p>
-        </div>
-
-        <div class="modalGift" id="modalRSVP">
-            <div class="contenido-modal">
-                <span class="closeModal"><i class="fas fa-times"></i></span>
-                <div class="cont">
-                    <h2>Confirmación</h2>
-                    <div class="form">
-                        <div class="msj error">Por favor completa todos los campos</div>
-
-                        <form id="rsvpForm" name="rsvpForm">
-
-                            <div class="radio">
-                                <label class="container">Asistiré
-                                    <input type="radio" checked="checked" value="Asiste" name="asistencia">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">No asistiré
-                                    <input type="radio" value="No asiste" name="asistencia">
-                                    <span class="checkmark"></span>
-                                </label>
+            <div class="modalGift" id="modalRSVP">
+                <div class="contenido-modal">
+                    <span class="closeModal"><i class="fas fa-times"></i></span>
+                    <div class="cont">
+                        <h2>Confirmación</h2>
+                        <div id="bloquePrecio"
+                            style="display:none; background-color: #f9f9f9; padding: 10px; border-radius: 10px; border-left: 4px solid var(--color-primary); margin-bottom: 15px; text-align: left; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <lord-icon src="https://cdn.lordicon.com/qiuoixuo.json" trigger="loop" delay="2000"
+                                    colors="primary:#9A9B6A,secondary:#D4B996" style="width:35px;height:35px">
+                                </lord-icon>
+                                <div>
+                                    <p style="margin:0; font-size: 0.85rem; line-height: 1.2; color: #666;">
+                                        Valor de tu tarjeta: <b style="color: var(--color-primary); font-size: 1rem;"
+                                            id="precioDinamico"></b>
+                                    </p>
+                                    <p style="margin:0; font-size: 0.7rem; color: #999;">Alias: <b>JULIO.ESPINAL.BG</b>
+                                    </p>
+                                </div>
                             </div>
-                            <input type="hidden" name="asiste" id="asiste" value="si" />
+                        </div>
+                        <div class="form">
+                            <div class="msj error">Por favor completa todos los campos</div>
 
-                            <label>Nombre y Apellido</label>
-                            <input type="text" name="nombre" required placeholder="Ingresá tu nombre completo" />
+                            <form id="rsvpForm" name="rsvpForm">
 
-                            <label>¿Necesitas un menú especial?</label>
-                            <div class="selectField">
-                                <i class="fas fa-angle-down"></i>
-                                <select name="alimento" id="alimentos" required>
-                                    <option value="" disabled selected>Seleccioná una opción</option>
-                                    <option value="Ninguna">Ninguno</option>
-                                    <option value="Celiaca">Celiaco</option>
-                                    <option value="Vegetariana">Vegetariano</option>
-                                    <option value="Vegana">Vegano</option>
-                                    <option value="Diabética">Diabético</option>
-                                </select>
-                            </div>
+                                <div class="radio">
+                                    <label class="container">Asistiré
+                                        <input type="radio" checked="checked" value="Asiste" name="asistencia">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="container">No asistiré
+                                        <input type="radio" value="No asiste" name="asistencia">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <input type="hidden" name="asiste" id="asiste" value="si" />
+                                <input type="hidden" name="monto_tarjeta" id="inputMontoTarjeta" value="">
+                                <div id="bloquePago"
+                                    style="display:none; margin-top: 15px; border-top: 1px dashed #ddd; padding-top: 15px;">
+                                    <label style="font-size: 0.9rem; margin-bottom: 10px; display:block;">Sobre el valor
+                                        de la tarjeta:</label>
 
-                            <label>¿Necesitas traslado?*</label>
-                            <div class="selectField">
-                                <i class="fas fa-angle-down"></i>
-                                <select name="traslado" id="traslados" required>
-                                    <option value="" disabled selected>Seleccioná una opción</option>
-                                    <option value="No">No, voy por mis propios medios</option>
-                                    <option value="Si">Si, necesito traslado</option>
-                                </select>
-                            </div>
+                                    <div class="radio">
+                                        <label class="container" style="font-size: 0.9rem;">Puedo abonarlo
+                                            <input type="radio" name="pago_estado" value="Abonará">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container" style="font-size: 0.9rem;">Necesito consultarles algo
+                                            <input type="radio" name="pago_estado" value="Consulta">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <label>Nombre y Apellido</label>
+                                <input type="text" name="nombre" required placeholder="Ingresá tu nombre completo" />
 
-                            <label>Comentarios</label>
-                            <input name="comentarios" id="comentarios" placeholder="Algo que debamos saber..." />
+                                <label>¿Necesitas un menú especial?</label>
+                                <div class="selectField">
+                                    <i class="fas fa-angle-down"></i>
+                                    <select name="alimento" id="alimentos" required>
+                                        <option value="" disabled selected>Seleccioná una opción</option>
+                                        <option value="Ninguna">Ninguno</option>
+                                        <option value="Celiaca">Celiaco</option>
+                                        <option value="Vegetariana">Vegetariano</option>
+                                        <option value="Vegana">Vegano</option>
+                                        <option value="Diabética">Diabético</option>
+                                    </select>
+                                </div>
 
-                            <button class="submit" type="submit" name="save">
-                                <i class="fas fa-check-circle"></i> Enviar confirmación
-                            </button>
+                                <label>¿Necesitas traslado?*</label>
+                                <div class="selectField">
+                                    <i class="fas fa-angle-down"></i>
+                                    <select name="traslado" id="traslados" required>
+                                        <option value="" disabled selected>Seleccioná una opción</option>
+                                        <option value="No">No, voy por mis propios medios</option>
+                                        <option value="Si">Si, necesito traslado</option>
+                                    </select>
+                                </div>
 
-                            <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
-                                <i class="fab fa-whatsapp"></i> o confirmar por WhatsApp
-                            </button>
-                            <small style="font-size: 0.7rem;">*Traslado: Se informará luego el valor que podría
-                                tener.</small>
-                        </form>
+                                <label>Comentarios</label>
+                                <input name="comentarios" id="comentarios" placeholder="Algo que debamos saber..." />
+
+                                <button class="submit" type="submit" name="save">
+                                    <i class="fas fa-check-circle"></i> Enviar confirmación
+                                </button>
+
+                                <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
+                                    <i class="fab fa-whatsapp"></i> o confirmar por WhatsApp
+                                </button>
+                                <small style="font-size: 0.7rem;">*Traslado: Se informará luego el valor que podría
+                                    tener.</small>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="thanks" style="display:none; text-align: center; padding: 20px 10px;">
+                        <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" state="hover-pinch"
+                            colors="primary:#154734,secondary:#d4b996" style="width:80px;height:80px"></lord-icon>
+
+                        <h2 style="margin-top: 15px; color: var(--color-primary);">¡Gracias por confirmar!</h2>
+                        <p style="margin-bottom: 25px;">¿Querés confirmar a alguien más?</p>
+
+                        <button id="btnOtra" class="btn-action btn-primary-modal">
+                            Confirmar otro familiar
+                        </button>
+
+                        <button id="btnCerrarRSVP" class="btn-action btn-secondary-modal">
+                            Volver a la web
+                        </button>
+                        <p style="font-size: 0.8rem; margin-top: 20px; color: #999;">
+                            Cerrando en <span id="segundosRestantes">5</span> segundos...
+                        </p>
                     </div>
                 </div>
-                <div class="thanks" style="display:none; text-align: center; padding: 20px 10px;">
-                    <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" state="hover-pinch"
-                        colors="primary:#154734,secondary:#d4b996" style="width:80px;height:80px"></lord-icon>
-
-                    <h2 style="margin-top: 15px; color: var(--color-primary);">¡Gracias por confirmar!</h2>
-                    <p style="margin-bottom: 25px;">¿Querés confirmar a alguien más?</p>
-
-                    <button id="btnOtra" class="btn-action btn-primary-modal">
-                        Confirmar otro familiar
-                    </button>
-
-                    <button id="btnCerrarRSVP" class="btn-action btn-secondary-modal">
-                        Volver a la web
-                    </button>
-                    <p style="font-size: 0.8rem; margin-top: 20px; color: #999;">
-                        Cerrando en <span id="segundosRestantes">5</span> segundos...
-                    </p>
-                </div>
             </div>
-        </div>
     </section>
 
     <section class="content full" style="background-image: url('assets/img/DSC_0339.JPG');">
@@ -866,7 +898,7 @@
            1. CONFIGURACIÓN (EDITAR ESTO)
            ========================================= */
         // Pegá acá tu URL de Google Apps Script (la que termina en /exec)
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzj6BT-2ZR4Srix5k3q8EbO2wXdTtbARFoI9oWT1Kl4tbtaDuY4k_H3QsZQiz719dr_/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbymWuLx0LAcyQQs881qDuQ2Jy51roJTivrTgRdHnMVZYDwIDazQ8moc5ak5GT3oLz9i/exec';
 
         // Tu número de WhatsApp (con código de país, sin +)
         const telefonoNovios = "5492234257146";
@@ -1109,7 +1141,52 @@
         // Botones "Gracias"
         if (btnOtra) btnOtra.addEventListener('click', resetearFormulario);
         if (btnCerrarRSVP) btnCerrarRSVP.addEventListener('click', cerrarModalRSVP);
+    </script>
+    <script>
+        /* --- LÓGICA DE PRECIOS Y CÓDIGOS --- */
+        document.addEventListener("DOMContentLoaded", function () {
 
+            // 1. Recuperar datos
+            const precioGuardado = localStorage.getItem('boda_precio');
+            const textoGuardado = localStorage.getItem('boda_texto');
+
+            const divPrecio = document.getElementById('bloquePrecio');
+            const spanPrecio = document.getElementById('precioDinamico');
+            const divPago = document.getElementById('bloquePago');
+
+            // Convertimos a número para comparar
+            // Si no hay dato (null), asumimos 0 para que no rompa, o podrías redirigir
+            const precioNum = precioGuardado ? parseInt(precioGuardado) : 0;
+
+            // 2. Lógica Condicional
+            if (precioNum > 0) {
+                // A) TIENEN QUE PAGAR
+                if (divPrecio && spanPrecio) {
+                    spanPrecio.innerText = textoGuardado; // Ej: "$86.000"
+                    divPrecio.style.display = "block";    // Mostramos el ticket
+                    const inputMonto = document.getElementById('inputMontoTarjeta');
+                    if (inputMonto) inputMonto.value = textoGuardado;
+
+                }
+                if (divPago) {
+                    divPago.style.display = "block";      // Mostramos las opciones de "Puedo abonar..."
+
+                    // Hacemos el campo 'required' dinámicamente para que no puedan enviar sin elegir
+                    const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
+                    radiosPago.forEach(r => r.required = true);
+                }
+            } else {
+                // B) ES GRATIS (Familia)
+                // Nos aseguramos que todo esté oculto
+                if (divPrecio) divPrecio.style.display = "none";
+                if (divPago) {
+                    divPago.style.display = "none";
+                    // Quitamos el required para que no les tire error al enviar
+                    const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
+                    radiosPago.forEach(r => r.required = false);
+                }
+            }
+        });
     </script>
 </body>
 

@@ -1,0 +1,420 @@
+        :root {
+            /* Colores */
+            --color-primary: #9A9B6A;
+            /* Verde oliva */
+            --color-secondary: #D4B996;
+            /* Dorado/Beige */
+            --color-bg: #f3f1ed;
+            /* Fondo Crema */
+            --color-text: #666666;
+            /* Texto Gris */
+            --color-white: #ffffff;
+
+            /* Tipografías */
+            --font-nombres: 'Great Vibes', cursive;
+            /*Parisienne', cursive; /* Para "Mili & Juli" */
+            --font-titulos: 'Playfair Display', serif;
+            /* Para "Ceremonia", "Historia" */
+            --font-cuerpo: 'Montserrat', sans-serif;
+            /* Para textos largos */
+        }
+
+        /* --- 2. APLICACIÓN DE VARIABLES --- */
+        body,
+        header {
+            background-color: var(--color-bg);
+            font-family: var(--font-cuerpo);
+            color: var(--color-text);
+        }
+
+        /* Títulos especiales */
+        h1.nombres-portada {
+            /*font-family: "Nunito Sans", sans-serif !important;*/
+            font-family: var(--font-nombres);
+            color: var(--color-secondary) !important;
+            font-size: 2.5rem !important;
+            /* Ajustá el tamaño aquí */
+            font-weight: 600 !important;
+        }
+
+        h2 {
+            font-family: var(--font-titulos);
+            color: var(--color-primary);
+        }
+
+
+        /* Colorear íconos y textos específicos */
+        header h1,
+        .cover .text i,
+        .timer div,
+        .countdown p,
+        .countdown a i,
+        .events .item i,
+        .social .item i,
+        .video span,
+        .gallery span,
+        .hotels span,
+        .hotels i,
+        .hotels .list a i,
+        .gallery i,
+        .gifts i,
+        .modalGift h3,
+        .modalGift .item .right p b,
+        .modalGift .item .right .list a h4,
+        .modalGift .closeModal i,
+        .invites i,
+        .invites span,
+        .confirmation .link i,
+        .confirmation .modalGift .contenido-modal .form label,
+        .confirmation .modalGift .contenido-modal span,
+        .confirmation .modalGift .contenido-modal .thanks i,
+        footer p i,
+        .content .info .text i,
+        .cover .text h1 {
+            color: var(--color-primary);
+        }
+
+        /* Fondos con color primario */
+        .story,
+        .gifts a,
+        .gifts button,
+        .gifts,
+        .confirmation,
+        .confirmation .modalGift .contenido-modal .form .container .checkmark:after,
+        .confirmation .modalGift .contenido-modal .form button,
+        .salon .item .right a,
+        .player .icon,
+        .linkcontacto {
+            background-color: var(--color-primary) !important;
+        }
+
+        /* Estilo para el botón de Agendar Fecha */
+        .countdown a {
+            background-color: var(--color-primary) !important;
+            /* Acá usás la variable */
+            color: var(--color-white) !important;
+            /* Texto blanco */
+
+            /* Estética de botón */
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-primary);
+            /* Borde sutil */
+        }
+
+        /* Efecto al pasar el mouse */
+        .countdown a:hover {
+            background-color: transparent !important;
+            /* Se vuelve transparente */
+            color: var(--color-white) !important;
+            border: 1px solid var(--color-white);
+            /* Borde blanco */
+            transform: scale(1.05);
+        }
+
+        /* --- 3. ANIMACIÓN FLECHA (Bounce) --- */
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .scroll-arrow {
+            animation: bounce 2s infinite;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* --- 4. AJUSTES VARIOS --- */
+        .intro {
+            cursor: pointer;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            transition: all 1s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .msj.error {
+            color: red;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .modalGift .contenido-modal .item .right .list a {
+            background-color: transparent;
+        }
+
+        /* Corrección para íconos en selects (Truco visual) */
+        .selectField {
+            position: relative;
+        }
+
+        .selectField i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            /* Centrado vertical */
+            transform: translateY(-50%);
+            pointer-events: none;
+            /* Para que el click pase al select */
+            color: var(--color-primary);
+            z-index: 1;
+        }
+
+        /* Limpiamos la flecha por defecto del navegador para poner la nuestra */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #btnCopiar {
+            border-radius: 50px;
+            /* Bordes bien redondeados como el resto */
+            padding: 12px 25px;
+            /* Más gordito */
+            font-size: 1rem;
+            /* Letra un poco más grande */
+            width: 100%;
+            margin-top: 15px;
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            /* Aseguramos que use el color primario */
+            background-color: var(--color-primary);
+        }
+
+        #btnCopiar:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .btn-action {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            /* Un poco más de aire */
+            margin-bottom: 10px;
+            border-radius: 50px;
+            font-family: var(--font-cuerpo);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            line-height: 1.2;
+            /* Evita que el texto se separe mucho si ocupa dos líneas */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Sombrita sutil */
+        }
+
+        /* Botón Principal (Verde) */
+        .btn-primary-modal {
+            background-color: var(--color-primary);
+            color: white;
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-primary-modal:hover {
+            background-color: #0f3526;
+            /* Un verde un pelín más oscuro */
+            transform: translateY(-2px);
+        }
+
+        /* Botón Secundario (Blanco) */
+        .btn-secondary-modal {
+            background-color: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary-modal:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* --- ESTILO BASE (Desktop) --- */
+        #btnWspSubmit.btn-whatsapp-secondary {
+            background-color: transparent !important;
+            border: 2px solid #25D366 !important;
+            color: #25D366 !important;
+
+            /* Tamaño Desktop */
+            width: fit-content !important;
+            display: block !important;
+            margin: 15px auto 0 auto !important;
+            padding: 8px 25px !important;
+
+            border-radius: 50px !important;
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+        }
+
+        #btnWspSubmit.btn-whatsapp-secondary:hover {
+            background-color: #25D366 !important;
+            color: white !important;
+        }
+
+        /* --- AJUSTE MÓVIL (Acá achicamos solo para teléfonos) --- */
+        @media (max-width: 768px) {
+            #btnWspSubmit.btn-whatsapp-secondary {
+                font-size: 0.75rem !important;
+                /* Letra más chiquita (aprox 12px) */
+                padding: 6px 15px !important;
+                /* Botón más flaquito */
+                margin-top: 12px !important;
+                /* Un poquito menos de aire arriba */
+                border-width: 1px !important;
+                /* Borde más fino para que se vea delicado */
+            }
+        }
+
+        /* Contenedor principal */
+        .palette-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Por seguridad, si el celu es muy viejo baja, pero no debería */
+            gap: 8px;
+            /* Espacio ajustado para que entren los 6 */
+            margin-top: 25px;
+            padding-bottom: 20px;
+        }
+
+        /* Cada item (Círculo + Texto) */
+        .palette-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: auto;
+            /* Dejamos que el ancho lo defina el contenido */
+        }
+
+        /* EL CÍRCULO */
+        .color-circle {
+            width: 31px;
+            /* Tamaño ideal para móvil (ni muy chico ni muy grande) */
+            height: 31px;
+            /* Igual al ancho para que sea redondo */
+            border-radius: 50%;
+            /* Esto lo hace círculo perfecto */
+
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            /* Sombrita suave */
+            transition: transform 0.3s ease;
+        }
+
+        .color-circle:hover {
+            transform: scale(1.1);
+            /* Efecto de "agrandarse" un poquito al pasar el mouse */
+        }
+
+        /* El texto del código HEX */
+        .color-label {
+            font-size: 0.45rem;
+            /* Texto bien chiquito para que no moleste */
+            margin-top: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--color-text);
+            opacity: 0.8;
+            letter-spacing: -0.5px;
+            /* Juntamos un poquito las letras para que entren bien */
+        }
+
+
+        /* --- AJUSTES PARA PC / TABLET (Se agrandan un poco) --- */
+        @media (min-width: 768px) {
+            .palette-container {
+                gap: 20px;
+                /* Más aire en PC */
+            }
+
+            .color-circle {
+                width: 60px;
+                /* Círculos más grandes en pantalla grande */
+                height: 60px;
+            }
+
+            .color-label {
+                font-size: 0.75rem;
+                letter-spacing: normal;
+            }
+        }
+
+        /* --- CORRECCIÓN POSICIÓN DEL SELLO --- */
+
+        #top {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ESTILO BASE (CELULAR) */
+        .badge {
+            position: absolute;
+
+            /* TÉCNICA DE CENTRADO SIN TRANSFORM (Para no pelear con animate.css) */
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+
+            z-index: 10;
+
+            /* TAMAÑO Y POSICIÓN VERTICAL MÓVIL */
+            width: 120px;
+            /* Es importante definir el ancho para que el margin:auto funcione */
+            bottom: -15px !important;
+            /* Ajustá esto a ojo en tu celu */
+        }
+
+        .badge img {
+            width: 100% !important;
+            height: auto;
+            display: block;
+        }
+
+        /* ESTILO DESKTOP (PC) */
+        @media (min-width: 768px) {
+            .badge {
+                /* TAMAÑO Y POSICIÓN VERTICAL PC */
+                width: 150px;
+                bottom: -50px !important;
+                /* Ajustá esto a ojo en la PC */
+            }
+        }
