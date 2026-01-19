@@ -20,8 +20,10 @@
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Great+Vibes&family=Nunito+Sans:wght@200..900&family=Parisienne&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net">
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/js/wow/animate.css" />
+
 
     <style>
         :root {
@@ -35,14 +37,13 @@
             --color-text: #666666;
             /* Texto Gris */
             --color-white: #ffffff;
+            --marino: #1E2D3D;
+            --vino: #6C1B1F;
 
             /* Tipografías */
             --font-nombres: 'Great Vibes', cursive;
-            /*Parisienne', cursive; /* Para "Mili & Juli" */
             --font-titulos: 'Playfair Display', serif;
-            /* Para "Ceremonia", "Historia" */
             --font-cuerpo: 'Montserrat', sans-serif;
-            /* Para textos largos */
         }
 
         /* --- 2. APLICACIÓN DE VARIABLES --- */
@@ -55,11 +56,9 @@
 
         /* Títulos especiales */
         h1.nombres-portada {
-            /*font-family: "Nunito Sans", sans-serif !important;*/
             font-family: var(--font-nombres);
             color: var(--color-secondary) !important;
             font-size: 2.5rem !important;
-            /* Ajustá el tamaño aquí */
             font-weight: 600 !important;
         }
 
@@ -67,7 +66,6 @@
             font-family: var(--font-titulos);
             color: var(--color-primary);
         }
-
 
         /* Colorear íconos y textos específicos */
         header h1,
@@ -91,9 +89,10 @@
         .invites i,
         .invites span,
         .confirmation .link i,
-        .confirmation .modalGift .contenido-modal .form label,
-        .confirmation .modalGift .contenido-modal span,
-        .confirmation .modalGift .contenido-modal .thanks i,
+        .modalGift .contenido-modal .form label,
+        /* FIX: Se quitó .confirmation */
+        .modalGift .contenido-modal span,
+        .modalGift .contenido-modal .thanks i,
         footer p i,
         .content .info .text i,
         .cover .text h1 {
@@ -106,22 +105,22 @@
         .gifts button,
         .gifts,
         .confirmation,
-        .confirmation .modalGift .contenido-modal .form .container .checkmark:after,
-        .confirmation .modalGift .contenido-modal .form button,
         .salon .item .right a,
         .player .icon,
         .linkcontacto {
             background-color: var(--color-primary) !important;
         }
 
+        /* Checkmarks y botones del modal (Globales) */
+        .modalGift .contenido-modal .form .container .checkmark:after,
+        .modalGift .contenido-modal .form button {
+            background-color: var(--color-primary) !important;
+        }
+
         /* Estilo para el botón de Agendar Fecha */
         .countdown a {
             background-color: var(--color-primary) !important;
-            /* Acá usás la variable */
             color: var(--color-white) !important;
-            /* Texto blanco */
-
-            /* Estética de botón */
             display: inline-block;
             padding: 12px 30px;
             border-radius: 50px;
@@ -130,16 +129,12 @@
             margin-top: 20px;
             transition: all 0.3s ease;
             border: 1px solid var(--color-primary);
-            /* Borde sutil */
         }
 
-        /* Efecto al pasar el mouse */
         .countdown a:hover {
             background-color: transparent !important;
-            /* Se vuelve transparente */
             color: var(--color-white) !important;
             border: 1px solid var(--color-white);
-            /* Borde blanco */
             transform: scale(1.05);
         }
 
@@ -169,7 +164,7 @@
             cursor: pointer;
         }
 
-        /* --- 4. AJUSTES VARIOS --- */
+        /* --- 4. AJUSTES VARIOS (INTRO) --- */
         .intro {
             cursor: pointer;
             position: fixed;
@@ -191,66 +186,95 @@
             margin-bottom: 10px;
         }
 
-        .modalGift .contenido-modal .item .right .list a {
-            background-color: transparent;
+        /* --- 5. ESTILOS DEL MODAL (ESTÉTICA VIEJA RECUPERADA) --- */
+
+        /* Contenedor Principal (Fondo Oscuro) */
+        #modalRSVP {
+            display: none;
+            /* CRÍTICO: Oculto por defecto */
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 10000 !important;
+            /* Encima de todo, pero controlado por display */
+            background-color: rgba(0, 0, 0, 0.8) !important;
+
+            /* Centrado como te gustaba */
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            /* Permite scroll si el celu es chico */
+            padding: 20px 0;
         }
 
-        /* Corrección para íconos en selects (Truco visual) */
+        /* La Tarjeta Blanca (Diseño original) */
+        #modalRSVP .contenido-modal {
+            background-color: #fff;
+            margin: auto;
+            /* Centrado automático */
+            width: 98%;
+            max-width: 500px;
+            /* Ancho elegante, no estirado */
+            border-radius: 15px;
+            position: relative;
+            padding: 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Padding interno original */
+        .modalGift .contenido-modal .cont {
+            padding: 20px;
+        }
+
+        /* Inputs y Selects (Estilo Original Recuperado) */
+        .modalGift .contenido-modal .form input[type="text"],
+        .modalGift .contenido-modal .form input[type="number"],
+        .modalGift .contenido-modal .form textarea,
+        .modalGift .contenido-modal .form select {
+            width: 100%;
+            padding: 10px;
+            /* Padding original */
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            font-family: var(--font-cuerpo);
+            font-size: 1rem;
+            color: #555;
+            outline: none;
+        }
+
+        /* Corrección Selects (Icono custom) */
+        .modalGift .contenido-modal .form select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
         .selectField {
             position: relative;
+            width: 100%;
         }
 
         .selectField i {
             position: absolute;
             right: 15px;
             top: 50%;
-            /* Centrado vertical */
             transform: translateY(-50%);
-            pointer-events: none;
-            /* Para que el click pase al select */
             color: var(--color-primary);
-            z-index: 1;
+            pointer-events: none;
+            z-index: 10;
         }
 
-        /* Limpiamos la flecha por defecto del navegador para poner la nuestra */
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            width: 100%;
-            padding: 10px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        #btnCopiar {
-            border-radius: 50px;
-            /* Bordes bien redondeados como el resto */
-            padding: 12px 25px;
-            /* Más gordito */
-            font-size: 1rem;
-            /* Letra un poco más grande */
-            width: 100%;
-            margin-top: 15px;
-            border: none;
-            color: white;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            /* Aseguramos que use el color primario */
-            background-color: var(--color-primary);
-        }
-
-        #btnCopiar:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
-        .btn-action {
+        /* Botones de Acción (Estilo Original) */
+        .btn-action,
+        .modalGift .contenido-modal .form button.submit {
             display: block;
             width: 100%;
             padding: 15px;
-            /* Un poco más de aire */
             margin-bottom: 10px;
             border-radius: 50px;
             font-family: var(--font-cuerpo);
@@ -258,57 +282,33 @@
             font-size: 1rem;
             cursor: pointer;
             text-align: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            line-height: 1.2;
-            /* Evita que el texto se separe mucho si ocupa dos líneas */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Sombrita sutil */
-        }
-
-        /* Botón Principal (Verde) */
-        .btn-primary-modal {
+            border: none;
             background-color: var(--color-primary);
             color: white;
-            border: 2px solid var(--color-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-primary-modal:hover {
-            background-color: #0f3526;
-            /* Un verde un pelín más oscuro */
-            transform: translateY(-2px);
+        .btn-action:hover,
+        .submit:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
-        /* Botón Secundario (Blanco) */
-        .btn-secondary-modal {
-            background-color: white;
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
-        }
-
-        .btn-secondary-modal:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-2px);
-        }
-
-        /* --- ESTILO BASE (Desktop) --- */
+        /* Botón WhatsApp */
         #btnWspSubmit.btn-whatsapp-secondary {
             background-color: transparent !important;
             border: 2px solid #25D366 !important;
             color: #25D366 !important;
-
-            /* Tamaño Desktop */
-            width: fit-content !important;
+            width: 80% !important;
             display: block !important;
             margin: 15px auto 0 auto !important;
             padding: 8px 25px !important;
-
             border-radius: 50px !important;
             font-size: 0.85rem !important;
             font-weight: 600 !important;
-            text-decoration: none !important;
-            box-shadow: none !important;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         #btnWspSubmit.btn-whatsapp-secondary:hover {
@@ -316,83 +316,184 @@
             color: white !important;
         }
 
-        /* --- AJUSTE MÓVIL (Acá achicamos solo para teléfonos) --- */
-        @media (max-width: 768px) {
-            #btnWspSubmit.btn-whatsapp-secondary {
-                font-size: 0.75rem !important;
-                /* Letra más chiquita (aprox 12px) */
-                padding: 6px 15px !important;
-                /* Botón más flaquito */
-                margin-top: 12px !important;
-                /* Un poquito menos de aire arriba */
-                border-width: 1px !important;
-                /* Borde más fino para que se vea delicado */
-            }
+        /* Textos y Etiquetas */
+        .modalGift .contenido-modal .form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-align: left;
         }
 
-        /* Contenedor principal */
+        .modalGift h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: var(--font-titulos);
+            color: var(--color-primary);
+        }
+
+        /* Botón Cerrar (X) */
+        .modalGift .closeModal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .modalGift .closeModal i {
+            color: var(--color-primary);
+            /* Color original */
+            font-size: 1.2rem;
+        }
+
+        /* Checkbox Container (Radio buttons) */
+        .modalGift .contenido-modal .form .container {
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #555;
+            text-align: left;
+        }
+
+        .modalGift .contenido-modal .form .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+
+        .container input:checked~.checkmark {
+            background-color: var(--color-primary);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        .container .checkmark:after {
+            top: 6px;
+            left: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        /* Pantalla Gracias */
+        .btn-primary-modal {
+            background-color: var(--color-primary);
+            color: white;
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary-modal {
+            background-color: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        /* --- 6. SEGURIDAD (Botones Grises) --- */
+        .btn-disabled,
+        .btn-disabled:hover,
+        .btn-disabled:focus,
+        .btn-disabled:active {
+            background: #d6d6d6 !important;
+            background-color: #d6d6d6 !important;
+            background-image: none !important;
+            border: 1px solid #bfbfbf !important;
+            color: #777777 !important;
+            box-shadow: none !important;
+            cursor: not-allowed !important;
+            filter: none !important;
+            opacity: 1 !important;
+            font-family: 'Montserrat', sans-serif !important;
+            text-transform: uppercase !important;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 1px !important;
+            text-decoration: none !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+        }
+
+        #btnFloatRSVP.btn-disabled {
+            width: 50px !important;
+            height: 50px !important;
+            padding: 0 !important;
+            border-radius: 50% !important;
+            font-size: 1.2rem !important;
+        }
+
+        /* --- 7. DRESSCODE (Círculos) --- */
         .palette-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            /* Por seguridad, si el celu es muy viejo baja, pero no debería */
-            gap: 8px;
-            /* Espacio ajustado para que entren los 6 */
+            gap: 30px;
             margin-top: 25px;
             padding-bottom: 20px;
         }
 
-        /* Cada item (Círculo + Texto) */
         .palette-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: auto;
-            /* Dejamos que el ancho lo defina el contenido */
         }
 
-        /* EL CÍRCULO */
         .color-circle {
-            width: 31px;
-            /* Tamaño ideal para móvil (ni muy chico ni muy grande) */
-            height: 31px;
-            /* Igual al ancho para que sea redondo */
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            /* Esto lo hace círculo perfecto */
-
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-            /* Sombrita suave */
             transition: transform 0.3s ease;
         }
 
         .color-circle:hover {
             transform: scale(1.1);
-            /* Efecto de "agrandarse" un poquito al pasar el mouse */
         }
 
-        /* El texto del código HEX */
         .color-label {
-            font-size: 0.45rem;
-            /* Texto bien chiquito para que no moleste */
+            font-size: 0.85rem;
             margin-top: 5px;
             font-family: 'Courier New', Courier, monospace;
             color: var(--color-text);
             opacity: 0.8;
             letter-spacing: -0.5px;
-            /* Juntamos un poquito las letras para que entren bien */
         }
 
-
-        /* --- AJUSTES PARA PC / TABLET (Se agrandan un poco) --- */
         @media (min-width: 768px) {
             .palette-container {
                 gap: 20px;
-                /* Más aire en PC */
             }
 
             .color-circle {
                 width: 60px;
-                /* Círculos más grandes en pantalla grande */
                 height: 60px;
             }
 
@@ -402,8 +503,7 @@
             }
         }
 
-        /* --- CORRECCIÓN POSICIÓN DEL SELLO --- */
-
+        /* --- 8. CORRECCIÓN SELLO Y SOBRE (PC) --- */
         #top {
             position: relative;
             width: 100%;
@@ -411,22 +511,14 @@
             justify-content: center;
         }
 
-        /* ESTILO BASE (CELULAR) */
         .badge {
             position: absolute;
-
-            /* TÉCNICA DE CENTRADO SIN TRANSFORM (Para no pelear con animate.css) */
             left: 0;
             right: 0;
             margin: 0 auto;
-
             z-index: 10;
-
-            /* TAMAÑO Y POSICIÓN VERTICAL MÓVIL */
             width: 120px;
-            /* Es importante definir el ancho para que el margin:auto funcione */
             bottom: -15px !important;
-            /* Ajustá esto a ojo en tu celu */
         }
 
         .badge img {
@@ -435,14 +527,88 @@
             display: block;
         }
 
-        /* ESTILO DESKTOP (PC) */
         @media (min-width: 768px) {
             .badge {
-                /* TAMAÑO Y POSICIÓN VERTICAL PC */
                 width: 150px;
                 bottom: -50px !important;
-                /* Ajustá esto a ojo en la PC */
             }
+
+            .intro {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .intro>.top,
+            .intro>.bottom {
+                width: 100%;
+                max-width: 600px;
+                position: relative;
+            }
+
+            .top img,
+            #bottom img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* --- 9. PLAYLIST --- */
+        .playlist {
+            padding: 60px 20px;
+            background-color: #283644;
+            text-align: center;
+            color: white;
+            min-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        .playlist h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #D4B996;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-spotify {
+            display: inline-block;
+            background-color: #1DB954;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #1DB954;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-spotify:hover {
+            background-color: transparent;
+            color: #1DB954;
+            transform: scale(1.05);
+        }
+
+        /* Botón de Copiar Alias */
+        #btnCopiar {
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 15px;
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: var(--color-primary);
+        }
+
+        #btnCopiar:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
     </style>
 </head>
@@ -457,9 +623,9 @@
                     style="margin-top: 120px !important; margin-left: 5px !important; font-size: 0.7rem;"><b><em>Tocá
                             para abrir</em></b></small>
             </div>
-            <img src="https://evnt.ar/assets/images/envelopet.png"
+            <img src="assets/img/envelopet.png"
                 class="top hiddenM animate__animated animate__slideInDown" />
-            <img src="https://evnt.ar/assets/images/envelopetm.png"
+            <img src="assets/img/envelopetm.png"
                 class="top hiddenL animate__animated animate__slideInDown" />
         </div>
         <div class="bottom" id="bottom"></div>
@@ -472,9 +638,8 @@
         <source src="assets/song/background_a-thousand-years.mp3" type="audio/mp3" />
     </audio>
 
-    <a href="javascript:void(0);" onclick="abrirModalRSVP()" class="linkcontacto"
-        style="z-index:1000; cursor: pointer;">
-        <i class="fab fa-whatsapp" style="font-size:24px; color: white;"></i>
+    <a href="javascript:void(0);" class="linkcontacto" style="z-index:1000; cursor: pointer;" id="btnFloatRSVP">
+        <i class="fa-regular fa-address-book" style="font-size:24px; color: white;"></i>
     </a>
 
     <section class="cover full">
@@ -574,13 +739,19 @@
                     </div>
                     <div class="line"></div>
                     <div class="date">
-                        <p>14:00</p><span>Horas</span>
+                        <p>17:00</p><span>Horas</span>
                     </div>
                 </div>
                 <div class="place">
                     <p><b>Finca 'El Secreto'</b></p>
                     <p>Ruta 226 Km 21.5, <br>Mar del Plata</p>
                 </div>
+            </div>
+            <div
+                style="background-color: #f9f9f9; padding:10px; border-radius: 10px; border-left: 4px solid var(--vino); margin-bottom: 5px; text-align: left; align-items: center; height: 5px; margin-top: -30px;">
+                <p style="color:var(--vino) !important; font-size: 0.8rem; margin-top: -10px;"><em><b>Solicitamos llegar
+                            con
+                            puntualidad</b></em></p>
             </div>
             <a href="https://maps.app.goo.gl/zRNjh8cNGmpnBA9p9" target="_blank">Cómo llegar</a>
         </article>
@@ -592,12 +763,11 @@
             <div>
                 <div class="place">
                     <p><b>Formal-Elegante</b></p>
-                    <p>Celebremos con todos los colores del aroíris. <br><b> El blanco estará reservado para iluminar a
+                    <p>Celebremos con todos los colores del arcoíris. <br><b> El blanco estará reservado para iluminar a
                             la
                             novia.</b></p>
-                    <small><em class="comentario">(Opcional) Si querés estar a tono con nuestra decoración, <b>esta será
-                                la
-                                paleta:</b></em></small>
+                    <small><em class="comentario"><b>(Opcional)</b> <br>Te dejamos unas ideas de colores con las que
+                            vestiremos la finca. </b></em></small>
 
                     <div class="palette-container">
                         <div class="palette-item">
@@ -645,8 +815,9 @@
             <p>Muchos de ustedes nos vieron crecer juntos. <b>Mili y Juli</b>, dos conocidos totalmente desconocidos
                 entre ellos. Ninguno de los dos <em>(ni ustedes)</em> pensábamos que <b>la mejor historia que podiamos
                     contar... era estar a la par del otro.</b></p>
-            <p>Hoy, después de un comienzo de charla casual, un café con nervios, el constante pensamiento de "Nos
-                conocemos desde niños pero jamás nos habíamos conocido realmente", comentarios de nuestros amigos y
+            <p>Hoy, después de un comienzo de charla casual, un café con nervios, el constante pensamiento de <em>"Nos
+                    conocemos desde niños pero jamás nos habíamos conocido realmente"</em>, comentarios de nuestros
+                amigos y
                 descubrir que <b>Dios siempre tuvo un plan...</b></p>
             <p><b>Damos el gran paso.</b></p>
         </div>
@@ -698,12 +869,12 @@
     </section>
 
     <section class="gifts"
-        style="background-image: url('https://evnt.ar/storage/254/regalos/background_image/GYOJMsHu3otfFq2eZ4tzaOlvAN3ilOd68eKCn9XH.jpg');">
+        style="background-image: url('https://img.freepik.com/free-vector/hand-drawn-olive-green-background_23-2149724861.jpg');">
         <div class="card wow animate__animated animate__fadeInUp">
             <lord-icon src="https://cdn.lordicon.com/kezeezyg.json" trigger="loop" stroke="light" delay="300"
                 colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <h2>Regalos</h2>
-            <p>Nuestro mayor regalo es verte ese día celebrando con nosotros. Si deseas ayudarnos a poder llevar
+            <p>Nuestro mayor regalo es verte ese día celebrando con nosotros. <br><br> Si deseas ayudarnos a poder llevar
                 adelante la fiesta, te dejamos los datos bancarios:</p>
             <button class="modal-button" href="#modalRegalos">Ver Datos Bancarios</button>
         </div>
@@ -743,127 +914,25 @@
                 colors="primary:#ffffff,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <br />
             <span>RSVP</span>
-            <h2>Confirmación de Asistencia</h2>
-            <p><b> Por favor confirmar antes del 28 de Febrero</b></p>
-            <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;"><i
-                    class="fas fa-check-circle" style="margin-right:10px"></i>Confirmar Asistencia</button>
+            <h2>Confirmación de Asistencia</h2> <br>
+            <p class="sombreado" style="font-weight: 500; font-size: 0.87rem;"><b> Por favor, confirmar antes del 28 de Febrero</b></p>
+            <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;" id="btnStaticRSVP"><i
+                    class="fas fa-check-circle" style="margin-right:10px"></i>Confirmar
+                Asistencia</button>
             <p><small style="font-size: 0.9rem;"> <b><em>Debe completarse una vez por cada integrante de
                             familia.</b></em></small></p>
-            <div class="modalGift" id="modalRSVP">
-                <div class="contenido-modal">
-                    <span class="closeModal"><i class="fas fa-times"></i></span>
-                    <div class="cont">
-                        <h2>Confirmación</h2>
-                        <div id="bloquePrecio"
-                            style="display:none; background-color: #f9f9f9; padding: 10px; border-radius: 10px; border-left: 4px solid var(--color-primary); margin-bottom: 15px; text-align: left; align-items: center;">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <lord-icon src="https://cdn.lordicon.com/qiuoixuo.json" trigger="loop" delay="2000"
-                                    colors="primary:#9A9B6A,secondary:#D4B996" style="width:35px;height:35px">
-                                </lord-icon>
-                                <div>
-                                    <p style="margin:0; font-size: 0.85rem; line-height: 1.2; color: #666;">
-                                        Valor de tu tarjeta: <b style="color: var(--color-primary); font-size: 1rem;"
-                                            id="precioDinamico"></b>
-                                    </p>
-                                    <p style="margin:0; font-size: 0.7rem; color: #999;">Alias: <b>JULIO.ESPINAL.BG</b>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form">
-                            <div class="msj error">Por favor completa todos los campos</div>
+        </div>
+    </section>
 
-                            <form id="rsvpForm" name="rsvpForm">
+    <section class="playlist wow animate__animated animate__fadeInUp">
+        <i class="bi bi-star-fill" style="font-size: 60px; color: #f9f9f9; margin-bottom: 15px;"></i>
+        <h2 class="wow animate__animated animate__fadeInUp">Playlist</h2>
+        <p class="wow animate__animated animate__fadeInUp">Agregá esas canciones que no pueden faltar en la fiesta. <br><br> Varias podrían
+            ser tocadas en vivo 🙊</p>
 
-                                <div class="radio">
-                                    <label class="container">Asistiré
-                                        <input type="radio" checked="checked" value="Asiste" name="asistencia">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">No asistiré
-                                        <input type="radio" value="No asiste" name="asistencia">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <input type="hidden" name="asiste" id="asiste" value="si" />
-                                <input type="hidden" name="monto_tarjeta" id="inputMontoTarjeta" value="">
-                                <div id="bloquePago"
-                                    style="display:none; margin-top: 15px; border-top: 1px dashed #ddd; padding-top: 15px;">
-                                    <label style="font-size: 0.9rem; margin-bottom: 10px; display:block;">Sobre el valor
-                                        de la tarjeta:</label>
-
-                                    <div class="radio">
-                                        <label class="container" style="font-size: 0.9rem;">Puedo abonarlo
-                                            <input type="radio" name="pago_estado" value="Abonará">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="container" style="font-size: 0.9rem;">Necesito consultarles algo
-                                            <input type="radio" name="pago_estado" value="Consulta">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <label>Nombre y Apellido</label>
-                                <input type="text" name="nombre" required placeholder="Ingresá tu nombre completo" />
-
-                                <label>¿Necesitas un menú especial?</label>
-                                <div class="selectField">
-                                    <i class="fas fa-angle-down"></i>
-                                    <select name="alimento" id="alimentos" required>
-                                        <option value="" disabled selected>Seleccioná una opción</option>
-                                        <option value="Ninguna">Ninguno</option>
-                                        <option value="Celiaca">Celiaco</option>
-                                        <option value="Vegetariana">Vegetariano</option>
-                                        <option value="Vegana">Vegano</option>
-                                        <option value="Diabética">Diabético</option>
-                                    </select>
-                                </div>
-
-                                <label>¿Necesitas traslado?*</label>
-                                <div class="selectField">
-                                    <i class="fas fa-angle-down"></i>
-                                    <select name="traslado" id="traslados" required>
-                                        <option value="" disabled selected>Seleccioná una opción</option>
-                                        <option value="No">No, voy por mis propios medios</option>
-                                        <option value="Si">Si, necesito traslado</option>
-                                    </select>
-                                </div>
-
-                                <label>Comentarios</label>
-                                <input name="comentarios" id="comentarios" placeholder="Algo que debamos saber..." />
-
-                                <button class="submit" type="submit" name="save">
-                                    <i class="fas fa-check-circle"></i> Enviar confirmación
-                                </button>
-
-                                <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
-                                    <i class="fab fa-whatsapp"></i> o confirmar por WhatsApp
-                                </button>
-                                <small style="font-size: 0.7rem;">*Traslado: Se informará luego el valor que podría
-                                    tener.</small>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="thanks" style="display:none; text-align: center; padding: 20px 10px;">
-                        <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" state="hover-pinch"
-                            colors="primary:#154734,secondary:#d4b996" style="width:80px;height:80px"></lord-icon>
-
-                        <h2 style="margin-top: 15px; color: var(--color-primary);">¡Gracias por confirmar!</h2>
-                        <p style="margin-bottom: 25px;">¿Querés confirmar a alguien más?</p>
-
-                        <button id="btnOtra" class="btn-action btn-primary-modal">
-                            Confirmar otro familiar
-                        </button>
-
-                        <button id="btnCerrarRSVP" class="btn-action btn-secondary-modal">
-                            Volver a la web
-                        </button>
-                        <p style="font-size: 0.8rem; margin-top: 20px; color: #999;">
-                            Cerrando en <span id="segundosRestantes">5</span> segundos...
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <a href="" target="_blank" class="btn-spotify wow animate__animated animate__fadeInUp">
+            <i class="fab fa-spotify"></i> Agregar en Spotify
+        </a>
     </section>
 
     <section class="content full" style="background-image: url('assets/img/DSC_0339.JPG');">
@@ -878,316 +947,599 @@
             </div>
         </div>
     </section>
-
     <footer>
         <p style="font-size: 0.7rem;">Mili y Juli - <b>Nuestra boda</b> | ABRIL 2026</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <script src="assets/js/wow/wow.js"></script>
-    <script src="assets/js/modal.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/countdown.js"></script>
+    <div class="modalGift" id="modalRSVP">
+        <div class="contenido-modal">
+            <span class="closeModal"><i class="fas fa-times"></i></span>
+            <div class="cont">
+                <h2>Confirmación</h2>
+                <div id="bloquePrecio"
+                    style="display:none; background-color: #f9f9f9; padding: 10px; border-radius: 10px; border-left: 4px solid var(--color-primary); margin-bottom: 15px; text-align: left; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div>
+                            <p style="margin:0; font-size: 0.85rem; line-height: 1.2; color: #666;">
+                                Valor de tu tarjeta: <b style="color: var(--color-primary); font-size: 1rem;"
+                                    id="precioDinamico"></b>
+                            </p>
+                            <p style="margin:0; font-size: 0.7rem; color: #999;">Alias: <b>JULIO.ESPINAL.BG</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="msj error">Por favor completa todos los campos</div>
 
-    <script>
-        // Iniciar animaciones WOW
-        new WOW().init();
+                    <form id="rsvpForm" name="rsvpForm">
 
-        /* =========================================
-           1. CONFIGURACIÓN (EDITAR ESTO)
-           ========================================= */
-        // Pegá acá tu URL de Google Apps Script (la que termina en /exec)
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbymWuLx0LAcyQQs881qDuQ2Jy51roJTivrTgRdHnMVZYDwIDazQ8moc5ak5GT3oLz9i/exec';
+                        <div class="radio">
+                            <label class="container">Asistiré
+                                <input type="radio" checked="checked" value="Asiste" name="asistencia">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container">No asistiré
+                                <input type="radio" value="No asiste" name="asistencia">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <input type="hidden" name="asiste" id="asiste" value="si" />
+                        <input type="hidden" name="monto_tarjeta" id="inputMontoTarjeta" value="">
+                        <div id="bloquePago"
+                            style="display:none; margin-top: 15px; border-top: 1px dashed #ddd; padding-top: 15px;">
+                            <label style="font-size: 0.9rem; margin-bottom: 10px; display:block;">Sobre el valor
+                                de la tarjeta:</label>
 
-        // Tu número de WhatsApp (con código de país, sin +)
-        const telefonoNovios = "5492234257146";
+                            <div class="radio">
+                                <label class="container" style="font-size: 0.9rem;">Puedo abonarlo
+                                    <input type="radio" name="pago_estado" value="Abonará">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container" style="font-size: 0.9rem;">Necesito consultarles algo
+                                    <input type="radio" name="pago_estado" value="Consulta" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <label>Nombre y Apellido</label>
+                        <input type="text" name="nombre" required placeholder="Ingresá tu nombre completo" />
+                        <div id="camposOpcionales"><br>
+                        <label>¿Necesitas un menú especial?</label>
+                        <div class="selectField">
+                            <i class="fas fa-angle-down"></i>
+                            <select name="alimento" id="alimentos" required>
+                                <option value="" disabled selected>Seleccioná una opción</option>
+                                <option value="Ninguna">Ninguno</option>
+                                <option value="Celiaca">Celiaco</option>
+                                <option value="Vegetariana">Vegetariano</option>
+                                <option value="Vegana">Vegano</option>
+                                <option value="Diabética">Diabético</option>
+                            </select>
+                            
+                        </div>
 
+                        <label>¿Necesitas traslado?*</label>
+                        <div class="selectField">
+                            <i class="fas fa-angle-down"></i>
+                            <select name="traslado" id="traslados" required>
+                                <option value="" disabled selected>Seleccioná una opción</option>
+                                <option value="No">No, voy por mis propios medios</option>
+                                <option value="Si">Si, necesito traslado</option>
+                            </select>
+                        </div>
 
-        /* =========================================
-           2. LÓGICA DE SCROLL (Anti-saltos)
-           ========================================= */
-        let savedScrollPosition = 0;
+                        <label>Comentarios</label>
+                        <input name="comentarios" type="text" id="comentarios"
+                            placeholder="Algo que debamos saber..." />
+                        </div>        
+                        <button class="submit aire" type="submit" name="save">
+                            <i class="fas fa-check-circle"></i> Enviar confirmación
+                        </button>
 
-        // Detectar clicks en botones que abren modales
-        document.querySelectorAll('[href="#modalRegalos"], [href="#modalRSVP"]').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
+                        <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
+                            <i class="fab fa-whatsapp"></i> o confirmar por WhatsApp
+                        </button>
+                        <small style="font-size: 0.7rem;">*Traslado: Se informará luego el valor que podría
+                            tener.</small>
+                    </form>
+                </div>
+            </div>
+            <div class="thanks" style="display:none; text-align: center; padding: 20px 10px;">
+                <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" state="hover-pinch"
+                    colors="primary:#154734,secondary:#d4b996" style="width:80px;height:80px"></lord-icon>
+
+                <h2 style="margin-top: 15px; color: var(--color-primary);">¡Gracias por confirmar!</h2>
+                <p style="margin-bottom: 25px;">¿Querés confirmar a alguien más?</p>
+
+                <button id="btnOtra" class="btn-action btn-primary-modal">
+                    Confirmar otro familiar
+                </button>
+
+                <button id="btnCerrarRSVP" class="btn-action btn-secondary-modal">
+                    Volver a la web
+                </button>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script src="assets/js/wow/wow.js"></script>
+        <script src="assets/js/modal.js"></script>
+        <script src="assets/js/lightbox.js"></script>
+        <script src="assets/js/countdown.js"></script>
+
+        <script>
+            // --- INICIALIZACIÓN ---
+            new WOW().init();
+
+            // --- VARIABLES GLOBALES ---
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbymWuLx0LAcyQQs881qDuQ2Jy51roJTivrTgRdHnMVZYDwIDazQ8moc5ak5GT3oLz9i/exec';
+            const telefonoNovios = "5492234257146";
+
+            // --- UTILIDADES DE SCROLL Y MODALES ---
+            let savedScrollPosition = 0;
+
+            // 1. Para los botones ESTÁNDAR (como el fijo) que tienen href="#modalRSVP"
+            document.querySelectorAll('[href="#modalRegalos"], [href="#modalRSVP"]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
+                });
             });
-        });
 
-        // Corrección para el botón flotante (onclick explícito)
-        function abrirModalRSVP() {
-            const modal = document.getElementById('modalRSVP');
-            if (modal) {
-                modal.style.display = 'block';
-                savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
-                document.body.style.overflow = 'hidden';
+            // 2. FIX: Para el BOTÓN FLOTANTE (que no tiene href al modal)
+            // Le asignamos manualmente la función de abrir
+            const btnFloat = document.getElementById('btnFloatRSVP');
+            if (btnFloat) {
+                btnFloat.addEventListener('click', function (e) {
+                    e.preventDefault(); // Evita que recargue o salte
+                    abrirModalRSVP();   // Ejecuta la apertura
+                });
             }
-        }
 
+            // Función para abrir el Modal de RSVP
+            function abrirModalRSVP() {
+                const modal = document.getElementById('modalRSVP');
+                if (modal) {
+                    // Guardamos posición
+                    savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-        /* =========================================
-           3. LÓGICA GENERAL (Música, Sobre, etc)
-           ========================================= */
-        function abrirSobre() {
-            var audio = document.getElementById("player");
-            var intro = document.getElementById("intro");
-            var musicBtn = document.getElementById("musicButton");
+                    // Mostramos modal
+                    modal.style.display = 'block';
 
-            audio.play().then(() => {
-                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
-            }).catch(function (error) {
-                console.log("Autoplay bloqueado.", error);
-                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
-            });
-
-            intro.style.opacity = "0";
-            intro.style.transform = "translateY(-100%)";
-
-            setTimeout(function () {
-                intro.style.display = "none";
-                document.body.style.overflow = "auto";
-            }, 1000);
-        }
-
-        var musicBtn = document.getElementById("musicButton");
-        var audio = document.getElementById("player");
-
-        musicBtn.addEventListener("click", function () {
-            if (audio.paused) {
-                audio.play();
-                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
-            } else {
-                audio.pause();
-                musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
+                    // Bloqueamos scroll
+                    document.body.style.overflow = 'hidden';
+                }
             }
-        });
 
+            // Función para cerrar Modal RSVP
+            function cerrarModalRSVP() {
+                if (typeof autoCloseTimer !== 'undefined') clearTimeout(autoCloseTimer);
+                if (typeof conteoInterval !== 'undefined') clearInterval(conteoInterval);
 
-        /* =========================================
-           4. MODAL REGALOS (Copiar Alias)
-           ========================================= */
-        const btnCopiar = document.getElementById('btnCopiar');
-        const mensajeExito = document.getElementById('mensajeExito');
-        const modalRegalos = document.getElementById('modalRegalos');
-        const modalContentRegalos = document.getElementById('modalContentRegalos');
-        const aliasTexto = "JULIO.ESPINAL.BG";
+                const modal = document.getElementById('modalRSVP');
+                if (modal) modal.style.display = 'none';
 
-        function cerrarModalSuave() {
-            if (modalContentRegalos) {
-                modalContentRegalos.classList.remove('animate__zoomIn');
-                modalContentRegalos.classList.add('animate__fadeOut');
-            }
-            setTimeout(() => {
-                modalRegalos.style.display = 'none';
                 document.body.style.overflow = 'auto';
-                window.scrollTo(0, savedScrollPosition);
-
-                if (modalContentRegalos) modalContentRegalos.classList.remove('animate__fadeOut');
-                if (mensajeExito) mensajeExito.style.display = 'none';
-                if (btnCopiar) {
-                    btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
-                    btnCopiar.style.opacity = "1";
+                if (window.scrollTo && typeof savedScrollPosition !== 'undefined') {
+                    window.scrollTo(0, savedScrollPosition);
                 }
-            }, 800);
-        }
 
-        if (btnCopiar) {
-            btnCopiar.addEventListener('click', function () {
-                navigator.clipboard.writeText(aliasTexto).then(function () {
-                    btnCopiar.innerHTML = '<i class="fas fa-check"></i> ¡Listo!';
-                    btnCopiar.style.opacity = "0.7";
-                    mensajeExito.style.display = 'block';
-                    setTimeout(cerrarModalSuave, 2000);
-                }, function (err) { alert("Alias: " + aliasTexto); });
-            });
-        }
-        function closeModalRegalos() { cerrarModalSuave(); }
-
-
-        /* =========================================
-           5. LÓGICA DE CONFIRMACIÓN (Sheets + WhatsApp)
-           ========================================= */
-        const form = document.forms['rsvpForm'];
-        const btnEnviar = document.querySelector('.submit');      // Botón Normal
-        const btnWspSubmit = document.getElementById('btnWspSubmit'); // Botón WhatsApp
-
-        const divForm = document.querySelector('#modalRSVP .cont');
-        const divThanks = document.querySelector('#modalRSVP .thanks');
-
-        const btnOtra = document.getElementById('btnOtra');
-        const btnCerrarRSVP = document.getElementById('btnCerrarRSVP');
-        const spanSegundos = document.getElementById('segundosRestantes');
-
-        let autoCloseTimer;
-        let conteoInterval;
-        let esEnvioWhatsApp = false; // Bandera para saber cuál tocó
-
-        // Detectar clicks en los botones de envío
-        if (btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
-        if (btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
-
-        // Resetear Formulario
-        function resetearFormulario() {
-            form.reset();
-            btnEnviar.disabled = false;
-            btnWspSubmit.disabled = false;
-            btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
-            btnWspSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> o confirmar por WhatsApp';
-
-            divThanks.style.display = 'none';
-            divForm.style.display = 'block';
-
-            clearTimeout(autoCloseTimer);
-            clearInterval(conteoInterval);
-        }
-
-        // Cerrar Modal RSVP
-        function cerrarModalRSVP() {
-            clearTimeout(autoCloseTimer);
-            clearInterval(conteoInterval);
-            document.getElementById('modalRSVP').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            if (window.scrollTo && typeof savedScrollPosition !== 'undefined') {
-                window.scrollTo(0, savedScrollPosition);
+                if (typeof resetearFormulario === 'function') {
+                    setTimeout(resetearFormulario, 500);
+                }
             }
-            setTimeout(resetearFormulario, 500);
-        }
 
-        // SUBMIT (Envío)
-        if (form) {
-            form.addEventListener('submit', e => {
-                e.preventDefault();
+            const btnCerrarRSVP = document.getElementById('btnCerrarRSVP');
+            if (btnCerrarRSVP) btnCerrarRSVP.addEventListener('click', cerrarModalRSVP);
+        </script>
 
-                // 1. Feedback Visual (Bloqueamos ambos botones)
-                const textoOriginal = btnEnviar.innerHTML;
-                const textoWspOriginal = btnWspSubmit.innerHTML;
-                btnEnviar.disabled = true;
-                btnWspSubmit.disabled = true;
+        <script>
+            /* =========================================
+               LÓGICA DE AUDIO Y APERTURA DE SOBRE
+               ========================================= */
 
-                if (esEnvioWhatsApp) {
-                    btnWspSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+            function abrirSobre() {
+                var audio = document.getElementById("player");
+                var intro = document.getElementById("intro");
+                var musicBtn = document.getElementById("musicButton");
+
+                // Intentar reproducir audio
+                audio.play().then(() => {
+                    musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
+                }).catch(function (error) {
+                    console.log("Autoplay bloqueado por el navegador.", error);
+                    musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
+                });
+
+                // Animación de salida del sobre
+                intro.style.opacity = "0";
+                intro.style.transform = "translateY(-100%)";
+
+                setTimeout(function () {
+                    intro.style.display = "none";
+                    document.body.style.overflow = "auto";
+                }, 1000);
+            }
+
+            // Control del botón de música (Play/Pause)
+            var musicBtn = document.getElementById("musicButton");
+            var audio = document.getElementById("player");
+
+            if (musicBtn && audio) {
+                musicBtn.addEventListener("click", function () {
+                    if (audio.paused) {
+                        audio.play();
+                        musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
+                    } else {
+                        audio.pause();
+                        musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
+                    }
+                });
+            }
+        </script>
+
+<script>
+        /* =========================================
+           LÓGICA DE REGALOS (COPIAR ALIAS) - VERSION FINAL
+           ========================================= */
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            const btnCopiar = document.getElementById('btnCopiar');
+            const mensajeExito = document.getElementById('mensajeExito');
+            const aliasTexto = "JULIO.ESPINAL.BG";
+
+            // Función global de cierre
+            window.closeModalRegalos = function() {
+                const modalRegalos = document.getElementById('modalRegalos');
+                const modalContent = document.getElementById('modalContentRegalos');
+                
+                if (modalContent) {
+                    modalContent.classList.remove('animate__zoomIn');
+                    modalContent.classList.add('animate__fadeOut');
+                }
+                
+                setTimeout(() => {
+                    if (modalRegalos) modalRegalos.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    
+                    if (modalContent) {
+                        modalContent.classList.remove('animate__fadeOut');
+                        modalContent.classList.add('animate__zoomIn');
+                    }
+                    if (mensajeExito) mensajeExito.style.display = 'none';
+                    if (btnCopiar) {
+                        btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
+                        btnCopiar.style.opacity = "1";
+                    }
+                }, 500);
+            };
+
+            // Función de copiado compatible
+            const copiarAlPortapapeles = (texto) => {
+                // Intento 1: API Moderna
+                if (navigator.clipboard && window.isSecureContext) {
+                    return navigator.clipboard.writeText(texto);
                 } else {
-                    btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                }
-
-                // 2. Enviar a Google Sheets
-                fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                    .then(response => {
-                        const contentType = response.headers.get("content-type");
-                        if (contentType && contentType.indexOf("application/json") !== -1) {
-                            return response.json().then(data => {
-                                if (data.result === 'success') return true;
-                                else throw new Error(data.error);
-                            });
-                        } else {
-                            throw new Error("Error de permisos (HTML devuelto).");
-                        }
-                    })
-                    .then(() => {
-                        // 3. ÉXITO
-                        divForm.style.display = 'none';
-                        divThanks.style.display = 'block';
-
-                        // --- CAMINO A: WHATSAPP ---
-                        if (esEnvioWhatsApp) {
-                            // Capturamos datos para el mensaje
-                            const nombre = form.querySelector('input[name="nombre"]').value;
-                            // Ojo: Asegurate que tu input radio tenga name="asistencia"
-                            const asistenciaInput = form.querySelector('input[name="asistencia"]:checked');
-                            const asistencia = asistenciaInput ? asistenciaInput.value : "Asiste";
-
-                            // Mensaje
-                            const mensaje = `¡Hola Juli, Mili! Soy *${nombre}*. Te confirmo desde la web que: *${asistencia}* a la boda. ¡Muchas gracias por la invitación!`;
-                            const link = `https://api.whatsapp.com/send?phone=${telefonoNovios}&text=${encodeURIComponent(mensaje)}`;
-
-                            // Esperamos 1.5 seg y redirigimos
-                            setTimeout(() => {
-                                window.location.href = link;
-                                // Opcional: Cerrar modal después de irse
-                                setTimeout(cerrarModalRSVP, 1000);
-                            }, 1500);
-
-                            // --- CAMINO B: NORMAL ---
-                        } else {
-                            // Timer visual
-                            let segundos = 5;
-                            if (spanSegundos) spanSegundos.innerText = segundos;
-                            conteoInterval = setInterval(() => {
-                                segundos--;
-                                if (spanSegundos) spanSegundos.innerText = segundos;
-                                if (segundos <= 0) clearInterval(conteoInterval);
-                            }, 1000);
-
-                            // Cierre automático
-                            autoCloseTimer = setTimeout(() => {
-                                cerrarModalRSVP();
-                            }, 5000);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        // Restauramos botones
-                        btnEnviar.disabled = false;
-                        btnWspSubmit.disabled = false;
-                        btnEnviar.innerHTML = textoOriginal;
-                        btnWspSubmit.innerHTML = textoWspOriginal;
-                        alert("Hubo un error al guardar. Por favor reintentá.");
+                    // Intento 2: Método "Antiguo" (Funciona siempre)
+                    let textArea = document.createElement("textarea");
+                    textArea.value = texto;
+                    textArea.style.position = "fixed";
+                    textArea.style.left = "-9999px";
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    return new Promise((resolve, reject) => {
+                        document.execCommand('copy') ? resolve() : reject();
+                        textArea.remove();
                     });
-            });
-        }
-
-        // Botones "Gracias"
-        if (btnOtra) btnOtra.addEventListener('click', resetearFormulario);
-        if (btnCerrarRSVP) btnCerrarRSVP.addEventListener('click', cerrarModalRSVP);
-    </script>
-    <script>
-        /* --- LÓGICA DE PRECIOS Y CÓDIGOS --- */
-        document.addEventListener("DOMContentLoaded", function () {
-
-            // 1. Recuperar datos
-            const precioGuardado = localStorage.getItem('boda_precio');
-            const textoGuardado = localStorage.getItem('boda_texto');
-
-            const divPrecio = document.getElementById('bloquePrecio');
-            const spanPrecio = document.getElementById('precioDinamico');
-            const divPago = document.getElementById('bloquePago');
-
-            // Convertimos a número para comparar
-            // Si no hay dato (null), asumimos 0 para que no rompa, o podrías redirigir
-            const precioNum = precioGuardado ? parseInt(precioGuardado) : 0;
-
-            // 2. Lógica Condicional
-            if (precioNum > 0) {
-                // A) TIENEN QUE PAGAR
-                if (divPrecio && spanPrecio) {
-                    spanPrecio.innerText = textoGuardado; // Ej: "$86.000"
-                    divPrecio.style.display = "block";    // Mostramos el ticket
-                    const inputMonto = document.getElementById('inputMontoTarjeta');
-                    if (inputMonto) inputMonto.value = textoGuardado;
-
                 }
-                if (divPago) {
-                    divPago.style.display = "block";      // Mostramos las opciones de "Puedo abonar..."
+            };
 
-                    // Hacemos el campo 'required' dinámicamente para que no puedan enviar sin elegir
-                    const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
-                    radiosPago.forEach(r => r.required = true);
-                }
-            } else {
-                // B) ES GRATIS (Familia)
-                // Nos aseguramos que todo esté oculto
-                if (divPrecio) divPrecio.style.display = "none";
-                if (divPago) {
-                    divPago.style.display = "none";
-                    // Quitamos el required para que no les tire error al enviar
-                    const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
-                    radiosPago.forEach(r => r.required = false);
-                }
+            if (btnCopiar) {
+                btnCopiar.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    copiarAlPortapapeles(aliasTexto)
+                        .then(() => {
+                            btnCopiar.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+                            btnCopiar.style.opacity = "1";
+                            if (mensajeExito) mensajeExito.style.display = 'block';
+                            setTimeout(window.closeModalRegalos, 2500);
+                        })
+                        .catch(() => {
+                            alert("No se pudo copiar. El alias es: " + aliasTexto);
+                        });
+                });
             }
         });
     </script>
+
+        <script>
+            /* =========================================
+               SCRIPT 4: SEGURIDAD (BOTONES GRISES)
+               ========================================= */
+
+            document.addEventListener("DOMContentLoaded", function () {
+                // 1. Recuperar datos
+                const precioGuardado = localStorage.getItem('boda_precio');
+                const textoGuardado = localStorage.getItem('boda_texto');
+
+                // 2. Función de BLOQUEO
+                const bloquearBoton = (idBoton) => {
+                    const btnOriginal = document.getElementById(idBoton);
+
+                    if (btnOriginal) {
+                        // Clonamos el botón para eliminar eventos de apertura de modal
+                        const btnClon = btnOriginal.cloneNode(true);
+
+                        // Aplicamos la clase gris
+                        btnClon.classList.add('btn-disabled');
+                        btnClon.removeAttribute('href');
+
+                        // --- CAMBIO DE TEXTO ---
+                        if (idBoton === 'btnFloatRSVP') {
+                            // Flotante: Solo candado
+                            btnClon.innerHTML = '<i class="fas fa-lock"></i>';
+                        } else {
+                            // Estático: Candado + "REQUIERE CÓDIGO"
+                            // Al usar innerHTML, borramos "Confirmar Asistencia" automáticamente
+                            btnClon.innerHTML = '<i class="fas fa-lock"></i> REQUIERE CÓDIGO';
+                        }
+
+                        // Click: Alerta de acceso denegado
+                        btnClon.onclick = function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            alert("⛔ Acceso denegado.\nPor favor ingresá desde el inicio con el código de tu tarjeta.");
+                            window.location.href = "../";
+                        };
+
+                        // Reemplazamos el botón original por el gris
+                        btnOriginal.parentNode.replaceChild(btnClon, btnOriginal);
+                    }
+                };
+
+                // 3. VALIDACIÓN
+                if (precioGuardado === null) {
+                    console.log("🔒 Sin código: Bloqueando botones.");
+
+                    bloquearBoton('btnFloatRSVP'); // Bloquea el flotante
+                    bloquearBoton('btnStaticRSVP'); // Bloquea el grande
+
+                    // Borramos el modal del HTML por seguridad
+                    const modal = document.getElementById('modalRSVP');
+                    if (modal) modal.remove();
+
+                } else {
+                    // SI TIENE CÓDIGO, MOSTRAMOS TODO NORMAL
+                    console.log("✅ Acceso autorizado.");
+
+                    const divPrecio = document.getElementById('bloquePrecio');
+                    const spanPrecio = document.getElementById('precioDinamico');
+                    const divPago = document.getElementById('bloquePago');
+                    const inputMonto = document.getElementById('inputMontoTarjeta');
+
+                    const precioNum = parseInt(precioGuardado);
+
+                    if (precioNum > 0) {
+                        if (divPrecio && spanPrecio) {
+                            spanPrecio.innerText = textoGuardado;
+                            divPrecio.style.display = "block";
+                            if (inputMonto) inputMonto.value = textoGuardado;
+                        }
+                        if (divPago) {
+                            divPago.style.display = "block";
+                            const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
+                            radiosPago.forEach(r => r.required = true);
+                        }
+                    } else {
+                        if (divPrecio) divPrecio.style.display = "none";
+                        if (divPago) {
+                            divPago.style.display = "none";
+                            const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
+                            radiosPago.forEach(r => r.required = false);
+                        }
+                    }
+                }
+            });
+
+            // Autodestrucción al salir
+            window.addEventListener('pagehide', function () {
+                localStorage.removeItem('boda_precio');
+                localStorage.removeItem('boda_texto');
+            });
+        </script>
+<script>
+        /* =========================================
+           LÓGICA DE CONFIRMACIÓN (FULL)
+           ========================================= */
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.forms['rsvpForm'];
+            const btnEnviar = document.querySelector('.submit');
+            const btnWspSubmit = document.getElementById('btnWspSubmit');
+            const divForm = document.querySelector('#modalRSVP .cont');
+            const divThanks = document.querySelector('#modalRSVP .thanks');
+            const btnOtra = document.getElementById('btnOtra');
+            const btnCerrarFinal = document.getElementById('btnCerrarRSVP');
+            
+            // Elementos para ocultar/mostrar
+            const camposOpcionales = document.getElementById('camposOpcionales');
+            const bloquePago = document.getElementById('bloquePago');
+            const radiosAsistencia = document.querySelectorAll('input[name="asistencia"]');
+            
+            // Inputs que deben ser requeridos SOLO si asiste
+            const selectAlimento = document.getElementById('alimentos');
+            const selectTraslado = document.getElementById('traslados');
+            const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
+
+            let esEnvioWhatsApp = false;
+
+            // 1. FUNCIÓN PARA MANEJAR "NO ASISTIRÉ"
+            function actualizarFormulario() {
+                const asiste = document.querySelector('input[name="asistencia"]:checked').value === "Asiste";
+                const precioGuardado = localStorage.getItem('boda_precio');
+                const tienePago = precioGuardado && parseInt(precioGuardado) > 0;
+
+                if (asiste) {
+                    // MOSTRAR TODO
+                    if (camposOpcionales) camposOpcionales.style.display = "block";
+                    
+                    // Restaurar Requireds
+                    if (selectAlimento) selectAlimento.setAttribute('required', 'required');
+                    if (selectTraslado) selectTraslado.setAttribute('required', 'required');
+                    
+                    // Mostrar pago solo si corresponde
+                    if (tienePago && bloquePago) {
+                        bloquePago.style.display = "block";
+                        radiosPago.forEach(r => r.setAttribute('required', 'required'));
+                    }
+
+                } else {
+                    // OCULTAR TODO
+                    if (camposOpcionales) camposOpcionales.style.display = "none";
+                    if (bloquePago) bloquePago.style.display = "none";
+
+                    // Quitar Requireds para que deje enviar
+                    if (selectAlimento) selectAlimento.removeAttribute('required');
+                    if (selectTraslado) selectTraslado.removeAttribute('required');
+                    radiosPago.forEach(r => r.removeAttribute('required'));
+
+                    // Limpiar valores (opcional, para que llegue limpio al sheet)
+                    if (selectAlimento) selectAlimento.value = "";
+                    if (selectTraslado) selectTraslado.value = "";
+                    const comentarios = document.getElementById('comentarios');
+                    if (comentarios) comentarios.value = "";
+                    radiosPago.forEach(r => r.checked = false);
+                }
+            }
+
+            // Escuchar cambios en los radios "Sí/No"
+            radiosAsistencia.forEach(radio => {
+                radio.addEventListener('change', actualizarFormulario);
+            });
+
+            // Ejecutar al inicio por si hay algo marcado
+            actualizarFormulario();
+
+
+            // 2. DETECCIÓN DE BOTONES DE ENVÍO
+            if (btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
+            if (btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
+
+
+            // 3. RESETEO DEL FORMULARIO
+            function resetearFormulario() {
+                if (form) form.reset();
+                actualizarFormulario(); // Volver a estado inicial (Asiste seleccionado por defecto)
+                
+                if (btnEnviar) {
+                    btnEnviar.disabled = false;
+                    btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
+                }
+                if (btnWspSubmit) {
+                    btnWspSubmit.disabled = false;
+                    btnWspSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> o confirmar por WhatsApp';
+                }
+                if (divThanks) divThanks.style.display = 'none';
+                if (divForm) divForm.style.display = 'block';
+            }
+
+            if (btnOtra) btnOtra.addEventListener('click', resetearFormulario);
+            
+            if (btnCerrarFinal) {
+                btnCerrarFinal.addEventListener('click', function() {
+                    // Cerrar el modal y recargar la página (opcional, o solo cerrar)
+                    document.getElementById('modalRSVP').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
+
+
+            // 4. ENVÍO (SUBMIT)
+            if (form) {
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+
+                    const textoOriginal = btnEnviar ? btnEnviar.innerHTML : '';
+                    const textoWspOriginal = btnWspSubmit ? btnWspSubmit.innerHTML : '';
+
+                    if (btnEnviar) {
+                        btnEnviar.disabled = true;
+                        if (!esEnvioWhatsApp) btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    }
+                    if (btnWspSubmit) {
+                        btnWspSubmit.disabled = true;
+                        if (esEnvioWhatsApp) btnWspSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+                    }
+
+                    // Enviar a Google Sheets
+                    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                        .then(response => response.json().then(data => {
+                            if (data.result === 'success') return true;
+                            else throw new Error(data.error);
+                        }))
+                        .then(() => {
+                            // ÉXITO
+                            if (divForm) divForm.style.display = 'none';
+                            if (divThanks) divThanks.style.display = 'block';
+
+                            // --- LÓGICA WHATSAPP ---
+                            if (esEnvioWhatsApp) {
+                                const nombre = form.querySelector('input[name="nombre"]').value;
+                                const asistencia = form.querySelector('input[name="asistencia"]:checked').value;
+                                let mensaje = "";
+
+                                if (asistencia === "Asiste") {
+                                    // Datos completos
+                                    const alimentacion = document.getElementById('alimentos').value || "-";
+                                    const transporte = document.getElementById('traslados').value || "-";
+                                    const comentario = document.getElementById('comentarios').value;
+                                    
+                                    // Armado del mensaje positivo
+                                    mensaje = `¡Hola Juli, Mili! Soy *${nombre}* y les confirmo que: *${asistencia}* a su casamiento.`;
+                                    mensaje += `%0A%0ATengo *${alimentacion}* como alimentación, y en cuanto a transporte: *${transporte}*.`;
+                                    if (comentario) mensaje += `%0ANota: ${comentario}`;
+
+                                    // Pago
+                                    const estadoPagoInput = form.querySelector('input[name="pago_estado"]:checked');
+                                    if (estadoPagoInput) {
+                                        let textoPago = "";
+                                        if (estadoPagoInput.value === "Abonará") textoPago = "Lo abonaré a la brevedad.";
+                                        else if (estadoPagoInput.value === "Consulta") textoPago = "Necesito consultarles algo sobre el pago.";
+                                        else if (estadoPagoInput.value === "Ya aboné") textoPago = "Ya realicé la transferencia.";
+                                        if (textoPago) mensaje += `%0A%0ARespecto a la entrada: *${textoPago}*`;
+                                    }
+
+                                } else {
+                                    // Mensaje Negativo (El que pediste)
+                                    mensaje = `Hola Juli, Mili. Soy *${nombre}*. Lamentablemente no podré asistir al casamiento. ¡Muchas gracias igual por la invitación!`;
+                                }
+                                
+                                const link = `https://api.whatsapp.com/send?phone=${telefonoNovios}&text=${mensaje}`;
+                                
+                                // Redirigir
+                                setTimeout(() => { window.location.href = link; }, 1000);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            if (btnEnviar) {
+                                btnEnviar.disabled = false;
+                                btnEnviar.innerHTML = textoOriginal;
+                            }
+                            if (btnWspSubmit) {
+                                btnWspSubmit.disabled = false;
+                                btnWspSubmit.innerHTML = textoWspOriginal;
+                            }
+                            alert("Hubo un error al guardar. Por favor reintentá.");
+                        });
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 Falta:
 ✅ Cambiar número de WhatsApp y mensaje.
 ✅ Comprar dominio.
-• Derivar las DNS.
-• Enlazar dominio en github.
+✅ Derivar las DNS.
+✅ Enlazar dominio en github.
 ✅ Verificar con Mili las imagenes y textos.
 ✅ Editar la imagen sello inicial.
 ✅ Editar fecha civil "A confirmar".

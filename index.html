@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mili & Juli - Acceso</title>
-    
+
     <link rel="icon" type="image/png" href="./confirmacion/assets/img/favicon.png" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <style>
         /* =========================================
@@ -30,12 +33,14 @@
             outline: none;
         }
 
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Sin scroll */
+            overflow: hidden;
+            /* Sin scroll */
             font-family: 'Montserrat', sans-serif;
         }
 
@@ -48,12 +53,13 @@
             height: 100%;
             z-index: 1;
         }
-        
+
         .background-layer img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center; /* Centrado normal */
+            object-position: center;
+            /* Centrado normal */
         }
 
         /* CONTENIDO (LAYER 2) */
@@ -64,23 +70,25 @@
             width: 100%;
             height: 100%;
             z-index: 2;
-            
+
             display: flex;
             flex-direction: column;
-            align-items: center; 
-            
+            align-items: center;
+
             /* --- AJUSTE DE ALTURA --- */
             /* Antes estaba en 15vh. Lo subimos a 42vh para bajar todo el bloque */
             /* Modificá este número si querés subirlo o bajarlo más */
-            padding-top: 42vh; 
+            padding-top: 30vh;
         }
 
         /* TIPOGRAFÍA */
         h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.8rem; /* Un pelín más grande */
+            font-size: 3.8rem;
+            /* Un pelín más grande */
             color: var(--color-dorado);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Más sombra para contraste */
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            /* Más sombra para contraste */
             margin: 0;
             line-height: 1.1;
             text-align: center;
@@ -90,7 +98,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             color: var(--color-blanco);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             margin: 0 0 20px 0;
             font-weight: 400;
             letter-spacing: 1px;
@@ -98,21 +106,22 @@
 
         /* CAJA DE ACCESO */
         .access-box {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(214, 211, 211, 0.4);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             width: 80%;
             max-width: 320px;
             padding: 25px 20px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             text-align: center;
             /* Separación extra del título si hace falta */
-            margin-top: 10px; 
+            margin-top: 10px;
+            margin-bottom: 10px !important;
         }
 
         .instruction-text {
-            color: #666;
+            color: #4e4e4e;
             font-size: 0.85rem;
             margin-bottom: 15px;
             font-weight: 500;
@@ -128,11 +137,12 @@
             font-size: 1rem;
             text-transform: uppercase;
             color: #333;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.8);
+
             margin-bottom: 15px;
             transition: all 0.3s ease;
         }
-        
+
         .custom-input:focus {
             border-color: var(--color-verde);
             box-shadow: 0 0 0 3px rgba(154, 155, 106, 0.2);
@@ -157,7 +167,7 @@
         }
 
         .error-container {
-            display: none; 
+            display: none;
             flex-direction: row;
             align-items: center;
             justify-content: center;
@@ -167,14 +177,22 @@
             font-size: 0.8rem;
             font-weight: 700;
         }
-        
+
         /* Ajuste para pantallas muy petisas (para que no se corte abajo) */
         @media (max-height: 600px) {
-            .content-layer { padding-top: 25vh; } /* Subimos un poco si el celu es chico */
-            h1 { font-size: 3rem; }
-            h2 { font-size: 1.2rem; }
-        }
+            .content-layer {
+                padding-top: 15vh;
+            }
 
+            /* Subimos un poco si el celu es chico */
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 
@@ -185,21 +203,21 @@
     </div>
 
     <div class="content-layer">
-        
+
         <h1 class="animate__animated animate__fadeInDown">Mili & Juli</h1>
         <h2 class="animate__animated animate__fadeInDown">Bienvenidos</h2>
-        
+
         <div class="access-box animate__animated animate__fadeInUp">
             <p class="instruction-text">
                 Ingresá el código de tu invitación
             </p>
 
             <input type="text" id="codigoInput" class="custom-input" placeholder="CÓDIGO AQUÍ">
-            
+
             <button onclick="validarCodigo()" class="custom-btn">INGRESAR</button>
-            
+
             <div id="msjError" class="error-container">
-                <i class="fas fa-exclamation-circle"></i> 
+                <i class="fas fa-exclamation-circle"></i>
                 <span>Código incorrecto</span>
             </div>
         </div>
@@ -208,10 +226,10 @@
 
     <script>
         const accesos = {
-            "BODA-FULL":   { precio: 86000, texto: "$86.000" },
+            "BODA-FULL": { precio: 86000, texto: "$86.000" },
             "BODA-AMIGOS": { precio: 40000, texto: "$40.000" },
-            "FAMILIA":     { precio: 0,     texto: "Invitado Sin Cargo" },
-            "J":           { precio: 100,   texto: "TEST" } 
+            "FAMILIA": { precio: 0, texto: "Invitado Sin Cargo" },
+            "J": { precio: 100, texto: "TEST" }
         };
 
         function validarCodigo() {
@@ -222,18 +240,18 @@
             if (accesos[codigo]) {
                 localStorage.setItem('boda_precio', accesos[codigo].precio);
                 localStorage.setItem('boda_texto', accesos[codigo].texto);
-                
+
                 document.querySelector('.access-box').classList.add('animate__fadeOutDown');
-                
+
                 setTimeout(() => {
                     window.location.href = "./confirmacion/";
                 }, 500);
-                
+
             } else {
                 errorDiv.style.display = 'flex';
                 input.classList.add('animate__animated', 'animate__shakeX');
                 input.style.borderColor = "#B55328";
-                
+
                 setTimeout(() => {
                     input.classList.remove('animate__animated', 'animate__shakeX');
                 }, 1000);
@@ -244,6 +262,19 @@
             if (e.key === "Enter") validarCodigo();
         });
     </script>
-
+    <script>
+        // FIX: Detectar si el usuario volvió con el botón "Atrás"
+        window.addEventListener("pageshow", function (event) {
+            // Si la página viene de la memoria caché (botón atrás)...
+            var historyTraversal = event.persisted ||
+                (typeof window.performance != "undefined" &&
+                    window.performance.navigation.type === 2);
+            if (historyTraversal) {
+                // ... recargamos la página para reiniciar animaciones y limpiar inputs
+                window.location.reload();
+            }
+        });
+    </script>
 </body>
+
 </html>
