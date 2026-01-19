@@ -623,10 +623,8 @@
                     style="margin-top: 120px !important; margin-left: 5px !important; font-size: 0.7rem;"><b><em>Tocá
                             para abrir</em></b></small>
             </div>
-            <img src="assets/img/envelopet.png"
-                class="top hiddenM animate__animated animate__slideInDown" />
-            <img src="assets/img/envelopetm.png"
-                class="top hiddenL animate__animated animate__slideInDown" />
+            <img src="assets/img/envelopet.png" class="top hiddenM animate__animated animate__slideInDown" />
+            <img src="assets/img/envelopetm.png" class="top hiddenL animate__animated animate__slideInDown" />
         </div>
         <div class="bottom" id="bottom"></div>
     </div>
@@ -874,7 +872,8 @@
             <lord-icon src="https://cdn.lordicon.com/kezeezyg.json" trigger="loop" stroke="light" delay="300"
                 colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
             <h2>Regalos</h2>
-            <p>Nuestro mayor regalo es verte ese día celebrando con nosotros. <br><br> Si deseas ayudarnos a poder llevar
+            <p>Nuestro mayor regalo es verte ese día celebrando con nosotros. <br><br> Si deseas ayudarnos a poder
+                llevar
                 adelante la fiesta, te dejamos los datos bancarios:</p>
             <button class="modal-button" href="#modalRegalos">Ver Datos Bancarios</button>
         </div>
@@ -915,7 +914,8 @@
             <br />
             <span>RSVP</span>
             <h2>Confirmación de Asistencia</h2> <br>
-            <p class="sombreado" style="font-weight: 500; font-size: 0.87rem;"><b> Por favor, confirmar antes del 28 de Febrero</b></p>
+            <p class="sombreado" style="font-weight: 500; font-size: 0.87rem;"><b> Por favor, confirmar antes del 28 de
+                    Febrero</b></p>
             <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;" id="btnStaticRSVP"><i
                     class="fas fa-check-circle" style="margin-right:10px"></i>Confirmar
                 Asistencia</button>
@@ -927,8 +927,10 @@
     <section class="playlist wow animate__animated animate__fadeInUp">
         <i class="bi bi-star-fill" style="font-size: 60px; color: #f9f9f9; margin-bottom: 15px;"></i>
         <h2 class="wow animate__animated animate__fadeInUp">Playlist</h2>
-        <p class="wow animate__animated animate__fadeInUp">Agregá esas canciones que no pueden faltar en la fiesta. <br><br> Varias podrían
-            ser tocadas en vivo 🙊</p>
+        <p class="wow animate__animated animate__fadeInUp">Agregá esas canciones que no pueden faltar en la fiesta.
+            <br><br> Varias podrían
+            ser tocadas en vivo 🙊
+        </p>
 
         <a href="" target="_blank" class="btn-spotify wow animate__animated animate__fadeInUp">
             <i class="fab fa-spotify"></i> Agregar en Spotify
@@ -966,6 +968,9 @@
                             </p>
                             <p style="margin:0; font-size: 0.7rem; color: #999;">Alias: <b>JULIO.ESPINAL.BG</b>
                             </p>
+                            <p id="msgExtra"
+                                style="display:none; margin-top:5px; font-size: 0.85rem; color: var(--color-primary); font-weight: 600;">
+                                Si querés, podés anotar a tu pareja también. </p>
                         </div>
                     </div>
                 </div>
@@ -987,7 +992,7 @@
                         <input type="hidden" name="asiste" id="asiste" value="si" />
                         <input type="hidden" name="monto_tarjeta" id="inputMontoTarjeta" value="">
                         <div id="bloquePago"
-                            style="display:none; margin-top: 15px; border-top: 1px dashed #ddd; padding-top: 15px;">
+                            style="display:none; margin-top: 15px; border-top: 1px dashed #ddd; border-bottom: 1px dashed #ddd; padding-top: 15px; margin-bottom: 15px;">
                             <label style="font-size: 0.9rem; margin-bottom: 10px; display:block;">Sobre el valor
                                 de la tarjeta:</label>
 
@@ -997,7 +1002,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="container" style="font-size: 0.9rem;">Necesito consultarles algo
-                                    <input type="radio" name="pago_estado" value="Consulta" checked="checked">
+                                    <input type="radio" name="pago_estado" value="Consulta">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -1005,34 +1010,34 @@
                         <label>Nombre y Apellido</label>
                         <input type="text" name="nombre" required placeholder="Ingresá tu nombre completo" />
                         <div id="camposOpcionales"><br>
-                        <label>¿Necesitas un menú especial?</label>
-                        <div class="selectField">
-                            <i class="fas fa-angle-down"></i>
-                            <select name="alimento" id="alimentos" required>
-                                <option value="" disabled selected>Seleccioná una opción</option>
-                                <option value="Ninguna">Ninguno</option>
-                                <option value="Celiaca">Celiaco</option>
-                                <option value="Vegetariana">Vegetariano</option>
-                                <option value="Vegana">Vegano</option>
-                                <option value="Diabética">Diabético</option>
-                            </select>
-                            
-                        </div>
+                            <label>¿Necesitas un menú especial?</label>
+                            <div class="selectField">
+                                <i class="fas fa-angle-down"></i>
+                                <select name="alimento" id="alimentos" required>
+                                    <option value="" disabled selected>Seleccioná una opción</option>
+                                    <option value="Ninguna">Ninguno</option>
+                                    <option value="Celiaca">Celiaco</option>
+                                    <option value="Vegetariana">Vegetariano</option>
+                                    <option value="Vegana">Vegano</option>
+                                    <option value="Diabética">Diabético</option>
+                                </select>
 
-                        <label>¿Necesitas traslado?*</label>
-                        <div class="selectField">
-                            <i class="fas fa-angle-down"></i>
-                            <select name="traslado" id="traslados" required>
-                                <option value="" disabled selected>Seleccioná una opción</option>
-                                <option value="No">No, voy por mis propios medios</option>
-                                <option value="Si">Si, necesito traslado</option>
-                            </select>
-                        </div>
+                            </div>
 
-                        <label>Comentarios</label>
-                        <input name="comentarios" type="text" id="comentarios"
-                            placeholder="Algo que debamos saber..." />
-                        </div>        
+                            <label>¿Necesitas traslado?*</label>
+                            <div class="selectField">
+                                <i class="fas fa-angle-down"></i>
+                                <select name="traslado" id="traslados" required>
+                                    <option value="" disabled selected>Seleccioná una opción</option>
+                                    <option value="No">No, voy por mis propios medios</option>
+                                    <option value="Si">Si, necesito traslado</option>
+                                </select>
+                            </div>
+
+                            <label>Comentarios</label>
+                            <input name="comentarios" type="text" id="comentarios"
+                                placeholder="Algo que debamos saber..." />
+                        </div>
                         <button class="submit aire" type="submit" name="save">
                             <i class="fas fa-check-circle"></i> Enviar confirmación
                         </button>
@@ -1179,161 +1184,155 @@
             }
         </script>
 
-<script>
-        /* =========================================
-           LÓGICA DE REGALOS (COPIAR ALIAS) - VERSION FINAL
-           ========================================= */
-        document.addEventListener("DOMContentLoaded", function() {
-            
-            const btnCopiar = document.getElementById('btnCopiar');
-            const mensajeExito = document.getElementById('mensajeExito');
-            const aliasTexto = "JULIO.ESPINAL.BG";
+        <script>
+            /* =========================================
+               LÓGICA DE REGALOS (COPIAR ALIAS) - VERSION FINAL
+               ========================================= */
+            document.addEventListener("DOMContentLoaded", function () {
 
-            // Función global de cierre
-            window.closeModalRegalos = function() {
-                const modalRegalos = document.getElementById('modalRegalos');
-                const modalContent = document.getElementById('modalContentRegalos');
-                
-                if (modalContent) {
-                    modalContent.classList.remove('animate__zoomIn');
-                    modalContent.classList.add('animate__fadeOut');
-                }
-                
-                setTimeout(() => {
-                    if (modalRegalos) modalRegalos.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    
+                const btnCopiar = document.getElementById('btnCopiar');
+                const mensajeExito = document.getElementById('mensajeExito');
+                const aliasTexto = "JULIO.ESPINAL.BG";
+
+                // Función global de cierre
+                window.closeModalRegalos = function () {
+                    const modalRegalos = document.getElementById('modalRegalos');
+                    const modalContent = document.getElementById('modalContentRegalos');
+
                     if (modalContent) {
-                        modalContent.classList.remove('animate__fadeOut');
-                        modalContent.classList.add('animate__zoomIn');
+                        modalContent.classList.remove('animate__zoomIn');
+                        modalContent.classList.add('animate__fadeOut');
                     }
-                    if (mensajeExito) mensajeExito.style.display = 'none';
-                    if (btnCopiar) {
-                        btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
-                        btnCopiar.style.opacity = "1";
-                    }
-                }, 500);
-            };
 
-            // Función de copiado compatible
-            const copiarAlPortapapeles = (texto) => {
-                // Intento 1: API Moderna
-                if (navigator.clipboard && window.isSecureContext) {
-                    return navigator.clipboard.writeText(texto);
-                } else {
-                    // Intento 2: Método "Antiguo" (Funciona siempre)
-                    let textArea = document.createElement("textarea");
-                    textArea.value = texto;
-                    textArea.style.position = "fixed";
-                    textArea.style.left = "-9999px";
-                    document.body.appendChild(textArea);
-                    textArea.focus();
-                    textArea.select();
-                    return new Promise((resolve, reject) => {
-                        document.execCommand('copy') ? resolve() : reject();
-                        textArea.remove();
+                    setTimeout(() => {
+                        if (modalRegalos) modalRegalos.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+
+                        if (modalContent) {
+                            modalContent.classList.remove('animate__fadeOut');
+                            modalContent.classList.add('animate__zoomIn');
+                        }
+                        if (mensajeExito) mensajeExito.style.display = 'none';
+                        if (btnCopiar) {
+                            btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar Alias';
+                            btnCopiar.style.opacity = "1";
+                        }
+                    }, 500);
+                };
+
+                // Función de copiado compatible
+                const copiarAlPortapapeles = (texto) => {
+                    // Intento 1: API Moderna
+                    if (navigator.clipboard && window.isSecureContext) {
+                        return navigator.clipboard.writeText(texto);
+                    } else {
+                        // Intento 2: Método "Antiguo" (Funciona siempre)
+                        let textArea = document.createElement("textarea");
+                        textArea.value = texto;
+                        textArea.style.position = "fixed";
+                        textArea.style.left = "-9999px";
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        return new Promise((resolve, reject) => {
+                            document.execCommand('copy') ? resolve() : reject();
+                            textArea.remove();
+                        });
+                    }
+                };
+
+                if (btnCopiar) {
+                    btnCopiar.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        copiarAlPortapapeles(aliasTexto)
+                            .then(() => {
+                                btnCopiar.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+                                btnCopiar.style.opacity = "1";
+                                if (mensajeExito) mensajeExito.style.display = 'block';
+                                setTimeout(window.closeModalRegalos, 2500);
+                            })
+                            .catch(() => {
+                                alert("No se pudo copiar. El alias es: " + aliasTexto);
+                            });
                     });
                 }
-            };
-
-            if (btnCopiar) {
-                btnCopiar.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    copiarAlPortapapeles(aliasTexto)
-                        .then(() => {
-                            btnCopiar.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
-                            btnCopiar.style.opacity = "1";
-                            if (mensajeExito) mensajeExito.style.display = 'block';
-                            setTimeout(window.closeModalRegalos, 2500);
-                        })
-                        .catch(() => {
-                            alert("No se pudo copiar. El alias es: " + aliasTexto);
-                        });
-                });
-            }
-        });
-    </script>
+            });
+        </script>
 
         <script>
             /* =========================================
-               SCRIPT 4: SEGURIDAD (BOTONES GRISES)
+               SCRIPT 4: SEGURIDAD (FIX FINAL MENSAJE EXTRA)
                ========================================= */
 
             document.addEventListener("DOMContentLoaded", function () {
                 // 1. Recuperar datos
                 const precioGuardado = localStorage.getItem('boda_precio');
                 const textoGuardado = localStorage.getItem('boda_texto');
+                const codigoGuardado = localStorage.getItem('boda_codigo');
+
+                console.log("Código detectado en memoria:", codigoGuardado); // <--- ESTO TE VA A AYUDAR A VER SI LO TOMA
 
                 // 2. Función de BLOQUEO
                 const bloquearBoton = (idBoton) => {
                     const btnOriginal = document.getElementById(idBoton);
-
                     if (btnOriginal) {
-                        // Clonamos el botón para eliminar eventos de apertura de modal
                         const btnClon = btnOriginal.cloneNode(true);
-
-                        // Aplicamos la clase gris
                         btnClon.classList.add('btn-disabled');
                         btnClon.removeAttribute('href');
-
-                        // --- CAMBIO DE TEXTO ---
                         if (idBoton === 'btnFloatRSVP') {
-                            // Flotante: Solo candado
                             btnClon.innerHTML = '<i class="fas fa-lock"></i>';
                         } else {
-                            // Estático: Candado + "REQUIERE CÓDIGO"
-                            // Al usar innerHTML, borramos "Confirmar Asistencia" automáticamente
                             btnClon.innerHTML = '<i class="fas fa-lock"></i> REQUIERE CÓDIGO';
                         }
-
-                        // Click: Alerta de acceso denegado
                         btnClon.onclick = function (e) {
                             e.preventDefault();
                             e.stopPropagation();
                             alert("⛔ Acceso denegado.\nPor favor ingresá desde el inicio con el código de tu tarjeta.");
                             window.location.href = "../";
                         };
-
-                        // Reemplazamos el botón original por el gris
                         btnOriginal.parentNode.replaceChild(btnClon, btnOriginal);
                     }
                 };
 
                 // 3. VALIDACIÓN
                 if (precioGuardado === null) {
-                    console.log("🔒 Sin código: Bloqueando botones.");
-
-                    bloquearBoton('btnFloatRSVP'); // Bloquea el flotante
-                    bloquearBoton('btnStaticRSVP'); // Bloquea el grande
-
-                    // Borramos el modal del HTML por seguridad
+                    bloquearBoton('btnFloatRSVP');
+                    bloquearBoton('btnStaticRSVP');
                     const modal = document.getElementById('modalRSVP');
                     if (modal) modal.remove();
-
                 } else {
-                    // SI TIENE CÓDIGO, MOSTRAMOS TODO NORMAL
-                    console.log("✅ Acceso autorizado.");
-
                     const divPrecio = document.getElementById('bloquePrecio');
                     const spanPrecio = document.getElementById('precioDinamico');
                     const divPago = document.getElementById('bloquePago');
                     const inputMonto = document.getElementById('inputMontoTarjeta');
+                    const msgExtra = document.getElementById('msgExtra');
 
                     const precioNum = parseInt(precioGuardado);
 
                     if (precioNum > 0) {
+                        // TIENEN PRECIO
                         if (divPrecio && spanPrecio) {
                             spanPrecio.innerText = textoGuardado;
                             divPrecio.style.display = "block";
                             if (inputMonto) inputMonto.value = textoGuardado;
+
+                            // --- LÓGICA MENSAJE EXTRA ---
+                            // Asegurate que 'CODIGO-TEST' sea el mismo que usas en el login
+                            if (codigoGuardado === 'FAMILIA-PEREZ' || codigoGuardado === 'J') {
+                                console.log("Mostrando mensaje extra...");
+                                if (msgExtra) msgExtra.style.display = 'block';
+                            }
+                            // ----------------------------
                         }
+
                         if (divPago) {
                             divPago.style.display = "block";
                             const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
                             radiosPago.forEach(r => r.required = true);
                         }
                     } else {
+                        // ES GRATIS
                         if (divPrecio) divPrecio.style.display = "none";
                         if (divPago) {
                             divPago.style.display = "none";
@@ -1343,202 +1342,215 @@
                     }
                 }
             });
-
-            // Autodestrucción al salir
             window.addEventListener('pagehide', function () {
-                localStorage.removeItem('boda_precio');
-                localStorage.removeItem('boda_texto');
+            localStorage.removeItem('boda_precio');
+            localStorage.removeItem('boda_texto');
+            localStorage.removeItem('boda_codigo');
             });
         </script>
-<script>
-        /* =========================================
-           LÓGICA DE CONFIRMACIÓN (FULL)
-           ========================================= */
+        <script>
+            /* =========================================
+               LÓGICA DE CONFIRMACIÓN (FIX: PAGO GRATIS Y ENVÍO)
+               ========================================= */
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.forms['rsvpForm'];
-            const btnEnviar = document.querySelector('.submit');
-            const btnWspSubmit = document.getElementById('btnWspSubmit');
-            const divForm = document.querySelector('#modalRSVP .cont');
-            const divThanks = document.querySelector('#modalRSVP .thanks');
-            const btnOtra = document.getElementById('btnOtra');
-            const btnCerrarFinal = document.getElementById('btnCerrarRSVP');
-            
-            // Elementos para ocultar/mostrar
-            const camposOpcionales = document.getElementById('camposOpcionales');
-            const bloquePago = document.getElementById('bloquePago');
-            const radiosAsistencia = document.querySelectorAll('input[name="asistencia"]');
-            
-            // Inputs que deben ser requeridos SOLO si asiste
-            const selectAlimento = document.getElementById('alimentos');
-            const selectTraslado = document.getElementById('traslados');
-            const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
+            document.addEventListener("DOMContentLoaded", function () {
+                const form = document.forms['rsvpForm'];
+                const btnEnviar = document.querySelector('.submit');
+                const btnWspSubmit = document.getElementById('btnWspSubmit');
+                const divForm = document.querySelector('#modalRSVP .cont');
+                const divThanks = document.querySelector('#modalRSVP .thanks');
+                const btnOtra = document.getElementById('btnOtra');
+                const btnCerrarFinal = document.getElementById('btnCerrarRSVP');
 
-            let esEnvioWhatsApp = false;
+                // Elementos para ocultar/mostrar
+                const camposOpcionales = document.getElementById('camposOpcionales');
+                const bloquePago = document.getElementById('bloquePago');
+                const radiosAsistencia = document.querySelectorAll('input[name="asistencia"]');
 
-            // 1. FUNCIÓN PARA MANEJAR "NO ASISTIRÉ"
-            function actualizarFormulario() {
-                const asiste = document.querySelector('input[name="asistencia"]:checked').value === "Asiste";
-                const precioGuardado = localStorage.getItem('boda_precio');
-                const tienePago = precioGuardado && parseInt(precioGuardado) > 0;
+                // Inputs
+                const selectAlimento = document.getElementById('alimentos');
+                const selectTraslado = document.getElementById('traslados');
+                const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
 
-                if (asiste) {
-                    // MOSTRAR TODO
-                    if (camposOpcionales) camposOpcionales.style.display = "block";
-                    
-                    // Restaurar Requireds
-                    if (selectAlimento) selectAlimento.setAttribute('required', 'required');
-                    if (selectTraslado) selectTraslado.setAttribute('required', 'required');
-                    
-                    // Mostrar pago solo si corresponde
-                    if (tienePago && bloquePago) {
-                        bloquePago.style.display = "block";
-                        radiosPago.forEach(r => r.setAttribute('required', 'required'));
+                let esEnvioWhatsApp = false;
+
+                // 1. FUNCIÓN INTELIGENTE PARA MOSTRAR/OCULTAR
+                function actualizarFormulario() {
+                    const asiste = document.querySelector('input[name="asistencia"]:checked').value === "Asiste";
+                    const precioGuardado = localStorage.getItem('boda_precio');
+
+                    // Chequeamos si es pago (> 0)
+                    const tienePago = precioGuardado && parseInt(precioGuardado) > 0;
+
+                    if (asiste) {
+                        // MOSTRAR CAMPOS COMUNES
+                        if (camposOpcionales) camposOpcionales.style.display = "block";
+
+                        // Hacerlos obligatorios
+                        if (selectAlimento) selectAlimento.setAttribute('required', 'required');
+                        if (selectTraslado) selectTraslado.setAttribute('required', 'required');
+
+                        // LÓGICA DE PAGO
+                        if (tienePago && bloquePago) {
+                            bloquePago.style.display = "block";
+                            radiosPago.forEach(r => r.setAttribute('required', 'required'));
+                        } else {
+                            // FIX CRÍTICO: Si es GRATIS, ocultar Y SACAR REQUIRED para que no trabe el envío
+                            if (bloquePago) bloquePago.style.display = "none";
+                            radiosPago.forEach(r => {
+                                r.removeAttribute('required');
+                                r.checked = false; // Desmarcar por las dudas
+                            });
+                        }
+
+                    } else {
+                        // NO ASISTE: OCULTAR TODO
+                        if (camposOpcionales) camposOpcionales.style.display = "none";
+                        if (bloquePago) bloquePago.style.display = "none";
+
+                        // Quitar Obligatoriedad de todo
+                        if (selectAlimento) selectAlimento.removeAttribute('required');
+                        if (selectTraslado) selectTraslado.removeAttribute('required');
+                        radiosPago.forEach(r => r.removeAttribute('required'));
+
+                        // Limpiar valores para que el Excel quede prolijo
+                        if (selectAlimento) selectAlimento.value = "";
+                        if (selectTraslado) selectTraslado.value = "";
+                        const comentarios = document.getElementById('comentarios');
+                        if (comentarios) comentarios.value = "";
+                        radiosPago.forEach(r => r.checked = false);
                     }
-
-                } else {
-                    // OCULTAR TODO
-                    if (camposOpcionales) camposOpcionales.style.display = "none";
-                    if (bloquePago) bloquePago.style.display = "none";
-
-                    // Quitar Requireds para que deje enviar
-                    if (selectAlimento) selectAlimento.removeAttribute('required');
-                    if (selectTraslado) selectTraslado.removeAttribute('required');
-                    radiosPago.forEach(r => r.removeAttribute('required'));
-
-                    // Limpiar valores (opcional, para que llegue limpio al sheet)
-                    if (selectAlimento) selectAlimento.value = "";
-                    if (selectTraslado) selectTraslado.value = "";
-                    const comentarios = document.getElementById('comentarios');
-                    if (comentarios) comentarios.value = "";
-                    radiosPago.forEach(r => r.checked = false);
                 }
-            }
 
-            // Escuchar cambios en los radios "Sí/No"
-            radiosAsistencia.forEach(radio => {
-                radio.addEventListener('change', actualizarFormulario);
-            });
-
-            // Ejecutar al inicio por si hay algo marcado
-            actualizarFormulario();
-
-
-            // 2. DETECCIÓN DE BOTONES DE ENVÍO
-            if (btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
-            if (btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
-
-
-            // 3. RESETEO DEL FORMULARIO
-            function resetearFormulario() {
-                if (form) form.reset();
-                actualizarFormulario(); // Volver a estado inicial (Asiste seleccionado por defecto)
-                
-                if (btnEnviar) {
-                    btnEnviar.disabled = false;
-                    btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
-                }
-                if (btnWspSubmit) {
-                    btnWspSubmit.disabled = false;
-                    btnWspSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> o confirmar por WhatsApp';
-                }
-                if (divThanks) divThanks.style.display = 'none';
-                if (divForm) divForm.style.display = 'block';
-            }
-
-            if (btnOtra) btnOtra.addEventListener('click', resetearFormulario);
-            
-            if (btnCerrarFinal) {
-                btnCerrarFinal.addEventListener('click', function() {
-                    // Cerrar el modal y recargar la página (opcional, o solo cerrar)
-                    document.getElementById('modalRSVP').style.display = 'none';
-                    document.body.style.overflow = 'auto';
+                // Escuchamos cambios en "Sí/No"
+                radiosAsistencia.forEach(radio => {
+                    radio.addEventListener('change', actualizarFormulario);
                 });
-            }
+
+                // Ejecutar al inicio por si quedó algo en memoria
+                actualizarFormulario();
 
 
-            // 4. ENVÍO (SUBMIT)
-            if (form) {
-                form.addEventListener('submit', e => {
-                    e.preventDefault();
+                // 2. BOTONES DE ENVÍO
+                if (btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
+                if (btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
 
-                    const textoOriginal = btnEnviar ? btnEnviar.innerHTML : '';
-                    const textoWspOriginal = btnWspSubmit ? btnWspSubmit.innerHTML : '';
+
+                // 3. RESETEO
+                function resetearFormulario() {
+                    if (form) form.reset();
+                    actualizarFormulario(); // Resetear visuales
 
                     if (btnEnviar) {
-                        btnEnviar.disabled = true;
-                        if (!esEnvioWhatsApp) btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                        btnEnviar.disabled = false;
+                        btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
                     }
                     if (btnWspSubmit) {
-                        btnWspSubmit.disabled = true;
-                        if (esEnvioWhatsApp) btnWspSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+                        btnWspSubmit.disabled = false;
+                        btnWspSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> o confirmar por WhatsApp';
                     }
+                    if (divThanks) divThanks.style.display = 'none';
+                    if (divForm) divForm.style.display = 'block';
+                }
 
-                    // Enviar a Google Sheets
-                    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                        .then(response => response.json().then(data => {
-                            if (data.result === 'success') return true;
-                            else throw new Error(data.error);
-                        }))
-                        .then(() => {
-                            // ÉXITO
-                            if (divForm) divForm.style.display = 'none';
-                            if (divThanks) divThanks.style.display = 'block';
+                if (btnOtra) btnOtra.addEventListener('click', resetearFormulario);
 
-                            // --- LÓGICA WHATSAPP ---
-                            if (esEnvioWhatsApp) {
-                                const nombre = form.querySelector('input[name="nombre"]').value;
-                                const asistencia = form.querySelector('input[name="asistencia"]:checked').value;
-                                let mensaje = "";
+                if (btnCerrarFinal) {
+                    btnCerrarFinal.addEventListener('click', function () {
+                        document.getElementById('modalRSVP').style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    });
+                }
 
-                                if (asistencia === "Asiste") {
-                                    // Datos completos
-                                    const alimentacion = document.getElementById('alimentos').value || "-";
-                                    const transporte = document.getElementById('traslados').value || "-";
-                                    const comentario = document.getElementById('comentarios').value;
-                                    
-                                    // Armado del mensaje positivo
-                                    mensaje = `¡Hola Juli, Mili! Soy *${nombre}* y les confirmo que: *${asistencia}* a su casamiento.`;
-                                    mensaje += `%0A%0ATengo *${alimentacion}* como alimentación, y en cuanto a transporte: *${transporte}*.`;
-                                    if (comentario) mensaje += `%0ANota: ${comentario}`;
 
-                                    // Pago
-                                    const estadoPagoInput = form.querySelector('input[name="pago_estado"]:checked');
-                                    if (estadoPagoInput) {
-                                        let textoPago = "";
-                                        if (estadoPagoInput.value === "Abonará") textoPago = "Lo abonaré a la brevedad.";
-                                        else if (estadoPagoInput.value === "Consulta") textoPago = "Necesito consultarles algo sobre el pago.";
-                                        else if (estadoPagoInput.value === "Ya aboné") textoPago = "Ya realicé la transferencia.";
-                                        if (textoPago) mensaje += `%0A%0ARespecto a la entrada: *${textoPago}*`;
+                // 4. ENVÍO (SUBMIT)
+                if (form) {
+                    form.addEventListener('submit', e => {
+                        e.preventDefault();
+
+                        const textoOriginal = btnEnviar ? btnEnviar.innerHTML : '';
+                        const textoWspOriginal = btnWspSubmit ? btnWspSubmit.innerHTML : '';
+
+                        // Animación de carga
+                        if (btnEnviar) {
+                            btnEnviar.disabled = true;
+                            if (!esEnvioWhatsApp) btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                        }
+                        if (btnWspSubmit) {
+                            btnWspSubmit.disabled = true;
+                            if (esEnvioWhatsApp) btnWspSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+                        }
+
+                        // Enviar a Google Sheets
+                        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                            .then(response => response.json().then(data => {
+                                if (data.result === 'success') return true;
+                                else throw new Error(data.error);
+                            }))
+                            .then(() => {
+                                // ÉXITO
+                                if (divForm) divForm.style.display = 'none';
+                                if (divThanks) divThanks.style.display = 'block';
+
+                                // --- LÓGICA WHATSAPP ---
+                                if (esEnvioWhatsApp) {
+                                    const nombre = form.querySelector('input[name="nombre"]').value;
+                                    const asistencia = form.querySelector('input[name="asistencia"]:checked').value;
+
+                                    // Volvemos a chequear el precio para armar el mensaje
+                                    const precioGuardado = localStorage.getItem('boda_precio');
+                                    const esPago = precioGuardado && parseInt(precioGuardado) > 0;
+
+                                    let mensaje = "";
+
+                                    if (asistencia === "Asiste") {
+                                        // Datos completos
+                                        const alimentacion = document.getElementById('alimentos').value || "-";
+                                        const transporte = document.getElementById('traslados').value || "-";
+                                        const comentario = document.getElementById('comentarios').value;
+
+                                        mensaje = `¡Hola Juli, Mili! Soy *${nombre}* y les confirmo que: *${asistencia}* a su casamiento.`;
+                                        mensaje += `%0A%0CComo alimentación especial requiero *${alimentacion}*, y *${transporte}* necesito información sobre un transporte.`;
+                                        if (comentario) mensaje += `%0ANota: ${comentario}`;
+
+                                        // FIX MENSAJE PAGO: Solo si esPago es true
+                                        if (esPago) {
+                                            const estadoPagoInput = form.querySelector('input[name="pago_estado"]:checked');
+                                            if (estadoPagoInput) {
+                                                let textoPago = "";
+                                                if (estadoPagoInput.value === "Abonará") textoPago = "Lo abonaré a la brevedad.";
+                                                else if (estadoPagoInput.value === "Consulta") textoPago = "Necesito consultarles algo sobre el pago.";
+
+                                                if (textoPago) mensaje += `%0A%0ARespecto a la entrada: *${textoPago}*`;
+                                            }
+                                        }
+
+                                    } else {
+                                        // Mensaje Negativo
+                                        mensaje = `Hola Juli, Mili. Soy *${nombre}*. Lamentablemente no podré asistir al casamiento. ¡Muchas gracias igual por la invitación!`;
                                     }
 
-                                } else {
-                                    // Mensaje Negativo (El que pediste)
-                                    mensaje = `Hola Juli, Mili. Soy *${nombre}*. Lamentablemente no podré asistir al casamiento. ¡Muchas gracias igual por la invitación!`;
+                                    const link = `https://api.whatsapp.com/send?phone=${telefonoNovios}&text=${mensaje}`; // El navegador codifica
+
+                                    setTimeout(() => { window.location.href = link; }, 1000);
                                 }
-                                
-                                const link = `https://api.whatsapp.com/send?phone=${telefonoNovios}&text=${mensaje}`;
-                                
-                                // Redirigir
-                                setTimeout(() => { window.location.href = link; }, 1000);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            if (btnEnviar) {
-                                btnEnviar.disabled = false;
-                                btnEnviar.innerHTML = textoOriginal;
-                            }
-                            if (btnWspSubmit) {
-                                btnWspSubmit.disabled = false;
-                                btnWspSubmit.innerHTML = textoWspOriginal;
-                            }
-                            alert("Hubo un error al guardar. Por favor reintentá.");
-                        });
-                });
-            }
-        });
-    </script>
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                if (btnEnviar) {
+                                    btnEnviar.disabled = false;
+                                    btnEnviar.innerHTML = textoOriginal;
+                                }
+                                if (btnWspSubmit) {
+                                    btnWspSubmit.disabled = false;
+                                    btnWspSubmit.innerHTML = textoWspOriginal;
+                                }
+                                alert("Hubo un error al guardar. Por favor reintentá.");
+                            });
+                    });
+                }
+            });
+        </script>
 
 </body>
 

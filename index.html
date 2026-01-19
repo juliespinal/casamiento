@@ -233,30 +233,47 @@
         };
 
         function validarCodigo() {
-            const input = document.getElementById('codigoInput');
-            const errorDiv = document.getElementById('msjError');
-            const codigo = input.value.toUpperCase().trim();
+    // 1. Obtenemos los elementos HTML
+    const input = document.getElementById('codigoInput');
+    const errorDiv = document.getElementById('msjError');
 
-            if (accesos[codigo]) {
-                localStorage.setItem('boda_precio', accesos[codigo].precio);
-                localStorage.setItem('boda_texto', accesos[codigo].texto);
+    // 2. Obtenemos el VALOR (el texto escrito)
+    // CORRECCIÓN: Usamos 'input' (la variable de arriba)
+    const codigoIngresado = input.value.trim().toUpperCase();
 
-                document.querySelector('.access-box').classList.add('animate__fadeOutDown');
+    // 3. Verificamos si existe en tu lista de 'accesos'
+    // CORRECCIÓN: Usamos la variable 'codigoIngresado'
+    if (accesos[codigoIngresado]) {
+        
+        // Guardamos los datos
+        localStorage.setItem('boda_precio', accesos[codigoIngresado].precio);
+        localStorage.setItem('boda_texto', accesos[codigoIngresado].texto);
+        
+        // CORRECCIÓN CRÍTICA: Guardamos 'codigoIngresado' (el texto), 
+        // NO 'codigoInput' (que era el objeto HTML y causaba el error).
+        localStorage.setItem('boda_codigo', codigoIngresado);
 
-                setTimeout(() => {
-                    window.location.href = "./confirmacion/";
-                }, 500);
+        // Animación de salida
+        const box = document.querySelector('.access-box');
+        if (box) box.classList.add('animate__fadeOutDown');
 
-            } else {
-                errorDiv.style.display = 'flex';
-                input.classList.add('animate__animated', 'animate__shakeX');
-                input.style.borderColor = "#B55328";
+        // Redirección
+        setTimeout(() => {
+            window.location.href = "./confirmacion/";
+        }, 500);
 
-                setTimeout(() => {
-                    input.classList.remove('animate__animated', 'animate__shakeX');
-                }, 1000);
-            }
-        }
+    } else {
+        // Manejo de Error
+        if (errorDiv) errorDiv.style.display = 'flex';
+        
+        input.classList.add('animate__animated', 'animate__shakeX');
+        input.style.borderColor = "#B55328";
+
+        setTimeout(() => {
+            input.classList.remove('animate__animated', 'animate__shakeX');
+        }, 1000);
+    }
+}
 
         document.getElementById("codigoInput").addEventListener("keypress", function (e) {
             if (e.key === "Enter") validarCodigo();
