@@ -504,7 +504,7 @@
         }
 
         /* --- 8. CORRECCIÓN SELLO Y SOBRE (PC) --- */
-        
+
         #top {
             position: relative;
             width: 100%;
@@ -527,12 +527,13 @@
             height: auto;
             display: block;
         }
-        
+
         @media (min-width: 560px) {
             .badge {
                 width: 100%;
                 bottom: 30px !important;
             }
+
             .intro {
                 display: flex;
                 flex-direction: column;
@@ -540,9 +541,11 @@
                 align-items: center;
                 width: 100%;
             }
-            .txt{
+
+            .txt {
                 padding-top: 30px !important;
             }
+
             .intro>.top,
             .intro>.bottom {
                 width: 100%;
@@ -558,7 +561,7 @@
             }
         }
 
-                @media (min-width: 998px) {
+        @media (min-width: 998px) {
             .badge {
                 width: 100%;
                 bottom: -80px !important;
@@ -670,6 +673,37 @@
             opacity: 0.9;
             transform: scale(1.02);
         }
+
+        /* El contenedor que apila las fotos */
+        .carousel-container {
+            display: grid;
+            /* Esto permite apilar cosas fácil */
+            width: 100%;
+            overflow: hidden;
+            /* Por si alguna foto es gigante */
+        }
+
+        /* Todas las fotos ocupan el mismo lugar */
+        .carousel-container img {
+            grid-area: 1 / 1;
+            /* Truco: Manda todas a la fila 1, columna 1 */
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            /* Por defecto invisibles */
+            transition: opacity 1s ease-in-out;
+            /* Efecto suave de fundido */
+            object-fit: cover;
+            /* Para que no se estiren raro */
+            border-radius: 10px;
+            /* Opcional: si querés bordes redondos */
+        }
+
+        /* La clase que hace visible la foto de turno */
+        .carousel-container img.active {
+            opacity: 1;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -708,7 +742,7 @@
             <i class="fas fa-angle-down scroll-arrow wow animate__animated animate__fadeInDown" data-wow-delay="1s"></i>
         </div>
         <div class="slider" id="slider">
-            <div class='image'><img src="assets/img/DSC_0292a.jpg" /></div> <!-- DSC_0292a.JPG-->
+            <div class='image'><img src="assets/img/DSC_0292a.jpg" /></div>
         </div>
     </section>
 
@@ -860,8 +894,14 @@
     </section>
 
     <section class="story">
-        <div class="image wow animate__animated animate__fadeInLeft">
-            <img src="assets/img/DSC_0270.JPG" alt="Nuestra Historia" />
+        <div class="image carousel-container wow animate__animated animate__fadeInLeft">
+
+            <img src="assets/img/DSC_0270.JPG" class="active" alt="Foto 1" />
+
+            <img src="assets/img/carrousel_a.jpg" alt="Foto 2" />
+
+            <img src="assets/img/carrousel_b.jpg" alt="Foto 3" />
+
         </div>
 
         <div class="text wow animate__animated animate__fadeInUp" data-wow-delay="0.2s"
@@ -875,7 +915,8 @@
                 sería el comienzo de la mejor historia que viviríamos.
             </p>
             <p>Hoy, después de un comienzo de charla casual, <b>ese café</b>, el constante pensamiento de <em>"Nos
-                    conocemos desde siempre pero... jamás nos habíamos conocido realmente"</em>, un poco de ayuda de nuestros
+                    conocemos desde siempre pero... jamás nos habíamos conocido realmente"</em>, un poco de ayuda de
+                nuestros
                 amigos y
                 descubrir que <b>Dios siempre tuvo un plan...</b></p>
             <p><b>Damos el gran paso.</b></p>
@@ -975,12 +1016,12 @@
             <br />
             <span>RSVP</span>
             <h2>Confirmación de Asistencia</h2> <br>
-            <p class="sombreado" style="font-weight: 500; font-size: 0.87rem;"><b> Por favor, confirmar antes del 28 de
-                    Febrero</b></p>
+            <p class="sombreado" style="font-weight: 800; font-size: 0.87rem;"><b> Por favor, <br> confirmar antes del 30 de
+                    Marzo</b></p>
             <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;" id="btnStaticRSVP"><i
                     class="fas fa-check-circle" style="margin-right:10px"></i>Confirmar
                 Asistencia</button>
-            <p><small style="font-size: 0.9rem;"> <b><em>Debe completarse una vez por cada integrante de
+            <p><small style="font-size: 0.7rem;"> <b><em>Debe completarse una vez por cada integrante de
                             familia.</b></em></small></p>
         </div>
     </section>
@@ -993,7 +1034,8 @@
             ser tocadas en vivo 🙊
         </p>
 
-        <a href="https://open.spotify.com/playlist/3zSMyHMoq4iGXn1o85EUYR?si=M4H_lonITAyNAzW_HRVv2g&pi=u-uhxYrCAJSDqB" target="_blank" class="btn-spotify wow animate__animated animate__fadeInUp">
+        <a href="https://open.spotify.com/playlist/3zSMyHMoq4iGXn1o85EUYR?si=M4H_lonITAyNAzW_HRVv2g&pi=u-uhxYrCAJSDqB"
+            target="_blank" class="btn-spotify wow animate__animated animate__fadeInUp">
             <i class="fab fa-spotify"></i> Agregar en Spotify
         </a>
     </section>
@@ -1107,7 +1149,8 @@
                         <button id="btnWspSubmit" class="btn-whatsapp-secondary" type="submit">
                             <i class="fab fa-whatsapp"></i> o confirmar por WhatsApp
                         </button>
-                        <small style="font-size: 0.7rem;"><b>*Traslado</b> - Valor aproximado: $9.000 por persona. Consultanos.</small>
+                        <small style="font-size: 0.7rem;"><b>*Traslado</b> - Valor aproximado: $9.000 por persona.
+                            Consultanos.</small>
                     </form>
                 </div>
             </div>
@@ -1404,9 +1447,9 @@
                 }
             });
             window.addEventListener('pagehide', function () {
-            localStorage.removeItem('boda_precio');
-            localStorage.removeItem('boda_texto');
-            localStorage.removeItem('boda_codigo');
+                localStorage.removeItem('boda_precio');
+                localStorage.removeItem('boda_texto');
+                localStorage.removeItem('boda_codigo');
             });
         </script>
         <script>
@@ -1611,7 +1654,34 @@
                     });
                 }
             });
+
+            // --- SCRIPT CARRUSEL AUTOMÁTICO ---
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const contenedor = document.querySelector('.carousel-container');
+
+                // Solo activamos si existe el carrusel en la página
+                if (contenedor) {
+                    const fotos = contenedor.querySelectorAll('img');
+                    let indiceActual = 0;
+
+                    // Función que cambia la foto
+                    setInterval(() => {
+                        // 1. Le sacamos la clase 'active' a la foto actual
+                        fotos[indiceActual].classList.remove('active');
+
+                        // 2. Calculamos cuál es la siguiente (si es la última, vuelve a 0)
+                        indiceActual = (indiceActual + 1) % fotos.length;
+
+                        // 3. Le ponemos la clase 'active' a la nueva foto
+                        fotos[indiceActual].classList.add('active');
+
+                    }, 3000); // <--- TIEMPO: 3000ms = 3 segundos (Recomendado)
+                }
+            });
         </script>
+
+
 
 </body>
 
