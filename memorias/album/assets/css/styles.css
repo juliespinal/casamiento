@@ -1,0 +1,39 @@
+        #galeria {
+        /* MAGIA: Crea columnas como si fuera un texto de diario */
+        column-count: 2; 
+        column-gap: 15px; /* Espacio entre columnas */
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    /* LAS FOTOS */
+    .foto-item {
+        width: 100%; /* Que ocupe todo el ancho de SU columna */
+        margin-bottom: 15px; /* Espacio abajo de cada foto */
+        border-radius: 12px;
+        display: block; /* Importante para que no haya espacios raros */
+        
+        /* ESTO ES CLAVE: Evita que una foto se corte entre el final de una columna y el principio de la otra */
+        break-inside: avoid; 
+        
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombrecita linda */
+        transition: transform 0.3s ease;
+    }
+
+    /* EFECTO HOVER (Opcional, para PC) */
+    .foto-item:hover {
+        transform: scale(1.02);
+    }
+
+    /* RESPONSIVE: En pantallas grandes, usamos más columnas */
+    @media (min-width: 768px) {
+        #galeria {
+            column-count: 3;
+        }
+    }
+    @media (min-width: 1024px) {
+        #galeria {
+            column-count: 4;
+        }
+    }
