@@ -1,9 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="referrer" content="no-referrer">
-    <link rel="stylesheet" href="/memorias/album/assets/css/styles.css"/>
-    <title>Galería</title>
-    </head>
-<div id="galeria">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Álbum en Vivo - M&J</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            /* Paleta Dark Elegante */
+            --bg-color: #0f1208; /* Verde oliva casi negro */
+            --header-bg: rgba(15, 18, 8, 0.75); /* Fondo transparente para el vidrio */
+            --text-light: #f3f4f6;
+            --accent: #b5af7a; /* Un dorado/oliva clarito para detalles */
+            --primary: #606e36;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-light);
+            /* Un sutil degradado radial en el fondo para que no sea un color plano */
+            background-image: radial-gradient(circle at 50% 0%, #1f2512 0%, var(--bg-color) 70%);
+            background-attachment: fixed;
+        }
+
+        /* --- HEADER EFECTO VIDRIO --- */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            
+            /* LA MAGIA DEL VIDRIO (Glassmorphism) */
+            background: var(--header-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header-title span {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        /* Indicador de "En Vivo" (Punto rojo titilando) */
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ef4444; /* Rojo vivo */
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ef4444;
+            animation: pulse-red 1.5s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        /* --- GALERÍA MASONRY --- */
+        .gallery-container {
+            padding: 90px 15px 30px 15px; /* 90px arriba para no chocar con el header flotante */
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #galeria {
+            /* Columnas estilo Pinterest */
+            column-count: 2;
+            column-gap: 15px;
+        }
+
+        .foto-item {
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            display: block;
+            break-inside: avoid; /* Evita que se corte la foto entre columnas */
+            
+            /* Estética de la foto */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.05);
+            background-color: rgba(255,255,255,0.02); /* Fondo sutil mientras carga */
+            
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        /* En la PC, cuando pasás el mouse hace un efecto lindo */
+        @media (hover: hover) {
+            .foto-item:hover {
+                transform: translateY(-5px);
+                filter: brightness(1.1);
+            }
+        }
+
+        /* --- LOADER INICIAL --- */
+        #loader-inicial {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--accent);
+        }
+        .spinner-line {
+            width: 40px; height: 40px;
+            border: 3px solid transparent;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- RESPONSIVE: Más columnas en pantallas grandes --- */
+        @media (min-width: 600px) { #galeria { column-count: 3; } }
+        @media (min-width: 900px) { #galeria { column-count: 4; column-gap: 20px; } .foto-item { margin-bottom: 20px; } }
+        @media (min-width: 1200px) { #galeria { column-count: 5; } }
+        
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-title">
+            <h1>Mili & Juli</h1>
+            <span>Nuestra Boda</span>
+        </div>
+        <div class="live-indicator">
+            <div class="pulse-dot"></div>
+            ÁLBUM EN VIVO
+        </div>
+    </header>
+
+    <div id="loader-inicial">
+        <div class="spinner-line"></div>
+        <div style="font-weight: 600; letter-spacing: 1px;">Buscando recuerdos...</div>
     </div>
-<script src="/memorias/album/assets/js/galeria.js"></script>
+
+    <main class="gallery-container">
+        <div id="galeria">
+            </div>
+    </main>
+
+    <script>
+        // CONFIGURACIÓN
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbywW5vlsO6rF5okrfC9KTHvvvfnh9PqCVwozyf0f6SovR1MHOMue5oeyo28utE29GVd/exec'; 
+        
+        const contenedor = document.getElementById('galeria');
+        const loader = document.getElementById('loader-inicial');
+        let fotosCargadas = new Set();
+        let esPrimeraCarga = true;
+
+        function cargarFotos() {
+            fetch(scriptURL)
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    
+                    // Ocultamos el loader cuando llegan los datos
+                    if (esPrimeraCarga && data.fotos.length > 0) {
+                        loader.style.display = 'none';
+                    } else if (esPrimeraCarga && data.fotos.length === 0) {
+                        loader.innerHTML = "¡Tenés que ser el primero en subir una foto!";
+                    }
+
+                    // Invertimos para mostrar las más nuevas arriba (opcional)
+                    data.fotos.reverse(); 
+
+                    data.fotos.forEach(foto => {
+                        if (!fotosCargadas.has(foto.id)) {
+                            fotosCargadas.add(foto.id);
+
+                            const img = document.createElement('img');
+                            img.src = foto.url;
+                            img.loading = "lazy"; // Mejora el rendimiento
+                            
+                            // Animación de entrada
+                            img.className = "foto-item animate__animated animate__fadeInUp"; 
+
+                            // Si es la primera vez, agregamos al final. Si es actualización, al principio.
+                            if (esPrimeraCarga) {
+                                contenedor.appendChild(img);
+                            } else {
+                                // Para fotos nuevas, la animación es más llamativa
+                                img.className = "foto-item animate__animated animate__zoomIn";
+                                contenedor.prepend(img);
+                            }
+                        }
+                    });
+
+                    esPrimeraCarga = false;
+                }
+            })
+            .catch(error => {
+                console.error("Error buscando fotos:", error);
+                if(esPrimeraCarga) loader.innerHTML = "Error de conexión. Reintentando...";
+            });
+        }
+
+        // Carga inicial
+        cargarFotos();
+
+        // Sondeo cada 20 segundos (Para la pantalla gigante y celulares abiertos)
+        setInterval(cargarFotos, 20000);
+
+    </script>
+</body>
+</html>
