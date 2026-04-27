@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="/memorias/assets/css/styles.css">
 </head>
@@ -36,13 +36,9 @@
                 </div>
 
                 <div class="buttons-grid">
-                    <button class="btn-app btn-primary" id="btnCamera">
-                        <i class="fa-solid fa-camera"></i>
-                        <span>Sacar Foto</span>
-                    </button>
-                    <button class="btn-app btn-secondary" id="btnUpload">
+                    <button class="btn-app btn-primary" id="btnUpload">
                         <i class="fa-solid fa-upload"></i> 
-                        <span>Subir de tu Galería</span>
+                        <span>Subir Foto o Video</span>
                     </button>
 
                     <div class="divider"></div>
@@ -57,8 +53,7 @@
 
     </main>
 
-    <input type="file" id="inputCamera" class="hidden-input" accept="image/*" capture="environment">
-    <input type="file" id="inputUpload" class="hidden-input" accept="image/*">
+    <input type="file" id="inputUpload" class="hidden-input" accept="image/*,video/*">
 
     <div id="preview-modal">
         <div class="modal-card animate__animated animate__zoomIn">
@@ -67,7 +62,7 @@
                 <img id="preview-img" src="" />
             </div>
             <div class="modal-actions">
-                <button class="btn-app btn-text" onclick="cerrarPreview()">Reintentar</button>
+                <button class="btn-app btn-outline" onclick="cerrarPreview()">Reintentar</button>
                 <button class="btn-app btn-primary" onclick="subirFotoDefinitiva()">Sí, Subir ✨</button>
             </div>
         </div>
