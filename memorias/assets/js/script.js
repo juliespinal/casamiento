@@ -1,52 +1,49 @@
 // --- CONFIGURACIÓN ---
 const scriptURL = 'https://script.google.com/macros/s/AKfycbywW5vlsO6rF5okrfC9KTHvvvfnh9PqCVwozyf0f6SovR1MHOMue5oeyo28utE29GVd/exec'; 
-const logoPath = 'assets/img/logo_overlay.png'; // Ruta relativa
+const logoPath = 'assets/img/logo_overlay.png'; 
 const cloudName = "dxxljb2qi"; 
 const uploadPreset = "boda_mili_juli"; 
 // ---------------------
 
-// Variables globales
 let imagenListaParaEnviar = null;
 let tipoArchivoActual = null; 
 let archivoVideoCrudo = null; 
 
-// Modales (Estos pueden quedar globales)
-const previewModal = document.getElementById('preview-modal');
-const loaderModal = document.getElementById('loader-modal');
-const previewImg = document.getElementById('preview-img');
-const loaderMsg = document.querySelector('.loader-msg');
-
-// MAGIA: Esperamos a que el HTML esté 100% cargado antes de vincular los botones
+// MAGIA: Esperamos a que el HTML esté 100% dibujado antes de tocar nada
 document.addEventListener("DOMContentLoaded", () => {
     const inputUpload = document.getElementById('inputUpload');
     const btnUpload = document.getElementById('btnUpload');
 
+    // Solo si existen ambos, le agregamos el evento (Adiós error de null)
     if (btnUpload && inputUpload) {
-        // Vinculamos el click del botón visible al input oculto
         btnUpload.addEventListener('click', () => inputUpload.click());
-        
-        // Vinculamos el cambio del input a la función que procesa la foto/video
         inputUpload.addEventListener('change', procesarArchivo);
     } else {
-        console.error("Error: No se encontraron los botones 'btnUpload' o 'inputUpload' en el HTML.");
+        console.error("No se encontraron los botones en el HTML.");
     }
 });
 
 // --- FUNCIONES DE INTERFAZ ---
 function mostrarLoader(texto) {
-    loaderMsg.innerText = texto;
-    loaderModal.style.display = 'flex';
+    const loaderMsg = document.querySelector('.loader-msg');
+    const loaderModal = document.getElementById('loader-modal');
+    if(loaderMsg) loaderMsg.innerText = texto;
+    if(loaderModal) loaderModal.style.display = 'flex';
 }
 
 function ocultarLoader() {
-    loaderModal.style.display = 'none';
+    const loaderModal = document.getElementById('loader-modal');
+    if(loaderModal) loaderModal.style.display = 'none';
 }
 
 function cerrarPreview() {
-    previewModal.style.display = 'none';
+    const previewModal = document.getElementById('preview-modal');
+    const inputUpload = document.getElementById('inputUpload');
+    
+    if(previewModal) previewModal.style.display = 'none';
     imagenListaParaEnviar = null;
     archivoVideoCrudo = null;
-    inputUpload.value = '';
+    if(inputUpload) inputUpload.value = '';
     
     const previewVid = document.getElementById('preview-vid');
     if (previewVid) {
@@ -67,7 +64,11 @@ function procesarArchivo(e) {
             archivoVideoCrudo = archivo; 
             const urlLocal = URL.createObjectURL(archivo);
             
-            previewImg.style.display = 'none';
+            const previewImg = document.getElementById('preview-img');
+            const previewModal = document.getElementById('preview-modal');
+            
+            if(previewImg) previewImg.style.display = 'none';
+            
             let previewVid = document.getElementById('preview-vid');
             if(!previewVid) {
                 previewVid = document.createElement('video');
@@ -76,22 +77,29 @@ function procesarArchivo(e) {
                 previewVid.style.maxHeight = '50vh';
                 previewVid.style.borderRadius = '16px';
                 previewVid.controls = true;
-                document.querySelector('.img-container').appendChild(previewVid);
+                const container = document.querySelector('.img-container');
+                if(container) container.appendChild(previewVid);
             }
             previewVid.style.display = 'block';
             previewVid.src = urlLocal;
             
             ocultarLoader();
-            previewModal.style.display = 'flex';
+            if(previewModal) previewModal.style.display = 'flex';
         } else {
             comprimirImagen(archivo, 1600, 0.7, function(base64Final) {
                 imagenListaParaEnviar = base64Final;
                 const v = document.getElementById('preview-vid');
                 if(v) v.remove();
-                previewImg.style.display = 'block';
-                previewImg.src = "data:image/jpeg;base64," + base64Final;
+                
+                const previewImg = document.getElementById('preview-img');
+                const previewModal = document.getElementById('preview-modal');
+                
+                if(previewImg) {
+                    previewImg.style.display = 'block';
+                    previewImg.src = "data:image/jpeg;base64," + base64Final;
+                }
                 ocultarLoader();
-                previewModal.style.display = 'flex';
+                if(previewModal) previewModal.style.display = 'flex';
             });
         }
     }
@@ -162,5 +170,6 @@ function comprimirImagen(archivo, maxWidth, calidad, callback) {
     };
 }
 
+// Hacemos accesibles las funciones globales para los onclick del HTML
 window.cerrarPreview = cerrarPreview;
 window.subirFotoDefinitiva = subirFotoDefinitiva;
