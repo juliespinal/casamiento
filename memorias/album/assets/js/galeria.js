@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbywW5vlsO6rF5okrfC9KTHvvvfnh9PqCVwozyf0f6SovR1MHOMue5oeyo28utE29GVd/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxAqFTtnGRMZ6wNjL8Dof4tXXfw8MujmKvxnbBlykf7W2bFmpVi2QIONNZ4f5CqYR4/exec';
 const contenedor = document.getElementById('galeria');
 const loader = document.getElementById('loader-inicial'); // <-- DEFINICIÓN CLAVE
 

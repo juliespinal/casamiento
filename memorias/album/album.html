@@ -38,7 +38,15 @@
         .viewer-content { max-width: 100%; max-height: 80vh; border-radius: 12px; }
         .btn-close-viewer { margin-top: 20px; padding: 10px 25px; background: var(--primary); color: white; border: none; border-radius: 50px; cursor: pointer; }
         #loader-inicial { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
-        .spinner { width: 40px; height: 40px; border: 3px solid #ccc; border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 10px; }
+        .spinner { 
+    width: 40px; 
+    height: 40px; 
+    border: 3px solid #ccc; 
+    border-top-color: var(--primary); 
+    border-radius: 50%; 
+    animation: spin 1s linear infinite; 
+    margin: 0 auto 10px; /* ESTA ES LA MAGIA QUE LO CENTRA */
+}
         @keyframes spin { 100% { transform: rotate(360deg); } }
         @media (min-width: 768px) { #galeria { column-count: 4; } }
     </style>
@@ -53,6 +61,6 @@
         <div id="viewerContainer"></div>
         <button class="btn-close-viewer" onclick="cerrarVisualizador()">Cerrar</button>
     </div>
-    <script src="galeria.js"></script>
+    <script src="assets/js/galeria.js"></script>
 </body>
 </html>
