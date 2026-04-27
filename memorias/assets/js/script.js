@@ -1,30 +1,36 @@
 // --- CONFIGURACIÓN ---
 const scriptURL = 'https://script.google.com/macros/s/AKfycbywW5vlsO6rF5okrfC9KTHvvvfnh9PqCVwozyf0f6SovR1MHOMue5oeyo28utE29GVd/exec'; 
-const logoPath = '/memorias/assets/img/logo_overlay.png'; // <-- Verificá que esta ruta sea correcta
+const logoPath = 'assets/img/logo_overlay.png'; // Ruta relativa
 const cloudName = "dxxljb2qi"; 
 const uploadPreset = "boda_mili_juli"; 
 // ---------------------
 
-const inputUpload = document.getElementById('inputUpload');
-const btnUpload = document.getElementById('btnUpload');
+// Variables globales
+let imagenListaParaEnviar = null;
+let tipoArchivoActual = null; 
+let archivoVideoCrudo = null; 
 
-// Modales
+// Modales (Estos pueden quedar globales)
 const previewModal = document.getElementById('preview-modal');
 const loaderModal = document.getElementById('loader-modal');
 const previewImg = document.getElementById('preview-img');
 const loaderMsg = document.querySelector('.loader-msg');
 
-let imagenListaParaEnviar = null;
-let tipoArchivoActual = null; 
-let archivoVideoCrudo = null; 
+// MAGIA: Esperamos a que el HTML esté 100% cargado antes de vincular los botones
+document.addEventListener("DOMContentLoaded", () => {
+    const inputUpload = document.getElementById('inputUpload');
+    const btnUpload = document.getElementById('btnUpload');
 
-// Vincular botón visible con input oculto
-if(btnUpload) {
-    btnUpload.addEventListener('click', () => inputUpload.click());
-}
-
-// Event listener para cambio en input
-inputUpload.addEventListener('change', procesarArchivo);
+    if (btnUpload && inputUpload) {
+        // Vinculamos el click del botón visible al input oculto
+        btnUpload.addEventListener('click', () => inputUpload.click());
+        
+        // Vinculamos el cambio del input a la función que procesa la foto/video
+        inputUpload.addEventListener('change', procesarArchivo);
+    } else {
+        console.error("Error: No se encontraron los botones 'btnUpload' o 'inputUpload' en el HTML.");
+    }
+});
 
 // --- FUNCIONES DE INTERFAZ ---
 function mostrarLoader(texto) {
