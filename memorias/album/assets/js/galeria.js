@@ -1,6 +1,6 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxAqFTtnGRMZ6wNjL8Dof4tXXfw8MujmKvxnbBlykf7W2bFmpVi2QIONNZ4f5CqYR4/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbywW5vlsO6rF5okrfC9KTHvvvfnh9PqCVwozyf0f6SovR1MHOMue5oeyo28utE29GVd/exec';
 const contenedor = document.getElementById('galeria');
-const loader = document.getElementById('loader-inicial'); // <-- DEFINICIÓN CLAVE
+const loader = document.getElementById('loader-inicial'); 
 
 let fotosCargadas = new Set();
 let esPrimeraCarga = true;
@@ -12,7 +12,8 @@ function cargarFotos() {
             if (data.result === 'success') {
                 if (esPrimeraCarga) loader.style.display = 'none';
                 
-                // Procesar ítems nuevos
+                // Al invertir la lista y usar SIEMPRE prepend, 
+                // garantizamos que la foto/video más reciente quede arriba de todo.
                 data.fotos.reverse().forEach(item => {
                     if (!fotosCargadas.has(item.id)) {
                         fotosCargadas.add(item.id);
@@ -42,8 +43,8 @@ function cargarFotos() {
                             el = img;
                         }
                         
-                        if (esPrimeraCarga) contenedor.appendChild(el);
-                        else contenedor.prepend(el);
+                        // MAGIA: Lo insertamos siempre al principio
+                        contenedor.prepend(el);
                     }
                 });
                 esPrimeraCarga = false;
@@ -56,16 +57,21 @@ function abrirVisualizador(url, tipo) {
     const modal = document.getElementById('viewerModal');
     const container = document.getElementById('viewerContainer');
     container.innerHTML = '';
+    
     if (tipo === 'video') {
         const video = document.createElement('video');
-        video.src = url; video.className = "viewer-content";
-        video.controls = true; video.autoplay = true;
+        video.src = url; 
+        video.className = "viewer-content";
+        video.controls = true; 
+        video.autoplay = true;
         container.appendChild(video);
     } else {
         const img = document.createElement('img');
-        img.src = url; img.className = "viewer-content";
+        img.src = url; 
+        img.className = "viewer-content";
         container.appendChild(img);
     }
+    
     modal.style.display = 'flex';
 }
 
