@@ -27,7 +27,6 @@
 
     <style>
         :root {
-            /* Colores */
             --color-primary: #9A9B6A;
             /* Verde oliva */
             --color-secondary: #D4B996;
@@ -46,7 +45,6 @@
             --font-cuerpo: 'Montserrat', sans-serif;
         }
 
-        /* --- 2. APLICACIÓN DE VARIABLES --- */
         body,
         header {
             background-color: var(--color-bg);
@@ -54,7 +52,6 @@
             color: var(--color-text);
         }
 
-        /* Títulos especiales */
         h1.nombres-portada {
             font-family: var(--font-nombres);
             color: var(--color-secondary) !important;
@@ -67,7 +64,6 @@
             color: var(--color-primary);
         }
 
-        /* Colorear íconos y textos específicos */
         header h1,
         .cover .text i,
         .timer div,
@@ -90,7 +86,6 @@
         .invites span,
         .confirmation .link i,
         .modalGift .contenido-modal .form label,
-        /* FIX: Se quitó .confirmation */
         .modalGift .contenido-modal span,
         .modalGift .contenido-modal .thanks i,
         footer p i,
@@ -99,7 +94,6 @@
             color: var(--color-primary);
         }
 
-        /* Fondos con color primario */
         .story,
         .gifts a,
         .gifts button,
@@ -111,13 +105,11 @@
             background-color: var(--color-primary) !important;
         }
 
-        /* Checkmarks y botones del modal (Globales) */
         .modalGift .contenido-modal .form .container .checkmark:after,
         .modalGift .contenido-modal .form button {
             background-color: var(--color-primary) !important;
         }
 
-        /* Estilo para el botón de Agendar Fecha */
         .countdown a {
             background-color: var(--color-primary) !important;
             color: var(--color-white) !important;
@@ -138,7 +130,6 @@
             transform: scale(1.05);
         }
 
-        /* --- 3. ANIMACIÓN FLECHA (Bounce) --- */
         @keyframes bounce {
 
             0%,
@@ -164,7 +155,6 @@
             cursor: pointer;
         }
 
-        /* --- 4. AJUSTES VARIOS (INTRO) --- */
         .intro {
             cursor: pointer;
             position: fixed;
@@ -186,56 +176,42 @@
             margin-bottom: 10px;
         }
 
-        /* --- 5. ESTILOS DEL MODAL (ESTÉTICA VIEJA RECUPERADA) --- */
-
-        /* Contenedor Principal (Fondo Oscuro) */
         #modalRSVP {
             display: none;
-            /* CRÍTICO: Oculto por defecto */
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
             width: 100% !important;
             height: 100% !important;
             z-index: 10000 !important;
-            /* Encima de todo, pero controlado por display */
             background-color: rgba(0, 0, 0, 0.8) !important;
-
-            /* Centrado como te gustaba */
             justify-content: center;
             align-items: center;
             overflow-y: auto;
-            /* Permite scroll si el celu es chico */
             padding: 20px 0;
         }
 
-        /* La Tarjeta Blanca (Diseño original) */
         #modalRSVP .contenido-modal {
             background-color: #fff;
             margin: auto;
-            /* Centrado automático */
             width: 98%;
             max-width: 500px;
-            /* Ancho elegante, no estirado */
             border-radius: 15px;
             position: relative;
             padding: 0;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
-        /* Padding interno original */
         .modalGift .contenido-modal .cont {
             padding: 20px;
         }
 
-        /* Inputs y Selects (Estilo Original Recuperado) */
         .modalGift .contenido-modal .form input[type="text"],
         .modalGift .contenido-modal .form input[type="number"],
         .modalGift .contenido-modal .form textarea,
         .modalGift .contenido-modal .form select {
             width: 100%;
             padding: 10px;
-            /* Padding original */
             margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -246,7 +222,6 @@
             outline: none;
         }
 
-        /* Corrección Selects (Icono custom) */
         .modalGift .contenido-modal .form select {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -269,7 +244,6 @@
             z-index: 10;
         }
 
-        /* Botones de Acción (Estilo Original) */
         .btn-action,
         .modalGift .contenido-modal .form button.submit {
             display: block;
@@ -295,7 +269,6 @@
             transform: scale(1.02);
         }
 
-        /* Botón WhatsApp */
         #btnWspSubmit.btn-whatsapp-secondary {
             background-color: transparent !important;
             border: 2px solid #25D366 !important;
@@ -316,7 +289,6 @@
             color: white !important;
         }
 
-        /* Textos y Etiquetas */
         .modalGift .contenido-modal .form label {
             display: block;
             margin-bottom: 8px;
@@ -332,7 +304,6 @@
             color: var(--color-primary);
         }
 
-        /* Botón Cerrar (X) */
         .modalGift .closeModal {
             position: absolute;
             top: 15px;
@@ -343,11 +314,9 @@
 
         .modalGift .closeModal i {
             color: var(--color-primary);
-            /* Color original */
             font-size: 1.2rem;
         }
 
-        /* Checkbox Container (Radio buttons) */
         .modalGift .contenido-modal .form .container {
             display: block;
             position: relative;
@@ -402,7 +371,6 @@
             background: white;
         }
 
-        /* Pantalla Gracias */
         .btn-primary-modal {
             background-color: var(--color-primary);
             color: white;
@@ -415,7 +383,6 @@
             border: 2px solid var(--color-primary);
         }
 
-        /* --- 6. SEGURIDAD (Botones Grises) --- */
         .btn-disabled,
         .btn-disabled:hover,
         .btn-disabled:focus,
@@ -449,7 +416,6 @@
             font-size: 1.2rem !important;
         }
 
-        /* --- 7. DRESSCODE (Círculos) --- */
         .palette-container {
             display: flex;
             justify-content: center;
@@ -502,8 +468,6 @@
                 letter-spacing: normal;
             }
         }
-
-        /* --- 8. CORRECCIÓN SELLO Y SOBRE (PC) --- */
 
         #top {
             position: relative;
@@ -617,7 +581,6 @@
             }
         }
 
-        /* --- 9. PLAYLIST --- */
         .playlist {
             padding: 60px 20px;
             background-color: #283644;
@@ -655,7 +618,6 @@
             transform: scale(1.05);
         }
 
-        /* Botón de Copiar Alias */
         #btnCopiar {
             border-radius: 50px;
             padding: 12px 25px;
@@ -674,32 +636,22 @@
             transform: scale(1.02);
         }
 
-        /* El contenedor que apila las fotos */
         .carousel-container {
             display: grid;
-            /* Esto permite apilar cosas fácil */
             width: 100%;
             overflow: hidden;
-            /* Por si alguna foto es gigante */
         }
 
-        /* Todas las fotos ocupan el mismo lugar */
         .carousel-container img {
             grid-area: 1 / 1;
-            /* Truco: Manda todas a la fila 1, columna 1 */
             width: 100%;
             height: auto;
             opacity: 0;
-            /* Por defecto invisibles */
             transition: opacity 1s ease-in-out;
-            /* Efecto suave de fundido */
             object-fit: cover;
-            /* Para que no se estiren raro */
             border-radius: 10px;
-            /* Opcional: si querés bordes redondos */
         }
 
-        /* La clase que hace visible la foto de turno */
         .carousel-container img.active {
             opacity: 1;
             z-index: 1;
@@ -714,7 +666,8 @@
             <div class="badge animate__animated animate__zoomIn" data-wow-delay="0.3s">
                 <img src="assets/img/selloa.png" style="width: 110px !important;" />
                 <small class="comentario txt"
-                    style="margin-top: 180px !important; margin-left: 5px !important; font-size: 0.7rem; text-align: center;"><b><em>Web para confirmar asistencia. <br><br>Tocá para ingresar.</em></b></small>
+                    style="margin-top: 180px !important; margin-left: 5px !important; font-size: 0.7rem; text-align: center;"><b><em>Web
+                            para confirmar asistencia. <br><br>Tocá para ingresar.</em></b></small>
             </div>
             <img src="assets/img/envelopet.png" class="top hiddenM animate__animated animate__slideInDown" />
             <img src="assets/img/envelopetm.png" class="top hiddenL animate__animated animate__slideInDown" />
@@ -788,8 +741,8 @@
             </div>
         </div>
 
-        <a href="https://calendar.app.google/ZM3CtLALYPXZYupQ8"
-            target="_blank" style="color: white;"><i class="far fa-calendar-check" style="color:white"></i> Agendar
+        <a href="https://calendar.app.google/ZM3CtLALYPXZYupQ8" target="_blank" style="color: white;"><i
+                class="far fa-calendar-check" style="color:white"></i> Agendar
             fecha</a>
     </section>
 
@@ -865,25 +818,25 @@
                             <div class="color-circle" style="background-color: #154734;"></div>
                             <span class="color-label">Inglés</span>
                         </div>
-                        <!-- <div class="palette-item">
+                        <div class="palette-item">
                             <div class="color-circle" style="background-color: #9A9B6A;"></div>
                             <span class="color-label">Oliva</span>
-                        </div> -->
+                        </div>
                         <div class="palette-item">
                             <div class="color-circle" style="background-color: #1E2D3D;"></div>
                             <span class="color-label">Marino</span>
                         </div>
-                        <!-- <div class="palette-item">
+                        <div class="palette-item">
                             <div class="color-circle" style="background-color: #D4B996;"></div>
                             <span class="color-label">Beige</span>
-                        </div> -->
+                        </div>
                         <div class="palette-item">
                             <div class="color-circle" style="background-color: #B55328;"></div>
                             <span class="color-label">Terracota</span>
                         </div>
-                        <!--<div class="palette-item">
+                        <div class="palette-item">
                             <div class="color-circle" style="background-color: #6C1B1F;"></div>
-                            <span class="color-label">Vino</span> -->
+                            <span class="color-label">Vino</span>
                         </div>
                     </div>
                 </div>
@@ -967,8 +920,7 @@
         </div>
     </section>
 
-    <section class="gifts"
-        style="background-image: url(/confirmacion/assets/img/background_3.jpg);">
+    <section class="gifts" style="background-image: url(/confirmacion/assets/img/background_3.jpg);">
         <div class="card wow animate__animated animate__fadeInUp">
             <lord-icon src="https://cdn.lordicon.com/kezeezyg.json" trigger="loop" stroke="light" delay="300"
                 colors="primary:#666,secondary:#9A9B6A" style="width:70px;height:70px"></lord-icon>
@@ -1016,7 +968,8 @@
             <span>RSVP</span>
             <h2>Confirmación de Asistencia</h2> <br>
             <p class="sombreado" style="font-size: 0.9rem;">Fecha límite confirmación:
-                <br> <b style="font-weight: 700 !important; font-size: 1rem;">30 de Marzo</b></p>
+                <br> <b style="font-weight: 700 !important; font-size: 1rem;">30 de Marzo</b>
+            </p>
             <button class="link modal-button" href="#modalRSVP" style="padding:15px 32px;" id="btnStaticRSVP"><i
                     class="fas fa-check-circle" style="margin-right:10px"></i>Confirmar
                 Asistencia</button>
@@ -1073,7 +1026,8 @@
                             </p>
                             <p id="msgExtra"
                                 style="display:none; margin-top:5px; font-size: 0.85rem; color: var(--color-primary); font-weight: 600;">
-                                <!----> </p>
+                                <!---->
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1178,49 +1132,36 @@
         <script src="assets/js/countdown.js"></script>
 
         <script>
-            // --- INICIALIZACIÓN ---
             new WOW().init();
 
-            // --- VARIABLES GLOBALES ---
             const scriptURL = 'https://script.google.com/macros/s/AKfycbymWuLx0LAcyQQs881qDuQ2Jy51roJTivrTgRdHnMVZYDwIDazQ8moc5ak5GT3oLz9i/exec';
             const telefonoNovios = "5492234257146";
 
-            // --- UTILIDADES DE SCROLL Y MODALES ---
             let savedScrollPosition = 0;
 
-            // 1. Para los botones ESTÁNDAR (como el fijo) que tienen href="#modalRSVP"
             document.querySelectorAll('[href="#modalRegalos"], [href="#modalRSVP"]').forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
                 });
             });
 
-            // 2. FIX: Para el BOTÓN FLOTANTE (que no tiene href al modal)
-            // Le asignamos manualmente la función de abrir
             const btnFloat = document.getElementById('btnFloatRSVP');
             if (btnFloat) {
                 btnFloat.addEventListener('click', function (e) {
-                    e.preventDefault(); // Evita que recargue o salte
-                    abrirModalRSVP();   // Ejecuta la apertura
+                    e.preventDefault();
+                    abrirModalRSVP();
                 });
             }
 
-            // Función para abrir el Modal de RSVP
             function abrirModalRSVP() {
                 const modal = document.getElementById('modalRSVP');
                 if (modal) {
-                    // Guardamos posición
                     savedScrollPosition = window.scrollY || document.documentElement.scrollTop;
-
-                    // Mostramos modal
                     modal.style.display = 'block';
-
-                    // Bloqueamos scroll
                     document.body.style.overflow = 'hidden';
                 }
             }
 
-            // Función para cerrar Modal RSVP
             function cerrarModalRSVP() {
                 if (typeof autoCloseTimer !== 'undefined') clearTimeout(autoCloseTimer);
                 if (typeof conteoInterval !== 'undefined') clearInterval(conteoInterval);
@@ -1243,24 +1184,17 @@
         </script>
 
         <script>
-            /* =========================================
-               LÓGICA DE AUDIO Y APERTURA DE SOBRE
-               ========================================= */
 
             function abrirSobre() {
                 var audio = document.getElementById("player");
                 var intro = document.getElementById("intro");
                 var musicBtn = document.getElementById("musicButton");
-
-                // Intentar reproducir audio
                 audio.play().then(() => {
                     musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/play.gif'/></div>";
                 }).catch(function (error) {
                     console.log("Autoplay bloqueado por el navegador.", error);
                     musicBtn.innerHTML = "<div class='icon'><img src='https://evnt.ar/assets/images/pause.png'/></div>";
                 });
-
-                // Animación de salida del sobre
                 intro.style.opacity = "0";
                 intro.style.transform = "translateY(-100%)";
 
@@ -1269,8 +1203,6 @@
                     document.body.style.overflow = "auto";
                 }, 1000);
             }
-
-            // Control del botón de música (Play/Pause)
             var musicBtn = document.getElementById("musicButton");
             var audio = document.getElementById("player");
 
@@ -1288,16 +1220,12 @@
         </script>
 
         <script>
-            /* =========================================
-               LÓGICA DE REGALOS (COPIAR ALIAS) - VERSION FINAL
-               ========================================= */
             document.addEventListener("DOMContentLoaded", function () {
 
                 const btnCopiar = document.getElementById('btnCopiar');
                 const mensajeExito = document.getElementById('mensajeExito');
                 const aliasTexto = "JULIO.ESPINAL.BG";
 
-                // Función global de cierre
                 window.closeModalRegalos = function () {
                     const modalRegalos = document.getElementById('modalRegalos');
                     const modalContent = document.getElementById('modalContentRegalos');
@@ -1323,13 +1251,10 @@
                     }, 500);
                 };
 
-                // Función de copiado compatible
                 const copiarAlPortapapeles = (texto) => {
-                    // Intento 1: API Moderna
                     if (navigator.clipboard && window.isSecureContext) {
                         return navigator.clipboard.writeText(texto);
                     } else {
-                        // Intento 2: Método "Antiguo" (Funciona siempre)
                         let textArea = document.createElement("textarea");
                         textArea.value = texto;
                         textArea.style.position = "fixed";
@@ -1364,19 +1289,13 @@
         </script>
 
         <script>
-            /* =========================================
-               SCRIPT 4: SEGURIDAD (FIX FINAL MENSAJE EXTRA)
-               ========================================= */
 
             document.addEventListener("DOMContentLoaded", function () {
-                // 1. Recuperar datos
                 const precioGuardado = localStorage.getItem('boda_precio');
                 const textoGuardado = localStorage.getItem('boda_texto');
                 const codigoGuardado = localStorage.getItem('boda_codigo');
 
-                console.log("Código detectado en memoria:", codigoGuardado); // <--- ESTO TE VA A AYUDAR A VER SI LO TOMA
-
-                // 2. Función de BLOQUEO
+                console.log("Código detectado en memoria:", codigoGuardado);
                 const bloquearBoton = (idBoton) => {
                     const btnOriginal = document.getElementById(idBoton);
                     if (btnOriginal) {
@@ -1397,8 +1316,6 @@
                         btnOriginal.parentNode.replaceChild(btnClon, btnOriginal);
                     }
                 };
-
-                // 3. VALIDACIÓN
                 if (precioGuardado === null) {
                     bloquearBoton('btnFloatRSVP');
                     bloquearBoton('btnStaticRSVP');
@@ -1414,19 +1331,14 @@
                     const precioNum = parseInt(precioGuardado);
 
                     if (precioNum > 0) {
-                        // TIENEN PRECIO
                         if (divPrecio && spanPrecio) {
                             spanPrecio.innerText = textoGuardado;
                             divPrecio.style.display = "block";
                             if (inputMonto) inputMonto.value = textoGuardado;
-
-                            // --- LÓGICA MENSAJE EXTRA ---
-                            // Asegurate que 'CODIGO-TEST' sea el mismo que usas en el login
                             if (codigoGuardado === 'LABUBU') {
                                 console.log("Mostrando mensaje extra...");
                                 if (msgExtra) msgExtra.style.display = 'block';
                             }
-                            // ----------------------------
                         }
 
                         if (divPago) {
@@ -1435,7 +1347,6 @@
                             radiosPago.forEach(r => r.required = true);
                         }
                     } else {
-                        // ES GRATIS
                         if (divPrecio) divPrecio.style.display = "none";
                         if (divPago) {
                             divPago.style.display = "none";
@@ -1452,10 +1363,6 @@
             });
         </script>
         <script>
-            /* =========================================
-               LÓGICA DE CONFIRMACIÓN (FIX: PAGO GRATIS Y ENVÍO)
-               ========================================= */
-
             document.addEventListener("DOMContentLoaded", function () {
                 const form = document.forms['rsvpForm'];
                 const btnEnviar = document.querySelector('.submit');
@@ -1464,59 +1371,42 @@
                 const divThanks = document.querySelector('#modalRSVP .thanks');
                 const btnOtra = document.getElementById('btnOtra');
                 const btnCerrarFinal = document.getElementById('btnCerrarRSVP');
-
-                // Elementos para ocultar/mostrar
                 const camposOpcionales = document.getElementById('camposOpcionales');
                 const bloquePago = document.getElementById('bloquePago');
                 const radiosAsistencia = document.querySelectorAll('input[name="asistencia"]');
-
-                // Inputs
                 const selectAlimento = document.getElementById('alimentos');
                 const selectTraslado = document.getElementById('traslados');
                 const radiosPago = document.querySelectorAll('input[name="pago_estado"]');
 
                 let esEnvioWhatsApp = false;
 
-                // 1. FUNCIÓN INTELIGENTE PARA MOSTRAR/OCULTAR
                 function actualizarFormulario() {
                     const asiste = document.querySelector('input[name="asistencia"]:checked').value === "Asiste";
                     const precioGuardado = localStorage.getItem('boda_precio');
 
-                    // Chequeamos si es pago (> 0)
                     const tienePago = precioGuardado && parseInt(precioGuardado) > 0;
 
                     if (asiste) {
-                        // MOSTRAR CAMPOS COMUNES
                         if (camposOpcionales) camposOpcionales.style.display = "block";
-
-                        // Hacerlos obligatorios
                         if (selectAlimento) selectAlimento.setAttribute('required', 'required');
                         if (selectTraslado) selectTraslado.setAttribute('required', 'required');
-
-                        // LÓGICA DE PAGO
                         if (tienePago && bloquePago) {
                             bloquePago.style.display = "block";
                             radiosPago.forEach(r => r.setAttribute('required', 'required'));
                         } else {
-                            // FIX CRÍTICO: Si es GRATIS, ocultar Y SACAR REQUIRED para que no trabe el envío
                             if (bloquePago) bloquePago.style.display = "none";
                             radiosPago.forEach(r => {
                                 r.removeAttribute('required');
-                                r.checked = false; // Desmarcar por las dudas
+                                r.checked = false;
                             });
                         }
 
                     } else {
-                        // NO ASISTE: OCULTAR TODO
                         if (camposOpcionales) camposOpcionales.style.display = "none";
                         if (bloquePago) bloquePago.style.display = "none";
-
-                        // Quitar Obligatoriedad de todo
                         if (selectAlimento) selectAlimento.removeAttribute('required');
                         if (selectTraslado) selectTraslado.removeAttribute('required');
                         radiosPago.forEach(r => r.removeAttribute('required'));
-
-                        // Limpiar valores para que el Excel quede prolijo
                         if (selectAlimento) selectAlimento.value = "";
                         if (selectTraslado) selectTraslado.value = "";
                         const comentarios = document.getElementById('comentarios');
@@ -1524,26 +1414,17 @@
                         radiosPago.forEach(r => r.checked = false);
                     }
                 }
-
-                // Escuchamos cambios en "Sí/No"
                 radiosAsistencia.forEach(radio => {
                     radio.addEventListener('change', actualizarFormulario);
                 });
-
-                // Ejecutar al inicio por si quedó algo en memoria
                 actualizarFormulario();
 
-
-                // 2. BOTONES DE ENVÍO
                 if (btnEnviar) btnEnviar.addEventListener('click', () => esEnvioWhatsApp = false);
                 if (btnWspSubmit) btnWspSubmit.addEventListener('click', () => esEnvioWhatsApp = true);
 
-
-                // 3. RESETEO
                 function resetearFormulario() {
                     if (form) form.reset();
-                    actualizarFormulario(); // Resetear visuales
-
+                    actualizarFormulario();
                     if (btnEnviar) {
                         btnEnviar.disabled = false;
                         btnEnviar.innerHTML = '<i class="fas fa-check-circle"></i> Confirmar Asistencia';
@@ -1565,8 +1446,6 @@
                     });
                 }
 
-
-                // 4. ENVÍO (SUBMIT)
                 if (form) {
                     form.addEventListener('submit', e => {
                         e.preventDefault();
@@ -1574,7 +1453,6 @@
                         const textoOriginal = btnEnviar ? btnEnviar.innerHTML : '';
                         const textoWspOriginal = btnWspSubmit ? btnWspSubmit.innerHTML : '';
 
-                        // Animación de carga
                         if (btnEnviar) {
                             btnEnviar.disabled = true;
                             if (!esEnvioWhatsApp) btnEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
@@ -1584,30 +1462,23 @@
                             if (esEnvioWhatsApp) btnWspSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
                         }
 
-                        // Enviar a Google Sheets
                         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                             .then(response => response.json().then(data => {
                                 if (data.result === 'success') return true;
                                 else throw new Error(data.error);
                             }))
                             .then(() => {
-                                // ÉXITO
                                 if (divForm) divForm.style.display = 'none';
                                 if (divThanks) divThanks.style.display = 'block';
-
-                                // --- LÓGICA WHATSAPP ---
                                 if (esEnvioWhatsApp) {
                                     const nombre = form.querySelector('input[name="nombre"]').value;
                                     const asistencia = form.querySelector('input[name="asistencia"]:checked').value;
-
-                                    // Volvemos a chequear el precio para armar el mensaje
                                     const precioGuardado = localStorage.getItem('boda_precio');
                                     const esPago = precioGuardado && parseInt(precioGuardado) > 0;
 
                                     let mensaje = "";
 
                                     if (asistencia === "Asiste") {
-                                        // Datos completos
                                         const alimentacion = document.getElementById('alimentos').value || "-";
                                         const transporte = document.getElementById('traslados').value || "-";
                                         const comentario = document.getElementById('comentarios').value;
@@ -1615,8 +1486,6 @@
                                         mensaje = `¡Hola Juli, Mili! Soy *${nombre}* y les confirmo que: *${asistencia}* a su casamiento.`;
                                         mensaje += `%0A%0CComo alimentación especial requiero *${alimentacion}*, y *${transporte}* necesito información sobre un transporte.`;
                                         if (comentario) mensaje += `%0ANota: ${comentario}`;
-
-                                        // FIX MENSAJE PAGO: Solo si esPago es true
                                         if (esPago) {
                                             const estadoPagoInput = form.querySelector('input[name="pago_estado"]:checked');
                                             if (estadoPagoInput) {
@@ -1629,7 +1498,6 @@
                                         }
 
                                     } else {
-                                        // Mensaje Negativo
                                         mensaje = `Hola Juli, Mili. Soy *${nombre}*. Lamentablemente no podré asistir al casamiento. ¡Muchas gracias igual por la invitación!`;
                                     }
 
@@ -1654,28 +1522,20 @@
                 }
             });
 
-            // --- SCRIPT CARRUSEL AUTOMÁTICO ---
             document.addEventListener("DOMContentLoaded", function () {
 
                 const contenedor = document.querySelector('.carousel-container');
 
-                // Solo activamos si existe el carrusel en la página
                 if (contenedor) {
                     const fotos = contenedor.querySelectorAll('img');
                     let indiceActual = 0;
 
-                    // Función que cambia la foto
                     setInterval(() => {
-                        // 1. Le sacamos la clase 'active' a la foto actual
                         fotos[indiceActual].classList.remove('active');
-
-                        // 2. Calculamos cuál es la siguiente (si es la última, vuelve a 0)
                         indiceActual = (indiceActual + 1) % fotos.length;
-
-                        // 3. Le ponemos la clase 'active' a la nueva foto
                         fotos[indiceActual].classList.add('active');
 
-                    }, 3000); // <--- TIEMPO: 3000ms = 3 segundos (Recomendado)
+                    }, 3000);
                 }
             });
         </script>
