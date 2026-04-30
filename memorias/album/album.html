@@ -16,10 +16,11 @@
     <meta name="twitter:title" content="Mili & Juli - ¡Nuestra Boda!">
     <meta name="twitter:description"
         content="Compartí los recuerdos de nuestro casamiento. Entrá acá para subir tus fotos y videos al álbum en vivo.">
-    <meta name="twitter:image" content="https://bodamiliyjuli.com.ar/memorias/assets/img/preview.png">
+    <meta name="twitter:image" content="https://bodamiliyjuli.com.ar/memorias/assets/img/preview.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="icon" type="image/png" href="../../confirmacion/assets/img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #fcfbf7;
@@ -126,14 +127,31 @@
             border-radius: 12px;
         }
 
-        .btn-close-viewer {
-            margin-top: 20px;
-            padding: 10px 25px;
-            background: var(--primary);
-            color: white;
+        .viewer-actions { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 20px; 
+        }
+        .btn-action-viewer { 
+            padding: 12px 25px; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            cursor: pointer; 
             border: none;
-            border-radius: 50px;
-            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .btn-action-viewer:active { transform: scale(0.95); }
+        .btn-share { 
+            background: #ffffff; 
+            color: var(--primary); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .btn-close { 
+            background: var(--primary); 
+            color: white; 
+            box-shadow: 0 4px 12px rgba(96, 110, 54, 0.3);
         }
 
         #loader-inicial {
@@ -182,10 +200,18 @@
         <div id="galeria"></div>
     </main>
     <div id="viewerModal" class="viewer-modal">
-        <div id="viewerContainer"></div>
-        <button class="btn-close-viewer" onclick="cerrarVisualizador()">Cerrar</button>
+        <div id="viewerContainer" style="width: 100%; text-align: center;"></div>
+        
+        <div class="viewer-actions">
+            <button class="btn-action-viewer btn-share" onclick="compartirRecuerdo()">
+                <i class="fa-solid fa-share-nodes"></i> Compartir
+            </button>
+            <button class="btn-action-viewer btn-close" onclick="cerrarVisualizador()">
+                Cerrar
+            </button>
+        </div>
     </div>
-    <script src="assets/js/galeria.js"></script>
+    <script src="assets/js/galeria.js?v=1.0"></script>
 </body>
 
 </html>

@@ -5,6 +5,9 @@ const loader = document.getElementById('loader-inicial');
 let fotosCargadas = new Set();
 let esPrimeraCarga = true;
 
+let urlActualParaCompartir = ''; 
+let tipoActualParaCompartir = '';
+
 function cargarFotos() {
     fetch(scriptURL)
         .then(response => response.json())
@@ -49,6 +52,9 @@ function cargarFotos() {
 }
 
 function abrirVisualizador(url, tipo) {
+    urlActualParaCompartir = url; 
+    tipoActualParaCompartir = tipo;
+
     const modal = document.getElementById('viewerModal');
     const container = document.getElementById('viewerContainer');
     container.innerHTML = '';
@@ -73,7 +79,45 @@ function abrirVisualizador(url, tipo) {
 function cerrarVisualizador() {
     document.getElementById('viewerModal').style.display = 'none';
     document.getElementById('viewerContainer').innerHTML = '';
+    const urlLimpia = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, urlLimpia);
+}
+async function compartirRecuerdo() {
+    const urlBase = window.location.origin + window.location.pathname;
+    const linkMagico = `${urlBase}?media=${encodeURIComponent(urlActualParaCompartir)}&tipo=${tipoActualParaCompartir}`;
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: 'Mili & Juli - Boda',
+                text: '¡Mirá este recuerdo de la fiesta!',
+                url: linkMagico
+            });
+        } catch (error) {
+            console.log('Error compartiendo:', error);
+        }
+    } else {
+        navigator.clipboard.writeText(linkMagico);
+        alert('Enlace copiado. ¡Ya podés compartirlo en redes o por mensajes!');
+    }
 }
 
+function revisarUrlCompartida() {
+    const parametros = new URLSearchParams(window.location.search);
+    const mediaUrl = parametros.get('media');
+    const tipoMedia = parametros.get('tipo');
+
+    if (mediaUrl && tipoMedia) {
+        setTimeout(() => {
+            abrirVisualizador(decodeURIComponent(mediaUrl), tipoMedia);
+        }, 300);
+    }
+}
+
+revisarUrlCompartida();
 cargarFotos();
 setInterval(cargarFotos, 20000);
+
+window.abrirVisualizador = abrirVisualizador;
+window.cerrarVisualizador = cerrarVisualizador;
+window.compartirRecuerdo = compartirRecuerdo;
