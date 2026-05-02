@@ -1,0 +1,127 @@
+        body.bridgerton-theme {
+            background-color: #f5f1e7;
+            /* Color crema tipo papel antiguo */
+            color: #2c2c2c;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .whis-header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            border-bottom: 2px solid #d4c5b0;
+            margin-bottom: 30px;
+        }
+
+        .whis-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: #1a1a1a;
+        }
+
+        .whis-header p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .whis-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px 50px;
+        }
+
+        .gossip-form {
+            background: #ffffff;
+            padding: 20px;
+            border: 1px solid #e8e1d7;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .gossip-textarea {
+            width: 100%;
+            height: 100px;
+            padding: 15px;
+            font-family: 'Outfit', sans-serif;
+            /* Texto normal para escribir */
+            font-size: 1rem;
+            border: 1px solid #d4c5b0;
+            border-radius: 8px;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            background-color: #fafafa;
+        }
+
+        .gossip-textarea:focus {
+            outline: none;
+            border-color: #2c2c2c;
+        }
+
+        .btn-whis {
+            background: #2c2c2c;
+            color: #fcf9f2;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+        }
+
+        .btn-whis:active {
+            transform: scale(0.98);
+        }
+
+        .gossip-feed {
+            margin-top: 20px;
+        }
+
+        .gossip-card {
+            padding: 25px 0;
+            border-bottom: 1px dashed #d4c5b0;
+        }
+
+        .gossip-text {
+            font-size: 1.35rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .gossip-date {
+            font-size: 0.85rem;
+            color: #888;
+            font-family: 'Outfit', sans-serif;
+            margin-top: 15px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #loader-whis {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            color: #888;
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Botón para volver al inicio */
+        .btn-back {
+            display: block;
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            color: #555;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
