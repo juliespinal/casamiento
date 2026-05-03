@@ -2,42 +2,71 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lady Whistledown - M&J</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Lady Whistledown - M&amp;J</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body class="bridgerton-theme">
 
-    <div class="whis-header animate__animated animate__fadeInDown">
-        <h1>Lady Whistledown - Boda M&J</h1>
-        <p>Querido y gentil lector. <br>Bienvenido al espacio para leer y comentar
-            los mejores chismes y sucesos del casamiento de Mili y Juli.
-        </p>
-    </div>
+    <div class="society-paper animate__animated animate__fadeIn">
 
-    <div class="whis-container animate__animated animate__fadeInUp">
+        <header class="animate__animated animate__fadeInDown">
 
-        <div class="gossip-form">
-            <textarea id="inputChisme" class="gossip-textarea"
-                placeholder="Escribe aquí tu secreto de forma totalmente anónima..."></textarea>
-            <button class="btn-whis" onclick="enviarChisme()">Publicar Rumor</button>
-            <p id="loader-whis">Enviando a la imprenta... 🪶</p>
-        </div>
+            <h1><b>Lady Whistledown's</b><br>Society Papers</h1>
 
-        <div id="gossip-feed" class="gossip-feed">
-        </div>
+            <h3>
+
+                Querido y gentil lector. <br />
+
+                Bienvenido al espacio para leer y comentar los mejores chismes y sucesos del casamiento de Mili y Juli.
+
+            </h3>
+
+        </header>
+
+        <main class="animate__animated animate__fadeInUp">
+
+            <div class="gossip-form">
+
+                <textarea class="gossip-textarea" id="inputChisme"
+                    placeholder="Escribí acá tu secreto de forma totalmente anónima..."></textarea>
+
+                <button class="btn-whis" onclick="enviarChisme()">Publicar Rumor</button>
+
+                <p id="loader-whis">Enviando a la imprenta... 🪶</p>
+
+            </div>
+
+            <div class="gossip-feed" id="gossip-feed">
+
+                <!-- Los chismes aparecerán aquí -->
+
+            </div>
+
+        </main>
+
+        <footer class="mt-10 text-center text-xs opacity-50 uppercase tracking-widest italic">
+
+            Londres, 1813 — <br>Edición Especial de Boda
+
+        </footer>
 
     </div>
 
     <script src="assets/js/chismes.js"></script>
+
 </body>
 
 </html>
